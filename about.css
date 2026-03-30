@@ -1,0 +1,189 @@
+:root {
+    --white: #ffffff;
+    --light-bg: #fdfdfd;
+    --accent: #d4b895;
+    /* Золотисто-бежевый */
+    --text-dark: #2d2d2d;
+    --text-gray: #666666;
+    --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--white);
+    color: var(--text-dark);
+    font-family: "Iosevka Charon", monospace;   
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* --- Анимации появления --- */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- Navigation --- */
+
+/* --- Hero Section --- */
+.hero {
+    padding: 80px 8%;
+    animation: fadeInUp 1s ease;
+}
+
+.hero-container {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.badge {
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.h {
+    font-family: 'Oswald', sans-serif;
+    font-size: 4rem;
+    line-height: 1.1;
+    margin: 20px 0;
+}
+
+.hero-text p {
+    color: var(--text-gray);
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+    max-width: 500px;
+}
+
+/* --- Кнопки (Hover & Active) --- */
+.hero-actions {
+    display: flex;
+    gap: 20px;
+}
+
+.btn-main {
+    padding: 15px 35px;
+    background: var(--text-dark);
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-main:hover {
+    background: var(--accent);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(212, 184, 149, 0.3);
+}
+
+.btn-main:active {
+    transform: translateY(0);
+}
+
+.btn-outline {
+    padding: 15px 35px;
+    background: transparent;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-outline:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+/* --- Image Frame Animation --- */
+.img-frame {
+    position: relative;
+    overflow: hidden;
+    border-radius: 5px;
+    transition: var(--transition);
+}
+
+.img-frame img {
+    width: 100%;
+    display: block;
+    transition: transform 0.8s ease;
+}
+
+.img-frame:hover img {
+    transform: scale(1.05);
+}
+
+/* --- Stats --- */
+.stats {
+    display: flex;
+    justify-content: space-around;
+    padding: 60px 8%;
+    background: var(--light-bg);
+    text-align: center;
+}
+
+.stat-item h2 {
+    font-size: 2.5rem;
+    color: var(--accent);
+}
+
+/* --- Details Cards --- */
+.details-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    padding: 100px 8%;
+}
+
+.details-card {
+    padding: 40px;
+    border: 1px solid #f0f0f0;
+    transition: var(--transition);
+}
+
+.details-card:hover {
+    background: var(--white);
+    border-color: var(--accent);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+}
+
+/* --- Адаптивность (Responsive) --- */
+@media (max-width: 968px) {
+    .hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .hero-text p {
+        margin: 20px auto 40px;
+    }
+
+    .hero-actions {
+        justify-content: center;
+    }
+
+    h1 {
+        font-size: 2.8rem;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    /* Скрываем меню на мобилках для простоты */
+}

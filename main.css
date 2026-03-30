@@ -1,0 +1,632 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Iosevka Charon", monospace;
+
+    background: radial-gradient(circle at top, #f3f0ff, #ffffff);
+}
+
+.header__btn:hover,
+.hero__btn:hover,
+.cta__btn:hover,
+.info__btn:hover,
+.info__btn--alt:hover,
+.features__btn:hover {
+    transform: translateY(-3px) scale(1.03);
+}
+
+a {
+    transition: 0.3s;
+}
+
+a:active {
+    opacity: 0.6;
+}
+
+.header {
+    position: sticky;
+    top: 0;
+    padding: 10px 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #eee;
+}
+
+
+.container {
+    max-width: 1340px;
+    width: 100%;
+    padding: 0px 20px;
+    margin: 0 auto;
+}
+
+
+.header__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+
+.header__logo {
+    cursor: pointer;
+    background-image: url(/imgs/logo.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100px;
+    height: 48px;
+    transition: 0.3s;
+}
+
+.header__logo:hover {
+    transform: scale(1.05);
+}
+
+
+.header__right {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+}
+
+.header__nav {
+    display: flex;
+    gap: 30px;
+}
+
+
+.header__link {
+    position: relative;
+    font-weight: 600;
+    font-size: 16px;
+    text-decoration: none;
+    color: #222;
+    transition: 0.3s;
+}
+
+.header__link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0%;
+    height: 2px;
+    background: #000000;
+    transition: 0.3s;
+}
+
+.header__link:hover {
+    color: #000000bd;
+}
+
+.header__link:hover::after {
+    width: 100%;
+}
+
+
+.header__btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    background: #000000;
+    color: #fff;
+    font-weight: 600;
+    margin-right: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+
+.header__btn:hover {
+    background: #1b1b1bdc;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+
+
+
+.hero {
+    padding: 140px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero__content {
+    text-align: center;
+}
+
+.hero__container {
+    max-width: 1340px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.hero__subtitle {
+    font-size: 18px;
+    color: #000000;
+    margin-bottom: 10px;
+}
+
+.hero__title {
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.hero__text {
+    font-size: 15px;
+    padding: 14px 0px 32px 0;
+    color: #555;
+}
+
+.hero__btn {
+    padding: 14px 28px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #000000, #2a2a2b);
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.hero__btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(165, 165, 167, 0.4);
+}
+
+.services {
+    padding: 120px 0;
+}
+
+.services__grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.services__header {
+    padding-bottom: 43px;
+    text-align: center;
+}
+
+.services__title {
+    text-align: center;
+    font-size: 36px;
+    font-weight: 700;
+}
+
+.services__item {
+    height: 220px;
+    border-radius: 20px;
+    background-size: cover;
+    background-position: center;
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    transition: 0.3s;
+}
+
+
+
+.services__item--one {
+    background-image: url("/imgs/cosmenolog.one.jpg");
+}
+
+.services__item--two {
+    background-image: url("/imgs/cosmenolog.two.jpg");
+}
+
+.services__item--three {
+    background-image: url("/imgs/cosmenolog.there.jpg");
+}
+
+.services__item--four {
+    background-image: url("/imgs/cosmenolog.four.jpg");
+}
+
+.services__item--five {
+    background-image: url("/imgs/cosmenolog.five.jpg");
+}
+
+.services__item--six {
+    background-image: url("/imgs/cosmenolog.six.jpg");
+}
+
+.services__item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.cta__title {
+    font-size: 53px;
+    font-weight: 700;
+}
+
+.cta {
+    padding: 100px 0;
+    background-image: url(/imgs/bagrond.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    text-align: center;
+
+}
+
+.cta__btn {
+    margin-top: 20px;
+    padding: 14px 30px;
+    width: 269px;
+    border-radius: 20px;
+    background: #763399;
+    color: white;
+    border: none;
+    font-family: "Iosevka Charon", monospace;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 16px;
+}
+
+.cta__btn:hover {
+    background: #5e2870;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(118, 51, 153, 0.4);
+}
+
+
+.info--alt {
+    background: #f5f5ff;
+}
+
+.info__container {
+    max-width: 1340px;
+    width: 100%;
+    padding: 20px 0px;
+    margin: 0 auto;
+}
+
+.info__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.info__wrapper {
+    max-width: 600px;
+}
+
+.info__image {
+    max-width: 500px;
+    width: 100%;
+}
+
+.info__title {
+    font-size: 50px;
+    font-weight: 900;
+
+}
+
+.info__text {
+    font-size: 16px;
+    color: #555;
+    padding-bottom: 22px;
+
+}
+
+.info__btn {
+    padding: 14px 30px;
+    border-radius: 30px;
+    background: #1E2054;
+    color: white;
+    border: none;
+    font-family: "Iosevka Charon", monospace;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 16px;
+}
+
+.info--alt {
+    background: linear-gradient(135deg, #0f0f1a, #1c1c2e);
+}
+
+.info__content--alt {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    padding: 0 40px;
+}
+
+
+
+.info__title--alt {
+    font-size: 50px;
+    font-weight: 900;
+    color: white;
+}
+
+.info__text--alt {
+    font-size: 16px;
+    color: #ddd;
+    padding-bottom: 22px;
+}
+
+
+
+.info__btn--alt {
+    padding: 14px 30px;
+    border-radius: 30px;
+    background: #79369C;
+    color: white;
+    border: none;
+    font-family: "Iosevka Charon", monospace;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 16px;
+}
+
+.features {
+    padding: 120px 0;
+
+}
+
+.features__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.features__card {
+    padding: 40px;
+    border-radius: 25px;
+    background-image: url(/imgs/back.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: 0.3s;
+}
+
+.features__card:hover {
+    transform: translateY(-10px);
+}
+
+.features__card--alt {
+    background-image: url(/imgs/back.one);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+
+.features__container {
+    max-width: 1340px;
+    width: 100%;
+    padding: 20px 0px;
+    margin: 0 auto;
+}
+
+.features__top {}
+
+.features__title {
+    text-align: center;
+    font-size: 50px;
+    font-weight: 700;
+}
+
+.features__text {
+    text-align: center;
+    padding-bottom: 25px;
+}
+
+
+
+
+.features__card-title {
+    font-size: 50px;
+    font-weight: 900;
+    padding-bottom: 27px;
+}
+
+
+
+
+
+.features__btn {
+    margin-top: 20px;
+    padding: 14px 30px;
+    border-radius: 30px;
+    background: #753A8F;
+    color: white;
+    border: none;
+    font-family: "Iosevka Charon", monospace;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 16px;
+}
+
+.features__btn:hover {
+    background: #5e2870;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(117, 58, 143, 0.4);
+}
+
+
+
+
+.features__card-title {
+    color: #fff;
+}
+
+.features__card-text {
+    padding-bottom: 29px;
+    color: #fff;
+}
+
+.features__btn {}
+
+
+
+.footer {
+    background: #0f0f1a;
+    color: #fff;
+    padding: 60px 0;
+}
+
+.footer__links {
+    display: flex;
+    gap: 200px;
+    padding-left: 100px;
+
+}
+
+.footer__container {
+    max-width: 1340px;
+    width: 100%;
+    padding: 20px 0px;
+    margin: 0 auto;
+}
+
+.footer__top {
+    display: flex;
+}
+
+.footer__brand {}
+
+.footer__logo {
+    cursor: pointer;
+    border-radius: 50%;
+
+}
+
+.footer__copy {}
+
+
+.footer__column {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer__title {}
+
+.footer__link {
+    text-decoration: none;
+    color: #fff;
+    transition: 0.3s;
+}
+
+.footer__link:hover {
+    color: #b983ff;
+    transform: translateX(5px);
+}
+
+.footer__nav {
+    display: none;
+    gap: 50px;
+}
+
+.footer__icon {}
+
+
+/* ===== TABLET (до 1024px) ===== */
+@media (max-width: 1024px) {
+
+    .header__container,
+    .hero__container,
+    .features__container,
+    .info__container,
+    .footer__container {
+        padding: 0 20px;
+    }
+
+    .hero__title {
+        font-size: 48px;
+    }
+
+    .services__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .features__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer__links {
+        gap: 80px;
+        padding-left: 0;
+    }
+}
+
+/* ===== PHONE (до 768px) ===== */
+@media (max-width: 768px) {
+
+    .header__wrapper {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .header__right {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .header__nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .hero {
+        padding: 80px 0;
+    }
+
+    .hero__title {
+        font-size: 32px;
+    }
+
+    .hero__text {
+        font-size: 14px;
+    }
+
+    .services__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .services__item {
+        height: 180px;
+    }
+
+    .info__title,
+    .info__title--alt {
+        font-size: 32px;
+    }
+
+    .features__card-title {
+        font-size: 28px;
+    }
+
+    .cta__title {
+        font-size: 32px;
+    }
+
+    .footer__top {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .footer__links {
+        flex-direction: column;
+        gap: 30px;
+    }
+}
