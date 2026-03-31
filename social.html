@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты</title>
+
+    <link rel="shortcut icon" href="/imgs/logo.jpg" type="image/x-icon">
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #f5f7fa;
+            /* Светлый серо-голубой фон */
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .card {
+            background: #ffffff;
+            padding: 40px 30px;
+            border-radius: 24px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            width: 320px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 1.4rem;
+            margin: 0 0 10px 0;
+            color: #1a1a1a;
+        }
+
+        p {
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 30px;
+        }
+
+        .links-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .btn {
+            text-decoration: none;
+            color: #444;
+            background: #fdfdfd;
+            padding: 14px;
+            border-radius: 12px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            border: 1px solid #eee;
+            transition: all 0.2s ease-in-out;
+        }
+
+        /* Эффект при наведении */
+        .btn:hover {
+            background: #ffffff;
+            border-color: #d0d0d0;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            color: #000;
+        }
+
+        /* Индивидуальные цвета при наведении (по желанию) */
+        .btn-tg:hover {
+            border-color: #24A1DE;
+            color: #24A1DE;
+        }
+
+        .btn-vk:hover {
+            border-color: #4C75A3;
+            color: #4C75A3;
+        }
+
+        .btn-mail:hover {
+            border-color: #ff4b4b;
+            color: #ff4b4b;
+        }
+    </style>
+</head>
+
+<body>
+ 
+
+    <div class="card">
+        <h1>Давайте общаться</h1>
+        <p>Напишите мне в любой из соцсетей</p>
+
+        <div class="links-stack">
+            <a href="https://t.me/yourname" class="btn btn-tg" target="_blank">Telegram</a>
+            <a href="https://vk.com/yourname" class="btn btn-vk" target="_blank">ВКонтакте</a>
+            <a href="https://behance.net/yourname" class="btn" target="_blank">Portfolio</a>
+            <a href="mailto:hello@example.com" class="btn btn-mail">Email</a>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>

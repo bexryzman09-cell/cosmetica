@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты | Kosmetolog Shoira</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="contact.css">
+    <link rel="shortcut icon" href="/imgs/logo.jpg" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Oswald:wght@300;500&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="header">
+    <div class="header__container">
+        <div class="header__wrapper">
+            <a class="header__logo" data-link="index.html" href="#"></a>
+            <div class="header__right">
+             <nav class="header__nav">
+                        <a class="header__link" data-link="index.html" href="#">Главная</a>
+                        <a class="header__link" data-link="about.html" href="#">О нас</a>
+                        <a class="header__link" data-link="servis.html" href="#">Услуги</a>
+                        <a class="header__link" data-link="social.html" href="#">Контакты</a>
+                    </nav>А
+                <button class="btn header__btn" data-link="contact.html">Записаться</button>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <main class="contact-page">
+        <section class="contact-hero">
+            <h1>Связаться со мной</h1>
+            <p>Оставьте заявку, и я подберу для вас идеальное время</p>
+        </section>
+
+        <div class="container">
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <h3>Адрес</h3>
+                        <p>г. Ташкент, ул. Примерная, 12</p>
+                    </div>
+                    <div class="info-item">
+                        <h3>Телефон</h3>
+                        <p>+998 90 123 45 67</p>
+                    </div>
+                    <div class="info-item">
+                        <h3>Соцсети</h3>
+                        <div class="social-icons">
+                            <a class="links" href="#">Instagram</a>
+                            <a class="links" href="#">Telegram</a>
+                        </div>
+                    </div>
+                </div>
+
+                <form id="tg-form" class="contact-form">
+                    <div class="input-group">
+                        <input type="text" id="name" name="name" placeholder="Ваше имя" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="tel" id="phone" name="phone" placeholder="Номер телефона" required minlength="8">
+                    </div>
+                    <div class="input-group">
+                        <select id="service" name="service">
+                            <option value="Косметология">Косметология</option>
+                            <option value="Маникюр">Маникюр</option>
+                            <option value="Ресницы">Ресницы</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <textarea class="" id="message" name="message"
+                            placeholder="Ваше сообщение (необязательно) не больше 600 симловов"
+                            maxlength="600"></textarea>
+                    </div>
+                    <button type="submit" id="submit-btn" class="btn-send">Отправить заявку</button>
+                    <div id="status-msg"></div>
+                </form>
+            </div>
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="footer__container">
+            <div class="footer__top">
+                <div class="footer__brand">
+                    <img class="footer__logo" width="60" height="60" src="/imgs/logo.jpg" alt="logo">
+                    <p class="footer__copy">© 2026 Radiance. <br> Все права защищены.</p>
+                </div>
+
+                <ul class="footer__links">
+                    <li class="footer__column">
+                        <h1 class="footer__title">Быстрые ссылки</h1>
+                        <a class="footer__link" href="">Главная</a>
+                        <a class="footer__link" href="">О нас</a>
+                        <a class="footer__link" href="">Услуги</a>
+                        <a class="footer__link" href="">Контакты</a>
+                    </li>
+
+                    <li class="footer__column">
+                        <h1 class="footer__title">Дополнительно</h1>
+                        <a class="footer__link" href="">Уход за лицом</a>
+                        <a class="footer__link" href="">Уход за телом</a>
+                        <a class="footer__link" href="">Макияж</a>
+                        <a class="footer__link" href="">Косметика</a>
+                    </li>
+
+                    <li class="footer__column">
+                        <h1 class="footer__title">Мы в соцсетях</h1>
+                        <a class="footer__link" href="">Инстаграм</a>
+                        <a class="footer__link" href="">Твиттер</a>
+                        <a class="footer__link" href="">Фейсбук</a>
+                        <a class="footer__link" href="">Линкедин</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <script src="app.js"></script>
+    <script src="contact.js"></script>
+
+</body>
+
+</html>
