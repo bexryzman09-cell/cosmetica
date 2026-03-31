@@ -16,6 +16,53 @@
 </head>
 
 <body>
+    <style>
+        /* Этот блок сработает ПОВЕРХ всех ваших файлов css */
+        @media screen and (max-width: 768px) {
+
+            /* 1. Уменьшаем абсолютно все главные заголовки */
+            h1,
+            h2,
+            .hero__title,
+            .m-title,
+            .services__title,
+            .cta__title {
+                font-size: 24px !important;
+                line-height: 1.2 !important;
+                margin-bottom: 10px !important;
+            }
+
+            /* 2. Уменьшаем весь основной текст */
+            p,
+            .hero__text,
+            .m-text,
+            .services__text,
+            .cta__text {
+                font-size: 14px !important;
+                line-height: 1.4 !important;
+            }
+
+            /* 3. Убираем переносы строк, которые всё портят */
+            br {
+                display: none !important;
+            }
+
+            /* 4. Исправляем отступы секций, чтобы текст не улетал вниз */
+            .hero,
+            .services,
+            .cta,
+            .info {
+                padding: 40px 15px !important;
+            }
+
+            /* 5. Картинки делаем адаптивными */
+            .info__image {
+                width: 100% !important;
+                height: auto !important;
+                margin-top: 20px !important;
+            }
+        }
+    </style>
     <header class="header">
         <div class="header__container">
             <div class="header__wrapper">
@@ -25,7 +72,7 @@
                         <a class="header__link" data-link="index.html" href="#">Главная</a>
                         <a class="header__link" data-link="about.html" href="#">О нас</a>
                         <a class="header__link" data-link="servis.html" href="#">Услуги</a>
-                        <a class="header__link"  data-link="social.html" href="#">Контакты</a>
+                        <a class="header__link" data-link="social.html" href="#">Контакты</a>
                     </nav>
                     <button class="btn header__btn" data-link="contact.html">Записаться</button>
                 </div>
@@ -41,10 +88,7 @@
                     <h1 class="h">Искусство вашей <br> естественной красоты</h1>
                     <p>Приветствую! Я Шоира — дипломированный косметолог с 10-летним опытом. Моя миссия — не менять вас,
                         а подчеркивать то, что дано природой.</p>
-                    <div class="hero-actions">
-                        <button class="btn-main">Узнать больше</button>
-                        <button class="btn-outline">Мои работы</button>
-                    </div>
+
                 </div>
                 <div class="hero-image">
                     <div class="img-frame">
@@ -99,29 +143,39 @@
                 <ul class="footer__links">
                     <li class="footer__column">
                         <h1 class="footer__title">Быстрые ссылки</h1>
-                        <a class="footer__link" href="">Главная</a>
-                        <a class="footer__link" href="">О нас</a>
-                        <a class="footer__link" href="">Услуги</a>
-                        <a class="footer__link" href="">Контакты</a>
+                        <a class="footer__link" data-link="index.html" href="#">Главная</a>
+                        <a class="footer__link" data-link="about.html" href="#">О нас</a>
+                        <a class="footer__link" data-link="servis.html" href="#">Услуги</a>
+                        <a class="footer__link" target="_blank" data-link="social.html" href="#">Контакты</a>
                     </li>
 
-                    <li class="footer__column">
-                        <h1 class="footer__title">Дополнительно</h1>
-                        <a class="footer__link" href="">Уход за лицом</a>
-                        <a class="footer__link" href="">Уход за телом</a>
-                        <a class="footer__link" href="">Макияж</a>
-                        <a class="footer__link" href="">Косметика</a>
-                    </li>
 
                     <li class="footer__column">
                         <h1 class="footer__title">Мы в соцсетях</h1>
-                        <a class="footer__link" href="">Инстаграм</a>
-                        <a class="footer__link" href="">Твиттер</a>
-                        <a class="footer__link" href="">Фейсбук</a>
-                        <a class="footer__link" href="">Линкедин</a>
+                        <a target="_blank" class="footer__link"
+                            href="https://www.instagram.com/shoiraotokhonova/">Инстаграм</a>
+                        <a class="footer__link" href="">Телеграм</a>
                     </li>
                 </ul>
             </div>
+        </div>
+        <div class="mobile-nav">
+            <a class="mobile-nav__link" data-link="index.html">
+                <span>🏠</span>
+                <p>Главная</p>
+            </a>
+            <a class="mobile-nav__link" data-link="about.html">
+                <span>ℹ️</span>
+                <p>О нас</p>
+            </a>
+            <a class="mobile-nav__link" data-link="servis.html">
+                <span>✨</span>
+                <p>Услуги</p>
+            </a>
+            <a class="mobile-nav__link" target="_blank" data-link="social.html">
+                <span>📱</span>
+                <p>Соцсети</p>
+            </a>
         </div>
     </footer>
     <script src="app.js"></script>

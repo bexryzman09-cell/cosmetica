@@ -333,6 +333,7 @@ a:active {
     cursor: pointer;
     transition: 0.3s;
     font-size: 16px;
+    flex-wrap: wrap;
 }
 
 .info--alt {
@@ -345,6 +346,7 @@ a:active {
     justify-content: space-between;
     gap: 40px;
     padding: 0 40px;
+
 }
 
 
@@ -537,18 +539,29 @@ a:active {
     gap: 50px;
 }
 
-.footer__icon {}
+
+.mobile-nav {
+    display: none;
+}
+
+/* ===== АДАПТИВ (до 768px) ===== */
+/* Базовое состояние мобильного меню (скрыто на десктопе) */
+.mobile-nav {
+    display: none;
+}
 
 
-/* ===== TABLET (до 1024px) ===== */
+/* ===== ADAPTIVE DESIGN ===== */
+
+/* Планшеты (до 1024px) */
 @media (max-width: 1024px) {
 
-    .header__container,
-    .hero__container,
-    .features__container,
+    .container,
     .info__container,
-    .footer__container {
-        padding: 0 20px;
+    .features__container,
+    .footer__container,
+    .hero__container {
+        padding: 0 30px;
     }
 
     .hero__title {
@@ -557,34 +570,37 @@ a:active {
 
     .services__grid {
         grid-template-columns: repeat(2, 1fr);
+        /* 2 колонки вместо 3 */
     }
 
-    .features__grid {
-        grid-template-columns: 1fr;
+    .info__content,
+    .info__content--alt {
+        flex-direction: column;
+        /* Текст и фото друг под другом */
+        text-align: center;
+    }
+
+    .info__image {
+        order: -1;
+        /* Картинка сверху текста */
+        max-width: 80%;
     }
 
     .footer__links {
-        gap: 80px;
-        padding-left: 0;
+        gap: 50px;
     }
 }
 
-/* ===== PHONE (до 768px) ===== */
+/* Телефоны (до 768px) */
 @media (max-width: 768px) {
 
-    .header__wrapper {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .header__right {
-        flex-direction: column;
-        gap: 15px;
-    }
-
+    /* Скрываем обычную навигацию, если планируешь использовать нижнее меню */
     .header__nav {
-        flex-wrap: wrap;
-        justify-content: center;
+        display: none;
+    }
+
+    .header__btn {
+        margin-right: 0;
     }
 
     .hero {
@@ -595,38 +611,87 @@ a:active {
         font-size: 32px;
     }
 
-    .hero__text {
-        font-size: 14px;
+    .hero__text br {
+        display: none;
+        /* Убираем принудительные переносы строк */
     }
 
     .services__grid {
         grid-template-columns: 1fr;
+        /* 1 колонка на мобильных */
     }
 
-    .services__item {
-        height: 180px;
-    }
-
+    .services__title,
     .info__title,
-    .info__title--alt {
-        font-size: 32px;
-    }
-
+    .info__title--alt,
+    .features__title,
+    .cta__title,
     .features__card-title {
         font-size: 28px;
     }
 
+    .features__grid {
+        grid-template-columns: 1fr;
+    }
+
     .cta__title {
-        font-size: 32px;
+        font-size: 26px;
+    }
+
+    /* Нижняя мобильная навигация */
+    .mobile-nav {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: #ffffff;
+        border-top: 1px solid #eee;
+        justify-content: space-around;
+        padding: 10px 0;
+        z-index: 2000;
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .mobile-nav__link {
+        text-align: center;
+        text-decoration: none;
+        color: #222;
+        font-size: 12px;
+    }
+
+    .mobile-nav__link span {
+        display: block;
+        font-size: 20px;
+    }
+
+    .footer {
+        padding-bottom: 80px;
+        /* Чтобы контент не перекрывался нижним меню */
     }
 
     .footer__top {
         flex-direction: column;
-        gap: 30px;
+        align-items: center;
+        text-align: center;
     }
 
     .footer__links {
+        padding-left: 0;
+        margin-top: 30px;
         flex-direction: column;
         gap: 30px;
+    }
+}
+
+/* Маленькие телефоны (до 480px) */
+@media (max-width: 480px) {
+    .header__logo {
+        width: 80px;
+    }
+
+    .header__btn {
+        padding: 8px 15px;
+        font-size: 14px;
     }
 }
