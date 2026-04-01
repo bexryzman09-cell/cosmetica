@@ -94,24 +94,24 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('selectstart', e => e.preventDefault());
 
     // Ловушка для консоли (Debugger)
-    setInterval(() => {
-        (function () {
-            (function a() {
-                try {
-                    (function b(i) {
-                        if (String(i / i).length !== 1 || i % 20 === 0) {
-                            (function () { }).constructor('debugger')();
-                        } else {
-                            debugger;
-                        }
-                        b(++i);
-                    })(0);
-                } catch (e) {
-                    setTimeout(a, 50);
-                }
-            })();
-        })();
-    }, 1000); // Запуск раз в секунду, чтобы не вешать браузер намертво
+    // setInterval(() => {
+    //     (function () {
+    //         (function a() {
+    //             try {
+    //                 (function b(i) {
+    //                     if (String(i / i).length !== 1 || i % 20 === 0) {
+    //                         (function () { }).constructor('debugger')();
+    //                     } else {
+    //                         debugger;
+    //                     }
+    //                     b(++i);
+    //                 })(0);
+    //             } catch (e) {
+    //                 setTimeout(a, 50);
+    //             }
+    //         })();
+    //     })();
+    // }, 1000); // Запуск раз в секунду, чтобы не вешать браузер намертво
 
 
     // === 2. ЛОГИКА ПЕРЕХОДОВ (Твой код) ===

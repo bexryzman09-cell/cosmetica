@@ -49,14 +49,21 @@ body {
 .services-intro {
     text-align: center;
     padding: 80px 20px;
-    background: var(--light);
     animation: fadeIn 1s ease;
+    background-image: url(/imgs/bagrond.jpg) !important;
+    background-size: cover;
+    background-position: center;
+    color: #ffffffa6;
 }
+
+
 
 .services-intro h1 {
     font-family: 'Oswald', sans-serif;
     font-size: 24px;
+    color: #fff;
     text-transform: uppercase;
+
 }
 
 /* Сетка и Карточки */
@@ -64,6 +71,7 @@ body {
     max-width: 1100px;
     margin: 0 auto;
     padding: 40px 20px;
+
 }
 
 .category-title {
