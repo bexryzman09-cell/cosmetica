@@ -71,85 +71,85 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-// document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
 
-//     // === 1. ЗАЩИТА ОТ КОПИРОВАНИЯ И ПРОСМОТРА ===
+    // === 1. ЗАЩИТА ОТ КОПИРОВАНИЯ И ПРОСМОТРА ===
 
-//     // Блокировка правой кнопки мыши
-//     document.addEventListener('contextmenu', e => e.preventDefault());
+    // Блокировка правой кнопки мыши
+    document.addEventListener('contextmenu', e => e.preventDefault());
 
-//     // Блокировка клавиш (F12, Ctrl+U, Ctrl+Shift+I, Ctrl+S, Ctrl+C)
-//     document.addEventListener('keydown', (e) => {
-//         if (
-//             e.key === 'F12' ||
-//             (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) ||
-//             (e.ctrlKey && (e.key === 'u' || e.key === 's' || e.key === 'c'))
-//         ) {
-//             e.preventDefault();
-//             return false;
-//         }
-//     });
+    // Блокировка клавиш (F12, Ctrl+U, Ctrl+Shift+I, Ctrl+S, Ctrl+C)
+    document.addEventListener('keydown', (e) => {
+        if (
+            e.key === 'F12' ||
+            (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) ||
+            (e.ctrlKey && (e.key === 'u' || e.key === 's' || e.key === 'c'))
+        ) {
+            e.preventDefault();
+            return false;
+        }
+    });
 
-//     // Запрет выделения текста
-//     document.addEventListener('selectstart', e => e.preventDefault());
+    // Запрет выделения текста
+    document.addEventListener('selectstart', e => e.preventDefault());
 
-//     // Ловушка для консоли (Debugger)
-//     setInterval(() => {
-//         (function () {
-//             (function a() {
-//                 try {
-//                     (function b(i) {
-//                         if (String(i / i).length !== 1 || i % 20 === 0) {
-//                             (function () { }).constructor('debugger')();
-//                         } else {
-//                             debugger;
-//                         }
-//                         b(++i);
-//                     })(0);
-//                 } catch (e) {
-//                     setTimeout(a, 50);
-//                 }
-//             })();
-//         })();
-//     }, 1000); // Запуск раз в секунду, чтобы не вешать браузер намертво
+    // Ловушка для консоли (Debugger)
+    setInterval(() => {
+        (function () {
+            (function a() {
+                try {
+                    (function b(i) {
+                        if (String(i / i).length !== 1 || i % 20 === 0) {
+                            (function () { }).constructor('debugger')();
+                        } else {
+                            debugger;
+                        }
+                        b(++i);
+                    })(0);
+                } catch (e) {
+                    setTimeout(a, 50);
+                }
+            })();
+        })();
+    }, 1000); // Запуск раз в секунду, чтобы не вешать браузер намертво
 
 
-//     // === 2. ЛОГИКА ПЕРЕХОДОВ (Твой код) ===
+    // === 2. ЛОГИКА ПЕРЕХОДОВ (Твой код) ===
 
-//     // Обработка элементов с data-link
-//     const navElements = document.querySelectorAll('[data-link]');
-//     navElements.forEach(el => {
-//         el.addEventListener('click', (e) => {
-//             e.preventDefault();
-//             const target = el.getAttribute('data-link');
-//             if (!target) return;
+    // Обработка элементов с data-link
+    const navElements = document.querySelectorAll('[data-link]');
+    navElements.forEach(el => {
+        el.addEventListener('click', (e) => {
+            e.preventDefault();
+            const target = el.getAttribute('data-link');
+            if (!target) return;
 
-//             if (target === 'social.html') {
-//                 window.open(target, '_blank');
-//             } else {
-//                 window.location.href = target;
-//             }
-//         });
-//     });
+            if (target === 'social.html') {
+                window.open(target, '_blank');
+            } else {
+                window.location.href = target;
+            }
+        });
+    });
 
-//     // Обработка кнопок по тексту (.btn)
-//     const allButtons = document.querySelectorAll('.btn');
-//     allButtons.forEach(button => {
-//         button.addEventListener('click', () => {
-//             const buttonText = button.textContent.toLowerCase().trim();
+    // Обработка кнопок по тексту (.btn)
+    const allButtons = document.querySelectorAll('.btn');
+    allButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const buttonText = button.textContent.toLowerCase().trim();
 
-//             if (buttonText === 'узнать больше' || buttonText === 'подробнее') {
-//                 window.location.href = 'about.html';
-//             }
-//             else if (buttonText === 'наши услуги' || buttonText === 'смотреть услуги') {
-//                 window.location.href = 'servis.html';
-//             }
-//             else if (buttonText === 'записаться на приём' || buttonText === 'записаться') {
-//                 window.location.href = 'contact.html';
-//             }
-//         });
-//     });
-// });
+            if (buttonText === 'узнать больше' || buttonText === 'подробнее') {
+                window.location.href = 'about.html';
+            }
+            else if (buttonText === 'наши услуги' || buttonText === 'смотреть услуги') {
+                window.location.href = 'servis.html';
+            }
+            else if (buttonText === 'записаться на приём' || buttonText === 'записаться') {
+                window.location.href = 'contact.html';
+            }
+        });
+    });
+});
 document.addEventListener('DOMContentLoaded', () => {
     const learnBtn = document.querySelector('.btn-main');
 
