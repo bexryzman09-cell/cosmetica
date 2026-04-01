@@ -420,7 +420,7 @@ a:active {
     margin: 0 auto;
 }
 
-.features__top {}
+
 
 .features__title {
     text-align: center;
@@ -478,7 +478,6 @@ a:active {
     color: #fff;
 }
 
-.features__btn {}
 
 
 
@@ -506,7 +505,6 @@ a:active {
     display: flex;
 }
 
-.footer__brand {}
 
 .footer__logo {
     cursor: pointer;
@@ -514,7 +512,6 @@ a:active {
 
 }
 
-.footer__copy {}
 
 
 .footer__column {
@@ -522,7 +519,7 @@ a:active {
     flex-direction: column;
 }
 
-.footer__title {}
+
 
 .footer__link {
     text-decoration: none;
