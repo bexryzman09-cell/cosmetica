@@ -71,7 +71,16 @@ body {
 .links {
     text-decoration: none;
     color: rgb(0, 0, 0);
+    transition: 0.3s;
+}
 
+
+.links-instagram:hover {
+    color: #e440ad;
+}
+
+.links-telegram:hover {
+    color: #0088cc;
 }
 
 .btn-send:hover {
