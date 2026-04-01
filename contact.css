@@ -22,6 +22,7 @@ body {
 
 .info-item {
     margin-bottom: 30px;
+    gap: 30px;
 }
 
 .info-item h3 {
@@ -66,6 +67,10 @@ body {
     text-transform: uppercase;
     transition: var(--transition);
     transition: 0.7s;
+}
+.social-icons{
+    display: flex;
+    gap: 25px;
 }
 
 .links {

@@ -76,7 +76,7 @@ body {
 .hero-actions {
     display: flex;
     gap: 20px;
-}
+} 
 
 .btn-main {
     padding: 15px 35px;

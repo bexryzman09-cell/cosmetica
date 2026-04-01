@@ -82,34 +82,175 @@
 //     }
 // });
 
-const TOKEN = "8791994783:AAFWF1thbgR8MmhUzg2_v81Zw3ijXm0ALAk"; 
-const CHAT_ID = "7017966153"; 
+// const TOKEN = "8791994783:AAFWF1thbgR8MmhUzg2_v81Zw3ijXm0ALAk";
+// const CHAT_ID = "7017966153";
 
-document.addEventListener('DOMContentLoaded', function() {
+// document.addEventListener('DOMContentLoaded', function () {
+//     const form = document.getElementById('tg-form');
+//     const dateInput = document.getElementById('date');
+//     const timeSelect = document.getElementById('time');
+//     const nameInput = document.getElementById('name');
+//     const status = document.getElementById('status-msg');
+
+//     // 1. ГЕНЕРАЦИЯ ВРЕМЕНИ (с 09:00 до 20:45 с шагом 15 мин)
+//     for (let hour = 9; hour <= 20; hour++) {
+//         [0, 15, 30, 45].forEach(min => {
+//             let h = hour < 10 ? '0' + hour : hour;
+//             let m = min === 0 ? '00' : min;
+//             let option = document.createElement('option');
+//             option.value = `${h}:${m}`;
+//             option.textContent = `${h}:${m}`;
+//             timeSelect.appendChild(option);
+//         });
+//     }
+
+//     // Ограничение даты (минимум сегодня)
+//     dateInput.setAttribute('min', new Date().toISOString().split('T')[0]);
+
+//     if (form) {
+//         // МАСТЕР-КОМАНДА: RESET_ALL в поле имени
+//         nameInput.addEventListener('input', function () {
+//             if (this.value === "RESET_ALL") {
+//                 localStorage.clear();
+//                 alert("Все записи и блокировки удалены!");
+//                 location.reload();
+//             }
+//         });
+
+//         form.addEventListener('submit', function (e) {
+//             e.preventDefault();
+//             const btn = document.getElementById('submit-btn');
+//             const date = dateInput.value;
+//             const time = timeSelect.value;
+//             const dateTimeKey = `${date} ${time}`; // Ключ вида "2026-03-31 15:00"
+
+//             // --- ЛОГИКА МАСТЕРА /BLACK ---
+//             if (nameInput.value.startsWith('/black')) {
+//                 let blackList = JSON.parse(localStorage.getItem('adminBlackList')) || [];
+//                 blackList.push(dateTimeKey);
+//                 localStorage.setItem('adminBlackList', JSON.stringify(blackList));
+//                 alert(`Время ${dateTimeKey} заблокировано!`);
+//                 form.reset();
+//                 return;
+//             }
+
+//             // --- ПРОВЕРКА ЗАНЯТОСТИ (с интервалом 30 мин) ---
+//             let booked = JSON.parse(localStorage.getItem('bookedDates')) || [];
+//             let blacks = JSON.parse(localStorage.getItem('adminBlackList')) || [];
+
+//             // Функция проверки пересечения
+//             const isBusy = (checkDT) => {
+//                 let [d, t] = checkDT.split(' ');
+//                 let [h, m] = t.split(':').map(Number);
+//                 let currentTotal = h * 60 + m;
+
+//                 return [...booked, ...blacks].some(bDT => {
+//                     let [bD, bT] = bDT.split(' ');
+//                     if (bD !== d) return false; // Другой день — ок
+//                     let [bH, bM] = bT.split(':').map(Number);
+//                     let bookedTotal = bH * 60 + bM;
+//                     // Если разница меньше 30 минут — блокируем
+//                     return Math.abs(currentTotal - bookedTotal) < 30;
+//                 });
+//             };
+
+//             if (isBusy(dateTimeKey)) {
+//                 status.innerText = "❌ Это время занято или слишком близко к другой записи (нужен перерыв 30 мин).";
+//                 status.style.color = "red";
+//                 return;
+//             }
+
+//             // --- ОТПРАВКА ---
+//             const service = document.getElementById('service').options[document.getElementById('service').selectedIndex].text;
+//             const fullMessage = `<b>✨ Новая запись: Shoira Studio</b>\n\n` +
+//                 `<b>👤 Клиент:</b> ${nameInput.value}\n` +
+//                 `<b>📞 Тел:</b> <code>${document.getElementById('phone').value}</code>\n` +
+//                 `<b>📅 Дата:</b> ${date}\n` +
+//                 `<b>⏰ Время:</b> ${time}\n` +
+//                 `<b>💅 Услуга:</b> ${service}`;
+
+//             btn.disabled = true;
+//             btn.innerText = "ОТПРАВЛЯЕМ...";
+
+//             fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage`, {
+//                 method: 'POST',
+//                 headers: { 'Content-Type': 'application/json' },
+//                 body: JSON.stringify({ chat_id: CHAT_ID, parse_mode: 'html', text: fullMessage })
+//             })
+//                 .then(res => {
+//                     if (res.ok) {
+//                         booked.push(dateTimeKey);
+//                         localStorage.setItem('bookedDates', JSON.stringify(booked));
+//                         status.innerText = "✅ Запись на " + time + " принята!";
+//                         status.style.color = "gold";
+//                         form.reset();
+//                     }
+//                 })
+//                 .finally(() => {
+//                     btn.disabled = false;
+//                     btn.innerText = "ЗАПИСАТЬСЯ К ШОИРЕ";
+//                 });
+//         });
+//     }
+// });
+// // 3. Собираем данные
+// const service = document.getElementById('service').options[document.getElementById('service').selectedIndex].text;
+// const phone = document.getElementById('phone').value;
+// const comment = document.getElementById('message').value.trim() || "Нет комментария"; // <--- ИСПРАВЛЕНО ЗДЕСЬ
+
+// const fullMessage = `<b>✨ Новая запись: Shoira Studio</b>\n\n` +
+//     `<b>👤 Клиент:</b> ${nameInput.value}\n` +
+//     `<b>📞 Тел:</b> <code>${phone}</code>\n` +
+//     `<b>📅 Дата:</b> ${date}\n` +
+//     `<b>⏰ Время:</b> ${time}\n` +
+//     `<b>💅 Услуга:</b> ${service}\n` +
+//     `<b>💬 Коммент:</b> ${comment}`; // <--- ДОБАВЛЕНО В СООБЩЕНИЕ
+
+// btn.disabled = true;
+// btn.innerText = "ОТПРАВЛЯЕМ...";
+
+// fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage`, {
+//     method: 'POST',
+//     headers: { 'Content-Type': 'application/json' },
+//     body: JSON.stringify({
+//         chat_id: CHAT_ID,
+//         parse_mode: 'html',
+//         text: fullMessage
+//     })
+// })4
+
+const TOKEN = "8791994783:AAFWF1thbgR8MmhUzg2_v81Zw3ijXm0ALAk";
+const CHAT_ID = "7017966153";
+
+document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementById('tg-form');
     const dateInput = document.getElementById('date');
     const timeSelect = document.getElementById('time');
     const nameInput = document.getElementById('name');
     const status = document.getElementById('status-msg');
 
-    // 1. ГЕНЕРАЦИЯ ВРЕМЕНИ (с 09:00 до 20:45 с шагом 15 мин)
-    for (let hour = 9; hour <= 20; hour++) {
-        [0, 15, 30, 45].forEach(min => {
-            let h = hour < 10 ? '0' + hour : hour;
-            let m = min === 0 ? '00' : min;
-            let option = document.createElement('option');
-            option.value = `${h}:${m}`;
-            option.textContent = `${h}:${m}`;
-            timeSelect.appendChild(option);
-        });
+    // 1. ГЕНЕРАЦИЯ ВРЕМЕНИ (с 09:00 до 20:45)
+    if (timeSelect) {
+        for (let hour = 9; hour <= 20; hour++) {
+            [0, 15, 30, 45].forEach(min => {
+                let h = hour < 10 ? '0' + hour : hour;
+                let m = min === 0 ? '00' : min;
+                let option = document.createElement('option');
+                option.value = `${h}:${m}`;
+                option.textContent = `${h}:${m}`;
+                timeSelect.appendChild(option);
+            });
+        }
     }
 
     // Ограничение даты (минимум сегодня)
-    dateInput.setAttribute('min', new Date().toISOString().split('T')[0]);
+    if (dateInput) {
+        dateInput.setAttribute('min', new Date().toISOString().split('T')[0]);
+    }
 
     if (form) {
-        // МАСТЕР-КОМАНДА: RESET_ALL в поле имени
-        nameInput.addEventListener('input', function() {
+        // МАСТЕР-КОМАНДА: RESET_ALL в поле имени для очистки базы
+        nameInput.addEventListener('input', function () {
             if (this.value === "RESET_ALL") {
                 localStorage.clear();
                 alert("Все записи и блокировки удалены!");
@@ -117,15 +258,23 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        form.addEventListener('submit', function(e) {
+        form.addEventListener('submit', function (e) {
             e.preventDefault();
             const btn = document.getElementById('submit-btn');
+
             const date = dateInput.value;
             const time = timeSelect.value;
-            const dateTimeKey = `${date} ${time}`; // Ключ вида "2026-03-31 15:00"
+            const name = nameInput.value;
+            const phone = document.getElementById('phone').value;
+            const service = document.getElementById('service').options[document.getElementById('service').selectedIndex].text;
 
-            // --- ЛОГИКА МАСТЕРА /BLACK ---
-            if (nameInput.value.startsWith('/black')) {
+            // ВОТ ТУТ МЫ БЕРЕМ КОММЕНТАРИЙ
+            const comment = document.getElementById('message').value.trim() || "Нет комментария";
+
+            const dateTimeKey = `${date} ${time}`;
+
+            // --- ПРОВЕРКА МАСТЕРА /BLACK ---
+            if (name.startsWith('/black')) {
                 let blackList = JSON.parse(localStorage.getItem('adminBlackList')) || [];
                 blackList.push(dateTimeKey);
                 localStorage.setItem('adminBlackList', JSON.stringify(blackList));
@@ -134,11 +283,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
 
-            // --- ПРОВЕРКА ЗАНЯТОСТИ (с интервалом 30 мин) ---
+            // --- ПРОВЕРКА ЗАНЯТОСТИ (интервал 30 мин) ---
             let booked = JSON.parse(localStorage.getItem('bookedDates')) || [];
             let blacks = JSON.parse(localStorage.getItem('adminBlackList')) || [];
-            
-            // Функция проверки пересечения
+
             const isBusy = (checkDT) => {
                 let [d, t] = checkDT.split(' ');
                 let [h, m] = t.split(':').map(Number);
@@ -146,28 +294,27 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 return [...booked, ...blacks].some(bDT => {
                     let [bD, bT] = bDT.split(' ');
-                    if (bD !== d) return false; // Другой день — ок
+                    if (bD !== d) return false;
                     let [bH, bM] = bT.split(':').map(Number);
                     let bookedTotal = bH * 60 + bM;
-                    // Если разница меньше 30 минут — блокируем
                     return Math.abs(currentTotal - bookedTotal) < 30;
                 });
             };
 
             if (isBusy(dateTimeKey)) {
-                status.innerText = "❌ Это время занято или слишком близко к другой записи (нужен перерыв 30 мин).";
+                status.innerText = "❌ Это время занято (интервал 30 мин).";
                 status.style.color = "red";
                 return;
             }
 
-            // --- ОТПРАВКА ---
-            const service = document.getElementById('service').options[document.getElementById('service').selectedIndex].text;
+            // --- ФОРМИРОВАНИЕ СООБЩЕНИЯ (ТЕПЕРЬ С КОММЕНТАРИЕМ) ---
             const fullMessage = `<b>✨ Новая запись: Shoira Studio</b>\n\n` +
-                                `<b>👤 Клиент:</b> ${nameInput.value}\n` +
-                                `<b>📞 Тел:</b> <code>${document.getElementById('phone').value}</code>\n` +
-                                `<b>📅 Дата:</b> ${date}\n` +
-                                `<b>⏰ Время:</b> ${time}\n` +
-                                `<b>💅 Услуга:</b> ${service}`;
+                `<b>👤 Клиент:</b> ${name}\n` +
+                `<b>📞 Тел:</b> <code>${phone}</code>\n` +
+                `<b>📅 Дата:</b> ${date}\n` +
+                `<b>⏰ Время:</b> ${time}\n` +
+                `<b>💅 Услуга:</b> ${service}\n` +
+                `<b>💬 Коммент:</b> ${comment}`; // <--- ДОБАВИЛИ ЭТУ СТРОКУ
 
             btn.disabled = true;
             btn.innerText = "ОТПРАВЛЯЕМ...";
@@ -177,19 +324,22 @@ document.addEventListener('DOMContentLoaded', function() {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ chat_id: CHAT_ID, parse_mode: 'html', text: fullMessage })
             })
-            .then(res => {
-                if (res.ok) {
-                    booked.push(dateTimeKey);
-                    localStorage.setItem('bookedDates', JSON.stringify(booked));
-                    status.innerText = "✅ Запись на " + time + " принята!";
-                    status.style.color = "gold";
-                    form.reset();
-                }
-            })
-            .finally(() => {
-                btn.disabled = false;
-                btn.innerText = "ЗАПИСАТЬСЯ К ШОИРЕ";
-            });
+                .then(res => {
+                    if (res.ok) {
+                        booked.push(dateTimeKey);
+                        localStorage.setItem('bookedDates', JSON.stringify(booked));
+                        status.innerText = "✅ Запись подтверждена!";
+                        status.style.color = "gold";
+                        form.reset();
+                    }
+                })
+                .catch(err => {
+                    status.innerText = "❌ Ошибка сети";
+                })
+                .finally(() => {
+                    btn.disabled = false;
+                    btn.innerText = "ЗАПИСАТЬСЯ К ШОИРЕ";
+                });
         });
     }
 });
