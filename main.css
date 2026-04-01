@@ -4,11 +4,37 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: "Iosevka Charon", monospace;
     -webkit-user-select: none;
     user-select: none;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInPage 1.5s ease-out forwards;
     background: radial-gradient(circle at top, #f3f0ff, #ffffff);
+}
+
+@keyframes fadeInPage {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Дополнительно: анимация для секций при скролле (подготовка) */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .header__btn:hover,
@@ -57,7 +83,7 @@ a:active {
 
 .header__logo {
     cursor: pointer;
-    background-image: url(/imgs/logo.jpg);
+    background-image: url(/imgs/logo.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -134,10 +160,16 @@ a:active {
 
 
 
-.hero {
+
+
+.hero__index {
+    background-image: url(/imgs/bg.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
     padding: 140px 0;
     position: relative;
     overflow: hidden;
+
 }
 
 .hero__content {
@@ -152,7 +184,7 @@ a:active {
 
 .hero__subtitle {
     font-size: 18px;
-    color: #000000;
+    color: #ffffffb9;
     margin-bottom: 10px;
 }
 
@@ -160,12 +192,13 @@ a:active {
     font-size: 64px;
     font-weight: 700;
     line-height: 1.1;
+    color: #fff;
 }
 
 .hero__text {
     font-size: 15px;
     padding: 14px 0px 32px 0;
-    color: #555;
+    color: #d4d4d4;
 }
 
 .hero__btn {
@@ -295,6 +328,7 @@ a:active {
 }
 
 .info__content {
+    padding: 40px 0px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -343,10 +377,10 @@ a:active {
 
 .info__content--alt {
     display: flex;
+    padding: 40px 0px;
     align-items: center;
     justify-content: space-between;
     gap: 40px;
-    padding: 0 40px;
 
 }
 
@@ -598,7 +632,8 @@ a:active {
     }
 
     .header__btn {
-        margin-right: 0;
+        margin-right: 20px;
+
     }
 
     .hero {

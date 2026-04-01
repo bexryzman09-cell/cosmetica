@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Контакты</title>
 
-    <link rel="shortcut icon" href="/imgs/logo.jpg" type="image/x-icon">
+    <title>Контакты</title>
+    <link rel="shortcut icon" href="/imgs/logo.png" type="image/x-icon">
     <style>
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -49,7 +49,7 @@
 
         .btn {
             text-decoration: none;
-            color: #444;
+            color: #444444;
             background: #fdfdfd;
             padding: 14px;
             border-radius: 12px;
@@ -69,9 +69,10 @@
         }
 
         /* Индивидуальные цвета при наведении (по желанию) */
-        .btn-tg:hover {
-            border-color: #00aaff;
-            color: #00aaff;
+        .btn-ins:hover {
+            border-color: #f700ff;
+            color: #e035e6;
+            ;
         }
 
         .btn-vk:hover {
@@ -83,21 +84,26 @@
             border-color: #ff4b4b;
             color: #ff4b4b;
         }
+
+        .btn-tg:hover {
+            border-color: #0099ff;
+            color: #0099ff;
+        }
     </style>
 </head>
 
 <body>
 
 
-    <div class="card">
+    <div class=" reveal card">
         <h1>Давайте общаться</h1>
         <p>Напишите мне в любой из соцсетей</p>
 
         <div class="links-stack">
-            <a href="https://www.instagram.com/shoiraotokhonova/" class="btn btn-tg" target="_blank">Telegram</a>
+            <a href="https://www.instagram.com/shoiraotokhonova/" class="btn btn-ins" target="_blank">Instagram</a>
             <a href="https://vk.com/yourname" class="btn btn-vk" target="_blank">ВКонтакте</a>
-            <a href="https://behance.net/yourname" class="btn" target="_blank">Portfolio</a>
-            <a href="mailto:hello@example.com" class="btn btn-mail">Email</a>
+            <a href="https://t.me/yourname" class="btn btn-tg" target="_blank">Telegram</a>
+            <a href="mailto:your.email@example.com" class="btn btn-mail">Email</a>
         </div>
     </div>
     <script src="app.js"></script>

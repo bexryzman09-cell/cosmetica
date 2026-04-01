@@ -229,7 +229,7 @@
 
 .price-table th {
     background: var(--text-dark);
-    color: white;
+    color: rgb(0, 0, 0);
     font-family: 'Oswald';
     text-transform: uppercase;
 }
@@ -240,7 +240,7 @@
 }
 
 .care-card {
-    background: #000    ;
+    background: #000;
     color: white;
     padding: 80px;
     border-radius: 2px;
@@ -258,7 +258,8 @@
     padding: 20px;
     border-radius: 4px;
 }
-.info-img__large{
+
+.info-img__large {
     background-image: url(/imgs/cos.jpg);
     background-size: cover;
     background-position: center;

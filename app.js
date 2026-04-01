@@ -75,20 +75,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // === 1. ЗАЩИТА ОТ КОПИРОВАНИЯ И ПРОСМОТРА ===
 
-    // Блокировка правой кнопки мыши
-    document.addEventListener('contextmenu', e => e.preventDefault());
+    // // Блокировка правой кнопки мыши
+    // document.addEventListener('contextmenu', e => e.preventDefault());
 
-    // Блокировка клавиш (F12, Ctrl+U, Ctrl+Shift+I, Ctrl+S, Ctrl+C)
-    document.addEventListener('keydown', (e) => {
-        if (
-            e.key === 'F12' ||
-            (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) ||
-            (e.ctrlKey && (e.key === 'u' || e.key === 's' || e.key === 'c'))
-        ) {
-            e.preventDefault();
-            return false;
-        }
-    });
+    // // Блокировка клавиш (F12, Ctrl+U, Ctrl+Shift+I, Ctrl+S, Ctrl+C)
+    // document.addEventListener('keydown', (e) => {
+    //     if (
+    //         e.key === 'F12' ||
+    //         (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) ||
+    //         (e.ctrlKey && (e.key === 'u' || e.key === 's' || e.key === 'c'))
+    //     ) {
+    //         e.preventDefault();
+    //         return false;
+    //     }
+    // });
 
     // Запрет выделения текста
     document.addEventListener('selectstart', e => e.preventDefault());
@@ -176,4 +176,34 @@ document.addEventListener('DOMContentLoaded', () => {
             window.location.href = 'servis.html';
         });
     }
+});
+// Функция для появления элементов при скролле
+function reveal() {
+    var reveals = document.querySelectorAll(".reveal");
+
+    for (var i = 0; i < reveals.length; i++) {
+        var windowHeight = window.innerHeight;
+        var elementTop = reveals[i].getBoundingClientRect().top;
+        var elementVisible = 150; // Высота, при которой элемент начинает появляться
+
+        if (elementTop < windowHeight - elementVisible) {
+            reveals[i].classList.add("active");
+        }
+    }
+}
+
+// Запуск при скролле
+window.addEventListener("scroll", reveal);
+
+// Запуск один раз при загрузке, чтобы проверить видимые элементы
+window.addEventListener("load", reveal);
+
+// Бонус: Плавная прокрутка для ссылок (уже есть в CSS, но это подстраховка)
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
 });
