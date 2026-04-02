@@ -11,6 +11,9 @@ body {
     text-align: center;
     padding: 60px 20px;
     background: #fdfdfd;
+    background-image: url(/imgs/bg-contact.jpg);
+    background-size: cover;
+    background-position: center;
 }
 
 .contact-wrapper {

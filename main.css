@@ -750,3 +750,261 @@ a:active {
         font-size: 14px;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.ba-overlay {
+    display: none;
+    /* По умолчанию скрыто */
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background: rgba(0, 0, 0, 0.9) !important;
+    z-index: 9999999 !important;
+    /* Самый высокий приоритет */
+    align-items: center !important;
+    justify-content: center !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+.ba-overlay.active {
+    display: flex !important;
+    /* Показываем только при активации */
+}
+
+.ba-modal-full {
+    background: #fff !important;
+    width: 90% !important;
+    max-width: 800px !important;
+    padding: 30px !important;
+    border-radius: 20px !important;
+    position: relative !important;
+    margin: auto !important;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.8) !important;
+    /* Убираем любые смещения от родительских элементов */
+    transform: none !important;
+    top: auto !important;
+    left: auto !important;
+}
+
+.ba-modal-full__close {
+    position: absolute !important;
+    top: 10px !important;
+    right: 10px !important;
+    width: 40px !important;
+    height: 40px !important;
+    background: #f0f0f0 !important;
+    border: none !important;
+    border-radius: 50% !important;
+    cursor: pointer !important;
+    font-size: 20px !important;
+    z-index: 10 !important;
+}
+
+.ba-modal-full__grid {
+    display: flex !important;
+    gap: 15px !important;
+    margin-top: 15px !important;
+}
+
+.ba-modal-full__item img {
+    width: 100% !important;
+    height: 300px !important;
+    object-fit: cover !important;
+    border-radius: 10px !important;
+}
+
+/* Мобильная версия */
+@media (max-width: 768px) {
+    .ba-modal-full__grid {
+        flex-direction: column !important;
+    }
+
+    .ba-modal-full__item img {
+        height: 200px !important;
+    }
+}
+
+
+
+
+
+
+
+/* ФИКСИРОВАННЫЙ ЦЕНТР */
+.ba-overlay {
+    display: none;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background: rgba(0, 0, 0, 0.85) !important;
+    z-index: 10000 !important;
+    align-items: center !important;
+    justify-content: center !important;
+    backdrop-filter: blur(10px);
+}
+
+.ba-overlay.active {
+    display: flex !important;
+}
+
+.ba-modal-full {
+    background: #fff !important;
+    width: 90% !important;
+    max-width: 800px !important;
+    padding: 40px 20px !important;
+    border-radius: 25px !important;
+    position: relative !important;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5) !important;
+    animation: modalSlideUp 0.4s ease;
+}
+
+@keyframes modalSlideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.ba-modal-full__close {
+    position: absolute !important;
+    top: 15px;
+    right: 15px;
+    background: #f0f0f0;
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.ba-modal-full__grid {
+    display: flex !important;
+    gap: 15px !important;
+}
+
+.ba-modal-full__item {
+    flex: 1;
+    text-align: center;
+}
+
+.ba-modal-full__item img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.ba-slider__btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #fff;
+    border: 1px solid #ddd;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 5;
+}
+
+.ba-slide {
+    display: none;
+}
+
+.ba-slide.active {
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .ba-modal-full__grid {
+        flex-direction: column !important;
+    }
+
+    .ba-modal-full__item img {
+        height: 180px;
+    }
+}
+
+.ba-overlay {
+    display: none;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background: rgba(0, 0, 0, 0.9) !important;
+    z-index: 100000 !important;
+    /* Еще выше */
+    backdrop-filter: blur(10px);
+}
+
+.ba-overlay.active {
+    display: block !important;
+    /* Используем блок для фиксации координат */
+}
+
+.ba-modal-full {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    /* Идеальный центр экрана */
+    background: #fff !important;
+    width: 90% !important;
+    max-width: 800px !important;
+    padding: 40px 20px !important;
+    border-radius: 25px !important;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7) !important;
+    margin: 0 !important;
+}
+
+/* Остальные стили (картинки, кнопки) остаются как были */
+.ba-modal-full__grid {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.ba-modal-full__item img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.ba-slide {
+    display: none;
+}
+
+.ba-slide.active {
+    display: block;
+}

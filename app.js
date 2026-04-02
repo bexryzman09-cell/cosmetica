@@ -207,3 +207,86 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         });
     });
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const overlay = document.getElementById('beforeAfterFull');
+    const closeBtn = document.getElementById('closeFull');
+    const servicesSection = document.querySelector('.services');
+
+    // ПРОВЕРКА: Если уже видели — удаляем обработчики сразу
+    if (localStorage.getItem('ba_popup_permanent')) {
+        if (overlay) overlay.remove(); // Вообще удаляем из DOM, чтоб не мешал
+        return;
+    }
+
+    // 1. Логика слайдера
+    const slides = document.querySelectorAll('.ba-slide');
+    let currentSlide = 0;
+
+    if (slides.length > 0) {
+        const showSlide = (n) => {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+        };
+
+        const prevBtn = document.querySelector('.prev');
+        const nextBtn = document.querySelector('.next');
+        if (prevBtn) prevBtn.onclick = (e) => { e.preventDefault(); showSlide(currentSlide - 1); };
+        if (nextBtn) nextBtn.onclick = (e) => { e.preventDefault(); showSlide(currentSlide + 1); };
+    }
+
+    // 2. Появление при скролле (строго 1 раз за все время)
+    const handleScroll = () => {
+        if (servicesSection) {
+            const rect = servicesSection.getBoundingClientRect();
+            // Если прокрутили секцию услуг
+            if (rect.bottom < 0) {
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+
+                // ЗАПИСЫВАЕМ НАВСЕГДА
+                localStorage.setItem('ba_popup_permanent', 'true');
+
+                // Перестаем следить за скроллом
+                window.removeEventListener('scroll', handleScroll);
+            }
+        }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    // 3. Закрытие
+    const closePopup = () => {
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    };
+
+    if (closeBtn) closeBtn.onclick = closePopup;
+    if (overlay) {
+        overlay.onclick = (e) => {
+            if (e.target === overlay) closePopup();
+        };
+    }
+});
+
+
+
+
+// Добавьте CSS для active
+// .reveal { opacity: 0; transform: translateY(30px); transition: 1s all ease; }
+// .reveal.active { opacity: 1; transform: translateY(0); }
