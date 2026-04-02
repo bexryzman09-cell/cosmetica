@@ -123,9 +123,40 @@ body {
 .img-frame img {
     width: 100%;
     display: block;
+
     transition: transform 0.8s ease;
 }
 
+
+.img-frame:hover img {
+    transform: scale(1.05);
+}
+
+/* Контейнер, который определяет размер */
+.img-frame {
+    max-width: 400px;
+    /* Установите нужную вам ширину (например, 400px вместо 100%) */
+    width: 100%;
+    /* Позволяет картинке быть адаптивной на мобильных */
+    margin: 0 auto;
+    /* Центрирует фото, если нужно */
+    overflow: hidden;
+    /* Чтобы при увеличении (hover) края не вылезали за рамку */
+    border-radius: 10px;
+    /* Опционально: скругление углов */
+}
+
+.img-frame img {
+    width: 100%;
+    height: auto;
+    /* КРИТИЧНО: сохраняет пропорции, чтобы фото не было плоским */
+    display: block;
+    object-fit: cover;
+    /* Гарантирует красивое заполнение пространства */
+    transition: transform 0.8s ease;
+}
+
+/* Эффект при наведении */
 .img-frame:hover img {
     transform: scale(1.05);
 }
@@ -193,12 +224,14 @@ body {
 .interactive-reveal {
     position: relative;
     height: 500px;
-    background-color: #1a1a1a; /* Темный фон для контраста */
+    background-color: #1a1a1a;
+    /* Темный фон для контраста */
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    cursor: none; /* Прячем обычный курсор */
+    cursor: none;
+    /* Прячем обычный курсор */
 }
 
 .reveal-content {
@@ -212,7 +245,8 @@ body {
     font-size: 5rem;
     color: var(--accent);
     text-transform: uppercase;
-    opacity: 0.1; /* Едва заметно в темноте */
+    opacity: 0.1;
+    /* Едва заметно в темноте */
 }
 
 .reveal-description {
@@ -220,7 +254,7 @@ body {
     font-size: 1.5rem;
     max-width: 700px;
     margin: 20px auto;
-    opacity: 0; 
+    opacity: 0;
     transition: opacity 0.5s;
 }
 
@@ -231,7 +265,8 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: var(--accent); /* Цвет "проявленной" зоны */
+    background: var(--accent);
+    /* Цвет "проявленной" зоны */
     pointer-events: none;
     z-index: 2;
     /* Создаем маску-круг */

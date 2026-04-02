@@ -1,73 +1,73 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // Выбираем все элементы с атрибутом data-link
-    const navElements = document.querySelectorAll('[data-link]');
+// document.addEventListener('DOMContentLoaded', () => {
+//     // Выбираем все элементы с атрибутом data-link
+//     const navElements = document.querySelectorAll('[data-link]');
 
-    navElements.forEach(el => {
-        el.addEventListener('click', (e) => {
-            e.preventDefault(); // Отменяем стандартный переход
+//     navElements.forEach(el => {
+//         el.addEventListener('click', (e) => {
+//             e.preventDefault(); // Отменяем стандартный переход
 
-            const target = el.getAttribute('data-link');
+//             const target = el.getAttribute('data-link');
 
-            if (target === 'social.html') {
-                // ОТКРЫВАЕМ В НОВОЙ ВКЛАДКЕ
-                // '_blank' — это команда открыть в новом окне
-                window.open(target, '_blank');
-            } else if (target) {
-                // ОТКРЫВАЕМ В ТОЙ ЖЕ ВКЛАДКЕ
-                window.location.href = target;
-            }
-        });
-    });
-});
-document.addEventListener('DOMContentLoaded', () => {
-    // Выбираем все элементы с атрибутом data-link
-    const links = document.querySelectorAll('[data-link]');
+//             if (target === 'social.html') {
+//                 // ОТКРЫВАЕМ В НОВОЙ ВКЛАДКЕ
+//                 // '_blank' — это команда открыть в новом окне
+//                 window.open(target, '_blank');
+//             } else if (target) {
+//                 // ОТКРЫВАЕМ В ТОЙ ЖЕ ВКЛАДКЕ
+//                 window.location.href = target;
+//             }
+//         });
+//     });
+// });
+// document.addEventListener('DOMContentLoaded', () => {
+//     // Выбираем все элементы с атрибутом data-link
+//     const links = document.querySelectorAll('[data-link]');
 
-    links.forEach(item => {
-        item.addEventListener('click', (e) => {
-            e.preventDefault();
-            const url = item.getAttribute('data-link');
+//     links.forEach(item => {
+//         item.addEventListener('click', (e) => {
+//             e.preventDefault();
+//             const url = item.getAttribute('data-link');
 
-            if (!url) return;
+//             if (!url) return;
 
-            // Логика переходов
-            if (url === 'social.html') {
-                // Соцсети — открываем в новом окне
-                window.open(url, '_blank');
-            } else {
-                // Остальные страницы — переходим в этом же окне
-                window.location.href = url;
-            }
-        });
-    });
-});
+//             // Логика переходов
+//             if (url === 'social.html') {
+//                 // Соцсети — открываем в новом окне
+//                 window.open(url, '_blank');
+//             } else {
+//                 // Остальные страницы — переходим в этом же окне
+//                 window.location.href = url;
+//             }
+//         });
+//     });
+// });
 document.addEventListener('DOMContentLoaded', () => {
 
     // 1. Находим все кнопки на странице
-    const allButtons = document.querySelectorAll('.btn');
+    // const allButtons = document.querySelectorAll('.btn');
 
-    allButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const buttonText = button.textContent.toLowerCase().trim();
+    // allButtons.forEach(button => {
+    //     button.addEventListener('click', () => {
+    //         const buttonText = button.textContent.toLowerCase().trim();
 
-            // 2. Логика переходов в зависимости от текста кнопки
+    //         // 2. Логика переходов в зависимости от текста кнопки
 
-            // Переход на about.html
-            if (buttonText === 'узнать больше' || buttonText === 'подробнее') {
-                window.location.href = 'about.html';
-            }
+    //         // Переход на about.html
+    //         if (buttonText === 'узнать больше' || buttonText === 'подробнее') {
+    //             window.location.href = 'about.html';
+    //         }
 
-            // Переход на servis.html
-            else if (buttonText === 'наши услуги' || buttonText === 'смотреть услуги') {
-                window.location.href = 'servis.html';
-            }
+    //         // Переход на servis.html
+    //         else if (buttonText === 'наши услуги' || buttonText === 'смотреть услуги') {
+    //             window.location.href = 'servis.html';
+    //         }
 
-            // Переход на contact.html
-            else if (buttonText === 'записаться на приём' || buttonText === 'записаться') {
-                window.location.href = 'contact.html';
-            }
-        });
-    });
+    //         // Переход на contact.html
+    //         else if (buttonText === 'записаться на приём' || buttonText === 'записаться') {
+    //             window.location.href = 'contact.html';
+    //         }
+    //     });
+    // });
 
 });
 
@@ -117,13 +117,19 @@ document.addEventListener('DOMContentLoaded', () => {
     // === 2. ЛОГИКА ПЕРЕХОДОВ (Твой код) ===
 
     // Обработка элементов с data-link
+   
+    // === 2. ЛОГИКА ПЕРЕХОДОВ (ИСПРАВЛЕННАЯ) ===
+
+    // Элементы с data-link
     const navElements = document.querySelectorAll('[data-link]');
     navElements.forEach(el => {
         el.addEventListener('click', (e) => {
-            e.preventDefault();
             const target = el.getAttribute('data-link');
-            if (!target) return;
 
+            // ФИКС: Если ссылка пустая или "#", мы никуда не идем и не редиректим
+            if (!target || target === '#' || target === '') return;
+
+            e.preventDefault();
             if (target === 'social.html') {
                 window.open(target, '_blank');
             } else {
@@ -131,6 +137,40 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // Кнопки по тексту
+    // const allButtons = document.querySelectorAll('.btn');
+    allButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const buttonText = button.textContent.toLowerCase().trim();
+
+            if (buttonText === 'узнать больше' || buttonText === 'подробнее') {
+                window.location.href = 'about.html';
+            }
+            else if (buttonText === 'наши услуги' || buttonText === 'смотреть услуги') {
+                window.location.href = 'servis.html';
+            }
+            else if (buttonText === 'записаться на приём' || buttonText === 'записаться') {
+                // ФИКС: Переход только если мы НЕ на странице контактов
+                if (!window.location.pathname.includes('contact.html')) {
+                    window.location.href = 'contact.html';
+                }
+            }
+        });
+    });
+    // navElements.forEach(el => {
+    //     el.addEventListener('click', (e) => {
+    //         e.preventDefault();
+    //         const target = el.getAttribute('data-link');
+    //         if (!target) return;
+
+    //         if (target === 'social.html') {
+    //             window.open(target, '_blank');
+    //         } else {
+    //             window.location.href = target;
+    //         }
+    //     });
+    // });
 
     // Обработка кнопок по тексту (.btn)
     const allButtons = document.querySelectorAll('.btn');
@@ -259,8 +299,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 overlay.classList.add('active');
                 document.body.style.overflow = 'hidden';
 
-                // ЗАПИСЫВАЕМ НАВСЕГДА
-                localStorage.setItem('ba_popup_permanent', 'true');
+                // // ЗАПИСЫВАЕМ НАВСЕГДА
+                // localStorage.setItem('ba_popup_permanent', 'true');
 
                 // Перестаем следить за скроллом
                 window.removeEventListener('scroll', handleScroll);
