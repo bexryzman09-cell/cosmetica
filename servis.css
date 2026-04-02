@@ -297,3 +297,127 @@ body {
         padding: 20px;
     }
 }
+
+/* Мягкий блик за курсором */
+.cursor-glow {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(212, 184, 149, 0.08) 0%, rgba(255, 255, 255, 0) 70%);
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    /* Чтобы не мешал кликам */
+    z-index: 0;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease-out;
+}
+
+/* Эффект "стеклянной" карточки при наведении */
+.details-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.details-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(212, 184, 149, 0.05), transparent);
+    transform: rotate(45deg);
+    transition: 0.6s;
+    opacity: 0;
+}
+
+.details-card:hover::before {
+    left: 100%;
+    opacity: 1;
+}
+
+/* Декоративная вертикальная линия, которая "растет" при скролле */
+.stat-item {
+    position: relative;
+}
+
+.stat-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: -50%;
+    top: 20%;
+    height: 60%;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, var(--accent), transparent);
+}
+
+@media (max-width: 968px) {
+    .stat-item:not(:last-child)::after {
+        display: none;
+    }
+}
+
+/* Плавающие сферы на фоне */
+.bg-blobs {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+    filter: blur(80px);
+}
+
+.blob {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: var(--accent);
+    opacity: 0.2;
+    border-radius: 50%;
+    animation: move 20s infinite alternate;
+}
+
+.blob:nth-child(2) {
+    background: #e9dcc9;
+    right: 10%;
+    top: 20%;
+    animation-delay: -5s;
+}
+
+@keyframes move {
+    from {
+        transform: translate(0, 0);
+    }
+
+    to {
+        transform: translate(100px, 100px);
+    }
+}
+
+/* Эффект "Магнитной" карточки */
+.service-card {
+    position: relative;
+    perspective: 1000px;
+    /* Для 3D эффекта */
+    overflow: hidden;
+}
+
+/* Прикольный эффект для цены */
+.price {
+    display: inline-block;
+    position: relative;
+    padding: 5px 15px;
+    background: #fdf8f2;
+    border-radius: 50px;
+    transition: var(--transition);
+}
+
+.service-card:hover .price {
+    background: var(--dark);
+    color: var(--white);
+    transform: scale(1.1);
+}
+

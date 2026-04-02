@@ -14,8 +14,8 @@
             /* Светлый серо-голубой фон */
             color: #333;
             background-image: url(https://i.pinimg.com/736x/ef/e4/39/efe439f32bc24f0d9c4e7bf64c74f0c7.jpg) !important;
-       
-        
+
+
             display: flex;
             justify-content: center;
             align-items: center;
@@ -92,6 +92,79 @@
             border-color: #0099ff;
             color: #0099ff;
         }
+
+        .card {
+            /* ... твои стили ... */
+            background: rgba(255, 255, 255, 0.85);
+            /* Полупрозрачность */
+            backdrop-filter: blur(15px);
+            /* Размытие фона за картой */
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            animation: float 6s ease-in-out infinite;
+            /* Плавное покачивание */
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        /* Прячем иконку внутри кнопки по умолчанию */
+        .btn::before {
+            content: '→';
+            position: absolute;
+            left: 20px;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover::before {
+            opacity: 1;
+            left: 25px;
+        }
+
+        .btn:hover {
+            padding-left: 45px;
+            /* Отодвигаем текст для стрелочки */
+            letter-spacing: 1px;
+        }
+
+        /* При наведении на кнопки — меняем тень карточки на цвет бренда */
+        .card:has(.btn-ins:hover) {
+            box-shadow: 0 20px 40px rgba(247, 0, 255, 0.15);
+        }
+
+        .card:has(.btn-tg:hover) {
+            box-shadow: 0 20px 40px rgba(0, 153, 255, 0.15);
+        }
+
+        .card:has(.btn-vk:hover) {
+            box-shadow: 0 20px 40px rgba(0, 38, 255, 0.15);
+        }
+
+        .btn {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: var(--y);
+            left: var(--x);
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 70%);
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+        }
     </style>
 </head>
 
@@ -109,7 +182,19 @@
             <a href="mailto:your.email@example.com" class="btn btn-mail">Email</a>
         </div>
     </div>
+    <div class="cursor-glow"></div>
     <script src="app.js"></script>
+    <script>
+        document.querySelectorAll('.btn').forEach(button => {
+            button.onmousemove = (e) => {
+                const x = e.pageX - button.offsetLeft;
+                const y = e.pageY - button.offsetTop;
+
+                button.style.setProperty('--x', x + 'px');
+                button.style.setProperty('--y', y + 'px');
+            };
+        });
+    </script>
 </body>
 
 </html>

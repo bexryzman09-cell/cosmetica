@@ -287,6 +287,43 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+
+
+// 1. Слежение блика за мышью
+const glow = document.querySelector('.cursor-glow');
+window.addEventListener('mousemove', (e) => {
+    glow.style.left = e.clientX + 'px';
+    glow.style.top = e.clientY + 'px';
+});
+
+// 2. Эффект параллакса для главного фото
+document.addEventListener('mousemove', (e) => {
+    const moveX = (e.clientX - window.innerWidth / 2) * 0.01;
+    const moveY = (e.clientY - window.innerHeight / 2) * 0.01;
+    const img = document.querySelector('.img-frame img');
+    if (img) {
+        img.style.transform = `scale(1.1) translate(${moveX}px, ${moveY}px)`;
+    }
+});
+
+// 3. Плавное появление элементов при скролле (Observer API)
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+        }
+    });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = 'all 0.8s ease-out';
+    observer.observe(el);
+});
+
+
 // Добавьте CSS для active
 // .reveal { opacity: 0; transform: translateY(30px); transition: 1s all ease; }
 // .reveal.active { opacity: 1; transform: translateY(0); }

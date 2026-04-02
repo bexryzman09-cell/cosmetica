@@ -133,6 +133,15 @@
                 </div>
             </div>
         </section>
+
+        <section class="interactive-reveal">
+            <div class="reveal-content">
+                <h2 class="reveal-title">Секрет сияния</h2>
+                <p class="reveal-description">Ваша кожа заслуживает профессионального ухода. Мы используем только
+                    премиальные препараты для достижения идеального результата.</p>
+            </div>
+            <div class="reveal-overlay"></div>
+        </section>
     </main>
 
     <footer class="footer">
@@ -181,7 +190,30 @@
             </a>
         </div>
     </footer>
+    <div class="cursor-glow"></div>
     <script src="app.js"></script>
+
+    <script>
+        const revealArea = document.querySelector('.interactive-reveal');
+        const description = document.querySelector('.reveal-description');
+
+        revealArea.addEventListener('mousemove', (e) => {
+            const rect = revealArea.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            // Передаем координаты в CSS
+            revealArea.style.setProperty('--x', `${x}px`);
+            revealArea.style.setProperty('--y', `${y}px`);
+
+            // Проявляем описание при движении
+            description.style.opacity = '1';
+        });
+
+        revealArea.addEventListener('mouseleave', () => {
+            description.style.opacity = '0';
+        });
+    </script>
 </body>
 
 </html>

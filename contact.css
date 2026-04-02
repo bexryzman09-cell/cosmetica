@@ -71,7 +71,8 @@ body {
     transition: var(--transition);
     transition: 0.7s;
 }
-.social-icons{
+
+.social-icons {
     display: flex;
     gap: 25px;
 }
@@ -79,12 +80,13 @@ body {
 .links {
     text-decoration: none;
     color: rgb(0, 0, 0);
-    transition: 0.3s;
+    transition: 0.7s !important;
 }
 
 
 .links-instagram:hover {
     color: #e440ad;
+
 }
 
 .links-telegram:hover {
@@ -120,4 +122,316 @@ body {
     .contact-wrapper {
         grid-template-columns: 1fr;
     }
+}
+
+/* Мягкий блик за курсором */
+.cursor-glow {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(212, 184, 149, 0.08) 0%, rgba(255, 255, 255, 0) 70%);
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    /* Чтобы не мешал кликам */
+    z-index: 0;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease-out;
+}
+
+/* Эффект "стеклянной" карточки при наведении */
+.details-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.details-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(212, 184, 149, 0.05), transparent);
+    transform: rotate(45deg);
+    transition: 0.6s;
+    opacity: 0;
+}
+
+.details-card:hover::before {
+    left: 100%;
+    opacity: 1;
+}
+
+/* Декоративная вертикальная линия, которая "растет" при скролле */
+.stat-item {
+    position: relative;
+}
+
+.stat-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: -50%;
+    top: 20%;
+    height: 60%;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, var(--accent), transparent);
+}
+
+@media (max-width: 968px) {
+    .stat-item:not(:last-child)::after {
+        display: none;
+    }
+}
+
+/* --- Интерактивные улучшения для формы --- */
+
+
+
+
+
+
+
+
+
+
+
+/* --- Новая анимация для кнопки --- */
+.btn-send {
+    position: relative;
+    border: none;
+    overflow: hidden;
+    background: #1a1a1a;
+    z-index: 1;
+    transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Эффект "Волны" при наведении */
+.btn-send::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: var(--accent);
+    transition: all 0.7s ease;
+    transform: translate(-50%, -50%) scale(0);
+    border-radius: 50%;
+    z-index: -1;
+}
+
+.btn-send:hover {
+    color: #fff;
+    transform: scale(1.02);
+}
+
+.btn-send:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* --- Анимация полей ввода (Floating Label эффект) --- */
+.input-group input:focus,
+.input-group select:focus,
+.input-group textarea:focus {
+    border-color: var(--accent) !important;
+    padding-left: 25px;
+    /* Текст мягко отъезжает вправо */
+    background: #fffcf8;
+}
+
+/* Иконки соцсетей - эффект "подпрыгивания" */
+.social-icons a:hover {
+    animation: bungee 0.5s dashed;
+}
+
+@keyframes bungee {
+    0% {
+        transform: scale(1);
+    }
+
+    30% {
+        transform: scale(1.3, 0.8);
+    }
+
+    50% {
+        transform: scale(0.8, 1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Эффект каскадного появления (Staggered Fade In) */
+.info-item:nth-child(1) {
+    animation: fadeInUp 0.5s ease forwards 0.1s;
+    opacity: 0;
+}
+
+.info-item:nth-child(2) {
+    animation: fadeInUp 0.5s ease forwards 0.3s;
+    opacity: 0;
+}
+
+.info-item:nth-child(3) {
+    animation: fadeInUp 0.5s ease forwards 0.5s;
+    opacity: 0;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+
+
+
+
+/* --- Живые поля (Инпуты) --- */
+.input-group input,
+.input-group select,
+.input-group textarea {
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    border: 1px solid #eee !important;
+    background: #fff;
+}
+
+/* Эффект при клике: текст уезжает вправо, а фон становится нежно-золотым */
+.input-group input:focus,
+.input-group textarea:focus {
+    padding-left: 35px !important;
+    /* Текст плавно сдвигается */
+    background: #fffcf8 !important;
+    border-color: var(--accent) !important;
+    box-shadow: 10px 10px 20px rgba(212, 184, 149, 0.05);
+}
+
+/* --- Кнопка с характером --- */
+.btn-send {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    border: none;
+    background: #1a1a1a;
+    transition: color 0.4s;
+}
+
+/* Золотая заливка волной */
+.btn-send::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: var(--accent);
+    transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+    transform: translate(-50%, -50%) scale(0);
+    border-radius: 50%;
+    z-index: -1;
+}
+
+.btn-send:hover {
+    color: #fff;
+}
+
+.btn-send:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* --- Прыгающие иконки (Bungee) --- */
+.social-icons a {
+    display: inline-block;
+    transition: 0.3s;
+}
+
+.social-icons a:hover {
+    animation: bungee 0.6s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    color: var(--accent);
+}
+
+@keyframes bungee {
+    0% {
+        transform: scale(1);
+    }
+
+    30% {
+        transform: scale(1.25, 0.75);
+    }
+
+    40% {
+        transform: scale(0.75, 1.25);
+    }
+
+    50% {
+        transform: scale(1.15, 0.85);
+    }
+
+    65% {
+        transform: scale(0.95, 1.05);
+    }
+
+    75% {
+        transform: scale(1.05, 0.95);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* --- Возвращаем персональные цвета при наведении --- */
+
+/* Инстаграм: розовый градиент */
+.links-instagram:hover {
+    color: #e440ad !important;
+    filter: drop-shadow(0 0 8px rgba(228, 64, 173, 0.4));
+}
+
+/* Телеграм: классический голубой */
+.links-telegram:hover {
+    color: #0088cc !important;
+    filter: drop-shadow(0 0 8px rgba(0, 136, 204, 0.4));
+}
+
+/* Чтобы иконки прыгали и меняли цвет одновременно */
+.social-icons a:hover svg {
+    fill: currentColor;
+    /* Заставляет SVG брать цвет из настроек выше */
+}
+
+
+
+
+
+/* Кастомный кружок, который следует за мышью (нужен div с классом cursor-follower в HTML) */
+.cursor-follower {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    background: var(--accent);
+    border-radius: 50%;
+    opacity: 0.5;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.1s ease, width 0.3s, height 0.3s;
+    mix-blend-mode: difference;
+    /* Очень крутой эффект инверсии цветов */
+}
+
+/* Когда наводим на ссылку, курсор увеличивается */
+a:hover~.cursor-follower,
+button:hover~.cursor-follower {
+    transform: scale(3);
+    opacity: 0.2;
 }
