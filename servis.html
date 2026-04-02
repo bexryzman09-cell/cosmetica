@@ -112,41 +112,75 @@
 
     </main>
 
-    <footer class="footer">
+  <footer class="footer">
         <div class="footer__container">
             <div class="footer__top">
                 <div class="footer__brand">
                     <img class="footer__logo" width="60" height="60" src="/imgs/logo-two.jpg" alt="logo">
                     <p class="footer__copy">© 2026 Radiance. <br> Все права защищены.</p>
                 </div>
+
                 <ul class="footer__links">
                     <li class="footer__column">
                         <h1 class="footer__title">Быстрые ссылки</h1>
-                        <a class="footer__link" href="index.html">Главная</a>
-                        <a class="footer__link" href="about.html">О нас</a>
-                        <a class="footer__link" href="servis.html">Услуги</a>
-                        <a class="footer__link" target="_blank" href="social.html">Контакты</a>
+                        <a class="footer__link" data-link="index.html" href="#">Главная</a>
+                        <a class="footer__link" data-link="about.html" href="#">О нас</a>
+                        <a class="footer__link" data-link="servis.html" href="#">Услуги</a>
+                        <a class="footer__link" target="_blank" data-link="social.html" href="#">Контакты</a>
                     </li>
+
+
                     <li class="footer__column">
                         <h1 class="footer__title">Мы в соцсетях</h1>
                         <a target="_blank" class="footer__link"
                             href="https://www.instagram.com/shoiraotokhonova/">Инстаграм</a>
-                        <a class="footer__link" href="#">Телеграм</a>
+                        <a class="footer__link" href="">Телеграм</a>
                     </li>
                 </ul>
             </div>
         </div>
         <div class="mobile-nav">
-            <a href="index.html" class="mobile-nav__link"><span>🏠</span>
+            <a class="mobile-nav__link" data-link="index.html">
+                <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <title>Bxs-home SVG Icon</title>
+                        <path
+                            d="M21.743 12.331l-9-10c-.379-.422-1.107-.422-1.486 0l-9 10a.998.998 0 0 0-.17 1.076c.16.361.518.593.913.593h2v7a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-4h4v4a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-7h2a.998.998 0 0 0 .743-1.669z"
+                            fill="currentColor" />
+                    </svg></span>
                 <p>Главная</p>
             </a>
-            <a href="about.html" class="mobile-nav__link"><span>ℹ️</span>
+            <a class="mobile-nav__link" data-link="about.html">
+                <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512">
+                        <title>Circle-info SVG Icon</title>
+                        <path fill="currentColor"
+                            d="M256 512a256 256 0 1 0 0-512a256 256 0 1 0 0 512m-40-176h24v-64h-24c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24h-80c-13.3 0-24-10.7-24-24s10.7-24 24-24m40-208a32 32 0 1 1 0 64a32 32 0 1 1 0-64" />
+                    </svg></span>
                 <p>О нас</p>
             </a>
-            <a href="servis.html" class="mobile-nav__link"><span>✨</span>
+            <a class="mobile-nav__link" data-link="servis.html">
+                <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 48 48">
+                        <title>Services SVG Icon</title>
+                        <circle cx="9.379" cy="9.379" r="3.879" stroke="currentColor" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <circle cx="9.379" cy="38.621" r="3.879" stroke="currentColor" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <circle cx="9.379" cy="24" r="3.879" stroke="currentColor" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <rect width="25.064" height="7.758" x="17.436" y="5.5" stroke="currentColor"
+                            stroke-linecap="round" stroke-linejoin="round" rx="1.79" ry="1.79" />
+                        <rect width="25.064" height="7.758" x="17.436" y="34.742" stroke="currentColor"
+                            stroke-linecap="round" stroke-linejoin="round" rx="1.79" ry="1.79" />
+                        <rect width="25.064" height="7.758" x="17.436" y="20.121" stroke="currentColor"
+                            stroke-linecap="round" stroke-linejoin="round" rx="1.79" ry="1.79" />
+                    </svg></span>
                 <p>Услуги</p>
             </a>
-            <a href="social.html" target="_blank" class="mobile-nav__link"><span>📱</span>
+            <a class="mobile-nav__link" target="_blank" data-link="social.html">
+                <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <title>Contact-info SVG Icon</title>
+                        <path fill="none" stroke="currentColor" stroke-width="2"
+                            d="M5 12a3 3 0 1 1 0-6a3 3 0 0 1 0 6Zm4 6v-2c0-2.25-1.787-4-4.036-4h.054C2.768 12 1 13.75 1 16v2M12 7h12M12 17h10m-10-5h7" />
+                    </svg></span>
                 <p>Соцсети</p>
             </a>
         </div>
