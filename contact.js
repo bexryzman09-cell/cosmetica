@@ -457,16 +457,29 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 submitBtn.addEventListener('click', function () {   // Имитация загрузки
-            this.innerHTML = 'Секундочку...';
+    this.innerHTML = 'Секундочку...';
 
-            setTimeout(() => {
-                this.style.background = '#28a745'; // Зеленый цвет успеха
-                this.innerHTML = 'Запись создана! ✨';
+    setTimeout(() => {
+        this.style.background = '#28a745'; // Зеленый цвет успеха
+        this.innerHTML = 'Запись создана! ✨';
 
-                // Маленький прикол: через 3 секунды возвращаем текст
-                setTimeout(() => {
-                    this.style.background = '#1a1a1a';
-                    this.innerHTML = 'Записаться к Шоире';
-                }, 3000);
-            }, 1500);
-        });
+        // Маленький прикол: через 3 секунды возвращаем текст
+        setTimeout(() => {
+            this.style.background = '#1a1a1a';
+            this.innerHTML = 'Записаться к Шоире';
+        }, 3000);
+    }, 1500);
+});
+
+
+
+const phoneInput = document.getElementById('phone');
+
+phoneInput.addEventListener('input', function (e) {
+    // Сохраняем только цифры и плюс
+    let value = e.target.value;
+
+    // Очищаем всё лишнее, кроме цифр и знака +
+    // Этот метод не блокирует Backspace, так как срабатывает ПОСЛЕ изменения
+    e.target.value = value.replace(/[^\d+]/g, '');
+});

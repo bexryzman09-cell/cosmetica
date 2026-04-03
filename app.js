@@ -327,3 +327,7 @@ document.querySelectorAll('.reveal').forEach(el => {
 // Добавьте CSS для active
 // .reveal { opacity: 0; transform: translateY(30px); transition: 1s all ease; }
 // .reveal.active { opacity: 1; transform: translateY(0); }
+
+
+
+
