@@ -435,3 +435,35 @@ button:hover~.cursor-follower {
     transform: scale(3);
     opacity: 0.2;
 }
+
+/* Убеждаемся, что форма использует flex-gap для разделения всех полей */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    /* Отступ между всеми полями */
+}
+
+/* Настройка строки Дата + Время */
+.input-row {
+    display: flex;
+    gap: 15px;
+    /* Отступ между датой и временем */
+}
+
+.input-row .input-group {
+    flex: 1;
+}
+
+/* Для мобильных устройств делаем дату и время друг под другом */
+@media (max-width: 480px) {
+    .input-row {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+
+/* Исправляем визуальное слипание, если у input-group были лишние стили */
+.input-group {
+    width: 100%;
+}

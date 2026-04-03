@@ -366,6 +366,7 @@
         }
     }
 }
+
 /* Мягкий блик за курсором */
 .cursor-glow {
     width: 400px;
@@ -423,5 +424,69 @@
 @media (max-width: 968px) {
     .stat-item:not(:last-child)::after {
         display: none;
+    }
+}
+
+.tech-carousel-section {
+    padding: 80px 0;
+    overflow: hidden;
+    /* Скрываем то, что вылазит за экран */
+    background: #fff;
+}
+
+.carousel-container {
+    width: 100%;
+    position: relative;
+    display: flex;
+}
+
+.carousel-track {
+    display: flex;
+    gap: 30px;
+    /* Расстояние между карточками */
+    animation: scroll-endless 25s linear infinite;
+    /* Плавное движение */
+    width: max-content;
+}
+
+/* Остановка при наведении для удобства чтения */
+.carousel-track:hover {
+    animation-play-state: paused;
+}
+
+.tech-card {
+    width: 300px;
+    /* Фиксированная ширина */
+    flex-shrink: 0;
+    background: #fdf8f4;
+    padding-bottom: 20px;
+    border-radius: 4px;
+    text-align: center;
+}
+
+/* АНИМАЦИЯ */
+@keyframes scroll-endless {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        /* Сдвигаем ровно на половину всей длины трека. 
+           (6 карточек * 300px) + (6 гэпов * 30px) = 1980px 
+        */
+        transform: translateX(calc(-330px * 6));
+    }
+}
+
+/* Адаптив: на мобилках делаем карточки чуть меньше */
+@media (max-width: 768px) {
+    .tech-card {
+        width: 250px;
+    }
+
+    @keyframes scroll-endless {
+        100% {
+            transform: translateX(calc(-280px * 6));
+        }
     }
 }

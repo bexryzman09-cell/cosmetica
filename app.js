@@ -76,19 +76,19 @@ document.addEventListener('DOMContentLoaded', () => {
     // === 1. ЗАЩИТА ОТ КОПИРОВАНИЯ И ПРОСМОТРА ===
 
     // // Блокировка правой кнопки мыши
-    document.addEventListener('contextmenu', e => e.preventDefault());
+    // document.addEventListener('contextmenu', e => e.preventDefault());
 
-    // // // Блокировка клавиш (F12, Ctrl+U, Ctrl+Shift+I, Ctrl+S, Ctrl+C)
-    document.addEventListener('keydown', (e) => {
-        if (
-            e.key === 'F12' ||
-            (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) ||
-            (e.ctrlKey && (e.key === 'u' || e.key === 's' || e.key === 'c'))
-        ) {
-            e.preventDefault();
-            return false;
-        }
-    });
+    // // // // Блокировка клавиш (F12, Ctrl+U, Ctrl+Shift+I, Ctrl+S, Ctrl+C)
+    // document.addEventListener('keydown', (e) => {
+    //     if (
+    //         e.key === 'F12' ||
+    //         (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) ||
+    //         (e.ctrlKey && (e.key === 'u' || e.key === 's' || e.key === 'c'))
+    //     ) {
+    //         e.preventDefault();
+    //         return false;
+    //     }
+    // });
 
     // Запрет выделения текста
     document.addEventListener('selectstart', e => e.preventDefault());
