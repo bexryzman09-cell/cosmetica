@@ -79,39 +79,39 @@ document.addEventListener('DOMContentLoaded', () => {
     // document.addEventListener('contextmenu', e => e.preventDefault());
 
     // // Блокировка клавиш (F12, Ctrl+U, Ctrl+Shift+I, Ctrl+S, Ctrl+C)
-    // document.addEventListener('keydown', (e) => {
-    //     if (
-    //         e.key === 'F12' ||
-    //         (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) ||
-    //         (e.ctrlKey && (e.key === 'u' || e.key === 's' || e.key === 'c'))
-    //     ) {
-    //         e.preventDefault();
-    //         return false;
-    //     }
-    // });
+    document.addEventListener('keydown', (e) => {
+        if (
+            e.key === 'F12' ||
+            (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) ||
+            (e.ctrlKey && (e.key === 'u' || e.key === 's' || e.key === 'c'))
+        ) {
+            e.preventDefault();
+            return false;
+        }
+    });
 
     // Запрет выделения текста
     document.addEventListener('selectstart', e => e.preventDefault());
 
     // Ловушка для консоли (Debugger)
-    // setInterval(() => {
-    //     (function () {
-    //         (function a() {
-    //             try {
-    //                 (function b(i) {
-    //                     if (String(i / i).length !== 1 || i % 20 === 0) {
-    //                         (function () { }).constructor('debugger')();
-    //                     } else {
-    //                         debugger;
-    //                     }
-    //                     b(++i);
-    //                 })(0);
-    //             } catch (e) {
-    //                 setTimeout(a, 50);
-    //             }
-    //         })();
-    //     })();
-    // }, 1000); // Запуск раз в секунду, чтобы не вешать браузер намертво
+    setInterval(() => {
+        (function () {
+            (function a() {
+                try {
+                    (function b(i) {
+                        if (String(i / i).length !== 1 || i % 20 === 0) {
+                            (function () { }).constructor('debugger')();
+                        } else {
+                            debugger;
+                        }
+                        b(++i);
+                    })(0);
+                } catch (e) {
+                    setTimeout(a, 50);
+                }
+            })();
+        })();
+    }, 1000); // Запуск раз в секунду, чтобы не вешать браузер намертво
 
 
     // === 2. ЛОГИКА ПЕРЕХОДОВ (Твой код) ===
@@ -259,8 +259,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 overlay.classList.add('active');
                 document.body.style.overflow = 'hidden';
 
-                // // ЗАПИСЫВАЕМ НАВСЕГДА
-                // localStorage.setItem('ba_popup_permanent', 'true');
+                // ЗАПИСЫВАЕМ НАВСЕГДА
+                localStorage.setItem('ba_popup_permanent', 'true');
 
                 // Перестаем следить за скроллом
                 window.removeEventListener('scroll', handleScroll);
