@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // // Блокировка правой кнопки мыши
     document.addEventListener('contextmenu', e => e.preventDefault());
 
-    // // Блокировка клавиш (F12, Ctrl+U, Ctrl+Shift+I, Ctrl+S, Ctrl+C)
+    // // // Блокировка клавиш (F12, Ctrl+U, Ctrl+Shift+I, Ctrl+S, Ctrl+C)
     document.addEventListener('keydown', (e) => {
         if (
             e.key === 'F12' ||
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Запрет выделения текста
     document.addEventListener('selectstart', e => e.preventDefault());
 
-    // Ловушка для консоли (Debugger)
+    // Ловушка для консоли (Debugger)   
     setInterval(() => {
         (function () {
             (function a() {
