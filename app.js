@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // === 1. ЗАЩИТА ОТ КОПИРОВАНИЯ И ПРОСМОТРА ===
 
     // // Блокировка правой кнопки мыши
-    // document.addEventListener('contextmenu', e => e.preventDefault());
+    document.addEventListener('contextmenu', e => e.preventDefault());
 
     // // Блокировка клавиш (F12, Ctrl+U, Ctrl+Shift+I, Ctrl+S, Ctrl+C)
     document.addEventListener('keydown', (e) => {
