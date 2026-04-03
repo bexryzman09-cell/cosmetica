@@ -343,3 +343,130 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 });
+document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.querySelector('.btn-send');
+    const phoneInput = document.getElementById('phone');
+    const timeSelect = document.getElementById('time');
+
+    // 1. МАГНИТНАЯ КНОПКА (тянется к курсору)
+    if (window.innerWidth > 768) {
+        document.addEventListener('mousemove', (e) => {
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - (rect.left + rect.width / 2);
+            const y = e.clientY - (rect.top + rect.height / 2);
+
+            // Если курсор близко к кнопке (в радиусе 80px)
+            if (Math.abs(x) < 80 && Math.abs(y) < 80) {
+                btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+            } else {
+                btn.style.transform = `translate(0, 0)`;
+            }
+        });
+    }
+
+    // 2. ГЕНЕРАЦИЯ ВРЕМЕНИ (с 10:00 до 20:00)
+    if (timeSelect) {
+        for (let h = 10; h <= 20; h++) {
+            let opt = document.createElement('option');
+            opt.value = `${h}:00`;
+            opt.innerHTML = `${h}:00`;
+            timeSelect.appendChild(opt);
+        }
+    }
+
+    // 3. МАСКА ТЕЛЕФОНА
+    phoneInput.addEventListener('input', (e) => {
+        let val = e.target.value.replace(/\D/g, '');
+        if (val.startsWith('7') || val.startsWith('8')) val = val.substring(1);
+
+        let res = '+7 ';
+        if (val.length > 0) res += '(' + val.substring(0, 3);
+        if (val.length > 3) res += ') ' + val.substring(3, 6);
+        if (val.length > 6) res += '-' + val.substring(6, 8);
+        if (val.length > 8) res += '-' + val.substring(8, 10);
+
+        e.target.value = val.length === 0 ? '' : res;
+    });
+
+    // 4. ЭФФЕКТ "ПУЛЬСАЦИИ" ПРИ КЛИКЕ
+    btn.addEventListener('click', function (e) {
+        let ripple = document.createElement('span');
+        ripple.style.position = 'absolute';
+        ripple.style.background = 'rgba(255,255,255,0.5)';
+        ripple.style.width = '100px';
+        ripple.style.height = '100px';
+        ripple.style.borderRadius = '50%';
+        ripple.style.transform = 'translate(-50%, -50%) scale(0)';
+        ripple.style.left = e.offsetX + 'px';
+        ripple.style.top = e.offsetY + 'px';
+        ripple.style.pointerEvents = 'none';
+
+        this.appendChild(ripple);
+
+        ripple.animate([
+            { transform: 'translate(-50%, -50%) scale(0)', opacity: 1 },
+            { transform: 'translate(-50%, -50%) scale(4)', opacity: 0 }
+        ], { duration: 600 });
+
+        setTimeout(() => ripple.remove(), 600);
+    });
+});
+document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.querySelector('.btn-send');
+    const phoneInput = document.getElementById('phone');
+    const timeSelect = document.getElementById('time');
+
+    // 1. МАГНИТНЫЙ ЭФФЕКТ ДЛЯ КНОПКИ
+    if (window.innerWidth > 768) { // Только для ПК
+        document.addEventListener('mousemove', (e) => {
+            const rect = btn.getBoundingClientRect();
+
+            // Вычисляем центр кнопки
+            const btnX = rect.left + rect.width / 2;
+            const btnY = rect.top + rect.height / 2;
+
+            // Расстояние от курсора до центра кнопки
+            const distX = e.clientX - btnX;
+            const distY = e.clientY - btnY;
+
+            // Если курсор в радиусе 100px — кнопка тянется
+            if (Math.hypot(distX, distY) < 100) {
+                btn.style.transform = `translate(${distX * 0.3}px, ${distY * 0.3}px)`;
+            } else {
+                btn.style.transform = `translate(0, 0)`;
+            }
+        });
+    }
+
+    // 2. АВТО-ГЕНЕРАЦИЯ ВРЕМЕНИ
+    if (timeSelect) {
+        for (let h = 9; h <= 20; h++) {
+            let opt = document.createElement('option');
+            opt.value = `${h}:00`;
+            opt.innerHTML = `${h}:00`;
+            timeSelect.appendChild(opt);
+        }
+    }
+
+    // 3. МАСКА ТЕЛЕФОНА (удобство для клиента)
+    phoneInput.addEventListener('input', (e) => {
+        let x = e.target.value.replace(/\D/g, '').match(/(\d{0,1})(\d{0,3})(\d{0,3})(\d{0,2})(\d{0,2})/);
+        if (!x[2]) return e.target.value = x[1] === '7' ? '+7 ' : x[1];
+        e.target.value = `+7 (${x[2]}) ${x[3]}${x[4] ? '-' + x[4] : ''}${x[5] ? '-' + x[5] : ''}`;
+    });
+});
+
+submitBtn.addEventListener('click', function () {   // Имитация загрузки
+            this.innerHTML = 'Секундочку...';
+
+            setTimeout(() => {
+                this.style.background = '#28a745'; // Зеленый цвет успеха
+                this.innerHTML = 'Запись создана! ✨';
+
+                // Маленький прикол: через 3 секунды возвращаем текст
+                setTimeout(() => {
+                    this.style.background = '#1a1a1a';
+                    this.innerHTML = 'Записаться к Шоире';
+                }, 3000);
+            }, 1500);
+        });

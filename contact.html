@@ -54,14 +54,14 @@
                     <div class="info-item">
                         <h3>Соцсети</h3>
                         <div class="social-icons">
-                            <a class="links links-instagram" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="30"
+                            <a class="links links-instagram" href="https://www.instagram.com/shoiraotokhonova/"><svg xmlns="http://www.w3.org/2000/svg" width="30"
                                     height="30" viewBox="0 0 20 20">
                                     <title>Instagram SVG Icon</title>
                                     <path fill="currentColor"
                                         d="M12.7 10c0-1.5-1.2-2.7-2.7-2.7S7.3 8.5 7.3 10s1.2 2.7 2.7 2.7c1.5 0 2.7-1.2 2.7-2.7m1.4 0c0 2.3-1.8 4.1-4.1 4.1S5.9 12.3 5.9 10S7.7 5.9 10 5.9s4.1 1.8 4.1 4.1m1.1-4.3c0 .6-.4 1-1 1s-1-.4-1-1s.4-1 1-1s1 .5 1 1M10 3.4c-1.2 0-3.7-.1-4.7.3c-.7.3-1.3.9-1.5 1.6c-.4 1-.3 3.5-.3 4.7s-.1 3.7.3 4.7c.2.7.8 1.3 1.5 1.5c1 .4 3.6.3 4.7.3s3.7.1 4.7-.3c.7-.3 1.2-.8 1.5-1.5c.4-1.1.3-3.6.3-4.7s.1-3.7-.3-4.7c-.2-.7-.8-1.3-1.5-1.5c-1-.5-3.5-.4-4.7-.4m8 6.6v3.3c0 1.2-.4 2.4-1.3 3.4c-.9.9-2.1 1.3-3.4 1.3H6.7c-1.2 0-2.4-.4-3.4-1.3c-.8-.9-1.3-2.1-1.3-3.4V6.7c0-1.3.5-2.5 1.3-3.4C4.3 2.5 5.5 2 6.7 2h6.6c1.2 0 2.4.4 3.4 1.3c.8.9 1.3 2.1 1.3 3.4z" />
                                 </svg></a>
-                            <a class="links links-telegram" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="30"
-                                    height="30" viewBox="0 0 1792 1792">
+                            <a class="links links-telegram" href="https://t.me/permsh" target="_blank"><svg
+                                    xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 1792 1792">
                                     <title>Telegram SVG Icon</title>
                                     <path fill="currentColor"
                                         d="m1189 1307l147-693q9-44-10.5-63t-51.5-7L410 877q-29 11-39.5 25t-2.5 26.5t32 19.5l221 69l513-323q21-14 32-6q7 5-4 15l-415 375l-16 228q23 0 45-22l108-104l224 165q64 36 81-38m603-411q0 182-71 348t-191 286t-286 191t-348 71t-348-71t-286-191t-191-286T0 896t71-348t191-286T548 71T896 0t348 71t286 191t191 286t71 348" />
@@ -124,7 +124,7 @@
             </div>
         </div>
     </main>
-  <footer class="footer">
+   <footer class="footer">
         <div class="footer__container">
             <div class="footer__top">
                 <div class="footer__brand">
@@ -146,7 +146,7 @@
                         <h1 class="footer__title">Мы в соцсетях</h1>
                         <a target="_blank" class="footer__link"
                             href="https://www.instagram.com/shoiraotokhonova/">Инстаграм</a>
-                        <a class="footer__link" href="">Телеграм</a>
+                        <a class="footer__link" href="https://t.me/permsh" target="_blank">Телеграм</a>
                     </li>
                 </ul>
             </div>
@@ -196,140 +196,14 @@
                 <p>Соцсети</p>
             </a>
         </div>
-    </footer>   
+    </footer>
     <div class="cursor-glow"></div>
     <script src="app.js"></script>
     <script src="contact.js"></script>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const btn = document.querySelector('.btn-send');
-            const phoneInput = document.getElementById('phone');
-            const timeSelect = document.getElementById('time');
 
-            // 1. МАГНИТНАЯ КНОПКА (тянется к курсору)
-            if (window.innerWidth > 768) {
-                document.addEventListener('mousemove', (e) => {
-                    const rect = btn.getBoundingClientRect();
-                    const x = e.clientX - (rect.left + rect.width / 2);
-                    const y = e.clientY - (rect.top + rect.height / 2);
 
-                    // Если курсор близко к кнопке (в радиусе 80px)
-                    if (Math.abs(x) < 80 && Math.abs(y) < 80) {
-                        btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
-                    } else {
-                        btn.style.transform = `translate(0, 0)`;
-                    }
-                });
-            }
-
-            // 2. ГЕНЕРАЦИЯ ВРЕМЕНИ (с 10:00 до 20:00)
-            if (timeSelect) {
-                for (let h = 10; h <= 20; h++) {
-                    let opt = document.createElement('option');
-                    opt.value = `${h}:00`;
-                    opt.innerHTML = `${h}:00`;
-                    timeSelect.appendChild(opt);
-                }
-            }
-
-            // 3. МАСКА ТЕЛЕФОНА
-            phoneInput.addEventListener('input', (e) => {
-                let val = e.target.value.replace(/\D/g, '');
-                if (val.startsWith('7') || val.startsWith('8')) val = val.substring(1);
-
-                let res = '+7 ';
-                if (val.length > 0) res += '(' + val.substring(0, 3);
-                if (val.length > 3) res += ') ' + val.substring(3, 6);
-                if (val.length > 6) res += '-' + val.substring(6, 8);
-                if (val.length > 8) res += '-' + val.substring(8, 10);
-
-                e.target.value = val.length === 0 ? '' : res;
-            });
-
-            // 4. ЭФФЕКТ "ПУЛЬСАЦИИ" ПРИ КЛИКЕ
-            btn.addEventListener('click', function (e) {
-                let ripple = document.createElement('span');
-                ripple.style.position = 'absolute';
-                ripple.style.background = 'rgba(255,255,255,0.5)';
-                ripple.style.width = '100px';
-                ripple.style.height = '100px';
-                ripple.style.borderRadius = '50%';
-                ripple.style.transform = 'translate(-50%, -50%) scale(0)';
-                ripple.style.left = e.offsetX + 'px';
-                ripple.style.top = e.offsetY + 'px';
-                ripple.style.pointerEvents = 'none';
-
-                this.appendChild(ripple);
-
-                ripple.animate([
-                    { transform: 'translate(-50%, -50%) scale(0)', opacity: 1 },
-                    { transform: 'translate(-50%, -50%) scale(4)', opacity: 0 }
-                ], { duration: 600 });
-
-                setTimeout(() => ripple.remove(), 600);
-            });
-        });
-        document.addEventListener('DOMContentLoaded', () => {
-            const btn = document.querySelector('.btn-send');
-            const phoneInput = document.getElementById('phone');
-            const timeSelect = document.getElementById('time');
-
-            // 1. МАГНИТНЫЙ ЭФФЕКТ ДЛЯ КНОПКИ
-            if (window.innerWidth > 768) { // Только для ПК
-                document.addEventListener('mousemove', (e) => {
-                    const rect = btn.getBoundingClientRect();
-
-                    // Вычисляем центр кнопки
-                    const btnX = rect.left + rect.width / 2;
-                    const btnY = rect.top + rect.height / 2;
-
-                    // Расстояние от курсора до центра кнопки
-                    const distX = e.clientX - btnX;
-                    const distY = e.clientY - btnY;
-
-                    // Если курсор в радиусе 100px — кнопка тянется
-                    if (Math.hypot(distX, distY) < 100) {
-                        btn.style.transform = `translate(${distX * 0.3}px, ${distY * 0.3}px)`;
-                    } else {
-                        btn.style.transform = `translate(0, 0)`;
-                    }
-                });
-            }
-
-            // 2. АВТО-ГЕНЕРАЦИЯ ВРЕМЕНИ
-            if (timeSelect) {
-                for (let h = 9; h <= 20; h++) {
-                    let opt = document.createElement('option');
-                    opt.value = `${h}:00`;
-                    opt.innerHTML = `${h}:00`;
-                    timeSelect.appendChild(opt);
-                }
-            }
-
-            // 3. МАСКА ТЕЛЕФОНА (удобство для клиента)
-            phoneInput.addEventListener('input', (e) => {
-                let x = e.target.value.replace(/\D/g, '').match(/(\d{0,1})(\d{0,3})(\d{0,3})(\d{0,2})(\d{0,2})/);
-                if (!x[2]) return e.target.value = x[1] === '7' ? '+7 ' : x[1];
-                e.target.value = `+7 (${x[2]}) ${x[3]}${x[4] ? '-' + x[4] : ''}${x[5] ? '-' + x[5] : ''}`;
-            });
-        });
-
-        submitBtn.addEventListener('click', function () {
-            // Имитация загрузки
-            this.innerHTML = 'Секундочку...';
-
-            setTimeout(() => {
-                this.style.background = '#28a745'; // Зеленый цвет успеха
-                this.innerHTML = 'Запись создана! ✨';
-
-                // Маленький прикол: через 3 секунды возвращаем текст
-                setTimeout(() => {
-                    this.style.background = '#1a1a1a';
-                    this.innerHTML = 'Записаться к Шоире';
-                }, 3000);
-            }, 1500);
-        });
     </script>
 </body>
 
