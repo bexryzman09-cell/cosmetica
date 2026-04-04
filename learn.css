@@ -490,3 +490,196 @@
         }
     }
 }
+
+
+
+
+
+
+:root {
+    --accent: #d4b895;
+    /* Благородное золото */
+    --text-dark: #1a1a1a;
+    --text-gray: #888888;
+    --white: #ffffff;
+    --transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tech-reveal-section {
+    padding: 140px 0;
+    background: var(--white);
+    overflow: hidden;
+}
+
+/* Заголовок секции */
+.section-title-box {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.eyebrow {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 15px;
+}
+
+.h-display {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    text-transform: uppercase;
+    font-weight: 300;
+    line-height: 1.1;
+}
+
+.h-display .thin {
+    font-weight: 200;
+    color: #e0e0e0;
+    font-style: italic;
+}
+
+.accent-separator {
+    width: 40px;
+    height: 1px;
+    background: var(--accent);
+    margin: 25px auto;
+}
+
+/* Карусель */
+.premium-carousel {
+    position: relative;
+    width: 100%;
+    cursor: grab;
+}
+
+/* Эффект растворения по краям */
+.premium-carousel::before,
+.premium-carousel::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 120px;
+    height: 100%;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.premium-carousel::before {
+    left: 0;
+    background: linear-gradient(to right, white, transparent);
+}
+
+.premium-carousel::after {
+    right: 0;
+    background: linear-gradient(to left, white, transparent);
+}
+
+.carousel-track {
+    display: flex;
+    gap: 45px;
+    will-change: transform;
+}
+
+/* Карточка */
+.tech-item {
+    width: 400px;
+    flex-shrink: 0;
+    background: #fff;
+    transition: var(--transition);
+}
+
+.image-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3/4;
+    /* Глянцевый формат */
+    overflow: hidden;
+    background: #fcfcfc;
+}
+
+.image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1.5s ease;
+}
+
+.item-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(8px);
+    padding: 7px 15px;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-dark);
+}
+
+.item-details {
+    padding: 30px 15px;
+    text-align: left;
+}
+
+.item-cat {
+    font-size: 11px;
+    text-transform: uppercase;
+    color: var(--accent);
+    letter-spacing: 2px;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.item-details h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.7rem;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    font-weight: 400;
+}
+
+.item-details p {
+    font-size: 14px;
+    color: var(--text-gray);
+    line-height: 1.6;
+    margin-bottom: 25px;
+    font-weight: 300;
+}
+
+.explore-btn {
+    text-decoration: none;
+    font-size: 11px;
+    text-transform: uppercase;
+    color: var(--text-dark);
+    letter-spacing: 1px;
+    border-bottom: 1px solid var(--accent);
+    padding-bottom: 5px;
+    transition: 0.3s ease;
+}
+
+.explore-btn:hover {
+    color: var(--accent);
+    padding-left: 5px;
+}
+
+/* Наведение на карточку */
+.tech-item:hover {
+    transform: translateY(-15px);
+}
+
+.tech-item:hover img {
+    transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+    .tech-item {
+        width: 300px;
+    }
+
+    .tech-reveal-section {
+        padding: 80px 0;
+    }
+}
