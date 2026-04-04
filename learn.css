@@ -229,7 +229,7 @@
 }
 
 .price-table th {
-    background: var(--text-dark);
+
     color: rgb(0, 0, 0);
     font-family: 'Oswald';
     text-transform: uppercase;
