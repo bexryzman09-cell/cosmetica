@@ -196,39 +196,7 @@ body {
 
 
 
-/* --- Новая анимация для кнопки --- */
-.btn-send {
-    position: relative;
-    border: none;
-    overflow: hidden;
-    background: #1a1a1a;
-    z-index: 1;
-    transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
-}
 
-/* Эффект "Волны" при наведении */
-.btn-send::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 300%;
-    height: 300%;
-    background: var(--accent);
-    transition: all 0.7s ease;
-    transform: translate(-50%, -50%) scale(0);
-    border-radius: 50%;
-    z-index: -1;
-}
-
-.btn-send:hover {
-    color: #fff;
-    transform: scale(1.02);
-}
-
-.btn-send:hover::before {
-    transform: translate(-50%, -50%) scale(1);
-}
 
 /* --- Анимация полей ввода (Floating Label эффект) --- */
 .input-group input:focus,
@@ -316,38 +284,8 @@ body {
     box-shadow: 10px 10px 20px rgba(212, 184, 149, 0.05);
 }
 
-/* --- Кнопка с характером --- */
-.btn-send {
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
-    border: none;
-    background: #1a1a1a;
-    transition: color 0.4s;
-}
 
-/* Золотая заливка волной */
-.btn-send::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 300%;
-    height: 300%;
-    background: var(--accent);
-    transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
-    transform: translate(-50%, -50%) scale(0);
-    border-radius: 50%;
-    z-index: -1;
-}
 
-.btn-send:hover {
-    color: #fff;
-}
-
-.btn-send:hover::before {
-    transform: translate(-50%, -50%) scale(1);
-}
 
 /* --- Прыгающие иконки (Bungee) --- */
 .social-icons a {
@@ -389,7 +327,78 @@ body {
         transform: scale(1);
     }
 }
+/* --- Premium Animated Button --- */
+.btn-send {
+    position: relative;
+    padding: 20px 42px;
+    background: #111;
+    color: #d4b895; /* Золотистый текст изначально */
+    border: 1px solid rgba(212, 184, 149, 0.3); /* Тонкая рамка */
+    cursor: pointer;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-size: 14px;
+    overflow: hidden;
+    z-index: 1;
+    transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
 
+/* Заполнение премиальным градиентом */
+.btn-send::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg, 
+        #d4b895, 
+        #f3e5d0, 
+        #d4b895
+    );
+    transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+    z-index: -1;
+}
+
+/* Эффект мерцания (Glow) */
+.btn-send:hover {
+    color: #111;
+    border: 1px solid #d4b895;
+    transform: translateY(-4px);
+    box-shadow: 0 15px 30px rgba(212, 184, 149, 0.25);
+}
+
+.btn-send:hover::before {
+    left: 0;
+}
+
+/* Дополнительный блик, который пробегает при наведении */
+.btn-send::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -60%;
+    width: 20%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.4);
+    transform: rotate(30deg);
+    transition: all 0s;
+    opacity: 0;
+}
+
+.btn-send:hover::after {
+    left: 120%;
+    opacity: 1;
+    transition: all 0.6s column-fill; /* Быстрый блик поверх градиента */
+}
+
+/* Эффект при нажатии */
+.btn-send:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(212, 184, 149, 0.2);
+}
 /* --- Возвращаем персональные цвета при наведении --- */
 
 /* Инстаграм: розовый градиент */
