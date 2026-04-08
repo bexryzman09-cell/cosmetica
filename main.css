@@ -1170,3 +1170,133 @@ a:active {
         min-width: 100%;
     }
 }
+
+/* Полностью изолированный контейнер лоадера */
+#super-cool-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    /* Чистый белый фон, как просил */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 999999;
+    transition: opacity 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
+    /* Это свойство "склеивает" шарики внутри */
+    filter: contrast(20);
+    overflow: hidden;
+}
+
+/* Оболочка для эффекта желе */
+.super-cool-loader__jelly-container {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Общие стили для "капель" */
+.super-cool-loader__blob {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #00f2fe;
+    /* Яркий неоновый цвет */
+    /* Неоновое свечение */
+    box-shadow: 0 0 15px #00f2fe, 0 0 30px #4facfe, 0 0 45px #4facfe;
+    filter: blur(10px);
+    /* Размытие для склейки */
+    animation: super-cool-jelly-move 4s infinite ease-in-out;
+}
+
+/* Разные анимации и цвета для каждой капли */
+.super-cool-loader__blob:nth-child(1) {
+    animation-delay: -1s;
+    background: #4facfe;
+}
+
+.super-cool-loader__blob:nth-child(2) {
+    width: 50px;
+    height: 50px;
+    animation-delay: -2s;
+    background: #ff00de;
+    /* Розовый неон для контраста */
+    box-shadow: 0 0 15px #ff00de, 0 0 30px #ff00de;
+}
+
+.super-cool-loader__blob:nth-child(3) {
+    width: 40px;
+    height: 40px;
+    animation-delay: -3s;
+    background: #00f2fe;
+}
+
+/* Анимация хаотичного движения и слияния */
+@keyframes super-cool-jelly-move {
+
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    20% {
+        transform: translate(30px, -20px) scale(1.1);
+    }
+
+    40% {
+        transform: translate(-20px, 30px) scale(0.9);
+    }
+
+    60% {
+        transform: translate(25px, 25px) scale(1.05);
+    }
+
+    80% {
+        transform: translate(-30px, -15px) scale(0.95);
+    }
+}
+
+/* Стили неонового текста */
+.super-cool-loader__text {
+    margin-top: 40px;
+    font-family: 'Courier New', Courier, monospace;
+    /* Техно-шрифт */
+    font-size: 18px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: #333;
+    /* Убираем эффект contrast(20) от родителя для текста */
+    filter: contrast(1) blur(0);
+    position: relative;
+    z-index: 10;
+}
+
+/* Прыгающие точки в тексте */
+.super-cool-loader__text span {
+    animation: super-cool-text-blink 1.5s infinite;
+}
+
+@keyframes super-cool-text-blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+/* Класс для плавного скрытия через JS */
+#super-cool-loader.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+}
