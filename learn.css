@@ -543,7 +543,6 @@
 .accent-separator {
     width: 40px;
     height: 1px;
-    background: var(--accent);
     margin: 25px auto;
 }
 
@@ -568,12 +567,12 @@
 
 .premium-carousel::before {
     left: 0;
-    background: linear-gradient(to right, white, transparent);
+  
 }
 
 .premium-carousel::after {
     right: 0;
-    background: linear-gradient(to left, white, transparent);
+    
 }
 
 .carousel-track {

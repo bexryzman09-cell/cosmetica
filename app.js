@@ -459,3 +459,66 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+//! (function() {
+// !   document.addEventListener('contextmenu', e => e.preventDefault());
+//!   document.onkeydown = function(e) {
+//     if (e.keyCode == 123 || 
+//        (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74 || e.keyCode == 67)) || 
+//        (e.ctrlKey && e.keyCode == 85)) {
+//       return false;
+//     }
+//   };
+
+//   // 3. "Бесконечный дебаггер" — вешает консоль при открытии
+//   setInterval(function() {
+//     (function(a) {
+//       return (function(a) {
+//         return (Function('Function(arguments[0])(arguments[1])')(a, a));
+//       })(function(a) {
+//         if (a === 'debugger') return true;
+//         return false;
+//       });
+//     })('debugger');
+//   }, 50);
+
+//   // 4. Защита от выделения текста (через JS для надежности)
+//   document.addEventListener('selectstart', e => e.preventDefault());
+  
+//   // 5. Постоянная очистка консоли
+//   setInterval(() => { console.clear(); }, 500);
+// })();
+
+const track = document.querySelector('.carousel-track');
+const nextBtn = document.querySelector('.btn-next');
+const prevBtn = document.querySelector('.btn-prev');
+
+let index = 0;
+
+function updateCarousel() {
+    const cardWidth = document.querySelector('.review-card').offsetWidth + 20;
+    track.style.transform = `translateX(${-index * cardWidth}px)`;
+}
+
+nextBtn.addEventListener('click', () => {
+    const cards = document.querySelectorAll('.review-card');
+    // Ограничиваем индекс, чтобы не листать в пустоту
+    if (index < cards.length - 1) {
+        index++;
+    } else {
+        index = 0; // Зацикливание (возврат в начало)
+    }
+    updateCarousel();
+});
+
+prevBtn.addEventListener('click', () => {
+    if (index > 0) {
+        index--;
+    }
+    updateCarousel();
+});
+
+// Автоматическая прокрутка каждые 5 секунд
+setInterval(() => {
+    nextBtn.click();
+}, 5000);

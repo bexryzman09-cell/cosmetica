@@ -160,7 +160,7 @@ body {
 .img-frame:hover img {
     transform: scale(1.05);
 }
-
+    
 /* --- Stats --- */
 .stats {
     display: flex;
