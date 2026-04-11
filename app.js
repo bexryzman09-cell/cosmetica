@@ -533,11 +533,7 @@ setInterval(() => {
 
 window.addEventListener('load', function () {
     const loader = document.getElementById('super-cool-loader');
-
-    // Добавим искусственную задержку в 1.5 секунды, 
-    // чтобы пользователь точно увидел эту красоту.
-    // Если сайт грузится долго, лоадер будет висеть до упора.
     setTimeout(() => {
         loader.classList.add('is-hidden');
-    }, 1500); // Можешь убрать эту задержку, если хочешь, чтобы он исчезал мгновенно.
+    }, 1500); 
 });
