@@ -551,4 +551,43 @@ window.addEventListener('load', function () {
             bar.style.width = progress + '%';
         }
     }, 200);
-}); 
+});
+
+
+
+
+// FOOTER — лепестки + появление
+const footerBg = document.getElementById('footerBg');
+if (footerBg) {
+    const colors = ['#c49ee0', '#b07fd4', '#e8d5f5', '#9b72b8', '#d4b8e0'];
+    for (let i = 0; i < 14; i++) {
+        const p = document.createElement('div');
+        p.className = 'petal';
+        const size = 8 + Math.random() * 18;
+        p.style.cssText = `
+      width:${size}px;height:${size}px;
+      left:${Math.random() * 100}%;
+      bottom:-10%;
+      background:${colors[Math.floor(Math.random() * colors.length)]};
+      animation-duration:${6 + Math.random() * 8}s;
+      animation-delay:-${Math.random() * 10}s;
+    `;
+        footerBg.appendChild(p);
+    }
+}
+
+const footer = document.querySelector('.footer');
+if (footer) {
+    const footerObs = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) footer.classList.add('in-view'); });
+    }, { threshold: 0.1 });
+    footerObs.observe(footer);
+}
+
+// активная ссылка в mobile-nav
+document.querySelectorAll('.mobile-nav__link').forEach(link => {
+    link.addEventListener('click', () => {
+        document.querySelectorAll('.mobile-nav__link').forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+    });
+});

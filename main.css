@@ -549,10 +549,12 @@ a:active {
     width: 100%;
     padding: 20px 0px;
     margin: 0 auto;
+    display: flex;
 }
 
 .footer__top {
     display: flex;
+   
 }
 
 
@@ -567,9 +569,85 @@ a:active {
 .footer__column {
     display: flex;
     flex-direction: column;
+    gap: 10px;
+}
+
+.footer__title {
+    font-size: 23px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #c49ee0;
+
+    margin-bottom: 0.5rem;
+}
+
+.footer__link {
+  
+    font-size: 15px;
+    color: rgba(232, 213, 245, 0.55);
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s;
+    width: fit-content;
+}
+
+.footer__link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: #c49ee0;
+    transition: width 0.3s ease;
+}
+
+.footer__link:hover::after {
+    width: 100%;
+}
+
+.footer__link:hover {
+    color: #e8d5f5;
 }
 
 
+.footer__logo {
+    border-radius: 50%;
+    border: 2px solid rgba(196, 158, 224, 0.4);
+    animation: logoPulse 3s ease-in-out infinite alternate;
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes logoPulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(196, 158, 224, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 12px rgba(196, 158, 224, 0.1);
+    }
+}
+
+.footer__logo-ring {
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+    border: 1px dashed rgba(196, 158, 224, 0.3);
+    animation: ringRotate 12s linear infinite;
+    z-index: 0;
+}
+
+@keyframes ringRotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
 
 .footer__link {
     text-decoration: none;
