@@ -90,7 +90,6 @@ body {
 
 .service-card {
     background: var(--white);
-    padding: 40px;
     border: 1px solid #efefef;
     transition: var(--transition);
     text-align: center;
@@ -99,9 +98,9 @@ body {
 
 .card-img {
     font-size: 3rem;
-    margin-bottom: 20px;
     transition: var(--transition);
 }
+
 
 .price {
     font-size: 1.4rem;
@@ -235,7 +234,7 @@ body {
 
 .service-card {
     background: var(--white);
-    padding: 30px;
+ 
     border: 1px solid #efefef;
     transition: var(--transition);
     text-align: center;
