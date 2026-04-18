@@ -599,6 +599,80 @@ a:active {
 }
 
 
+
+
+
+
+
+
+
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.ba-modal-full__close {
+    animation: fadeInScale 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+
+
+.ba-modal-full__close {
+    /* Сброс стандартных стилей кнопки */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    outline: none;
+
+    /* Позиционирование (обычно в углу модалки) */
+    position: absolute;
+    top: 20px;
+    right: 20px;
+
+    /* Размер и вид */
+    width: 40px;
+    height: 40px;
+    font-size: 32px;
+    line-height: 1;
+    color: #333;
+
+    /* Центрирование символа &times; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* Плавность анимации */
+    transition: all 0.3s ease;
+    border-radius: 50%;
+}
+
+/* Эффект при наведении */
+.ba-modal-full__close:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    /* Легкий фон */
+    color: #ff4d4d;
+    /* Цвет меняется на красный (или любой другой) */
+    transform: rotate(90deg);
+    /* Поворот при наведении */
+}
+
+/* Эффект при клике */
+.ba-modal-full__close:active {
+    transform: scale(0.9) rotate(90deg);
+}
+
+
+
+
 /* ===== ADAPTIVE DESIGN ===== */
 
 /* Планшеты (до 1024px) */
@@ -1171,132 +1245,510 @@ a:active {
     }
 }
 
-/* Полностью изолированный контейнер лоадера */
-#super-cool-loader {
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#loader {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #ffffff;
-    /* Чистый белый фон, как просил */
+    background: #fff;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
     z-index: 999999;
-    transition: opacity 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
-    /* Это свойство "склеивает" шарики внутри */
-    filter: contrast(20);
-    overflow: hidden;
+    transition: opacity 0.8s ease;
 }
 
-/* Оболочка для эффекта желе */
-.super-cool-loader__jelly-container {
-    position: relative;
-    width: 150px;
-    height: 150px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+#loader.is-hidden {
+    opacity: 0;
+    pointer-events: none;
 }
 
-/* Общие стили для "капель" */
-.super-cool-loader__blob {
-    position: absolute;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: #00f2fe;
-    /* Яркий неоновый цвет */
-    /* Неоновое свечение */
-    box-shadow: 0 0 15px #00f2fe, 0 0 30px #4facfe, 0 0 45px #4facfe;
-    filter: blur(10px);
-    /* Размытие для склейки */
-    animation: super-cool-jelly-move 4s infinite ease-in-out;
-}
-
-/* Разные анимации и цвета для каждой капли */
-.super-cool-loader__blob:nth-child(1) {
-    animation-delay: -1s;
-    background: #4facfe;
-}
-
-.super-cool-loader__blob:nth-child(2) {
-    width: 50px;
-    height: 50px;
-    animation-delay: -2s;
-    background: #ff00de;
-    /* Розовый неон для контраста */
-    box-shadow: 0 0 15px #ff00de, 0 0 30px #ff00de;
-}
-
-.super-cool-loader__blob:nth-child(3) {
-    width: 40px;
-    height: 40px;
-    animation-delay: -3s;
-    background: #00f2fe;
-}
-
-/* Анимация хаотичного движения и слияния */
-@keyframes super-cool-jelly-move {
-
-    0%,
-    100% {
-        transform: translate(0, 0) scale(1);
-    }
-
-    20% {
-        transform: translate(30px, -20px) scale(1.1);
-    }
-
-    40% {
-        transform: translate(-20px, 30px) scale(0.9);
-    }
-
-    60% {
-        transform: translate(25px, 25px) scale(1.05);
-    }
-
-    80% {
-        transform: translate(-30px, -15px) scale(0.95);
-    }
-}
-
-/* Стили неонового текста */
-.super-cool-loader__text {
-    margin-top: 40px;
-    font-family: 'Courier New', Courier, monospace;
-    /* Техно-шрифт */
-    font-size: 18px;
-    letter-spacing: 5px;
+.ldr-label {
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    letter-spacing: 3px;
     text-transform: uppercase;
-    color: #333;
-    /* Убираем эффект contrast(20) от родителя для текста */
-    filter: contrast(1) blur(0);
-    position: relative;
-    z-index: 10;
+    color: #9b72b8;
 }
 
-/* Прыгающие точки в тексте */
-.super-cool-loader__text span {
-    animation: super-cool-text-blink 1.5s infinite;
+.plunger-anim {
+    animation: plungerPush 2.2s ease-in-out infinite;
 }
 
-@keyframes super-cool-text-blink {
-
-    0%,
-    100% {
-        opacity: 1;
+@keyframes plungerPush {
+    0% {
+        transform: translateX(0);
     }
 
     50% {
+        transform: translateX(38px);
+    }
+
+    60% {
+        transform: translateX(38px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.liquid-anim {
+    animation: liquidShrink 2.2s ease-in-out infinite;
+    transform-origin: right center;
+}
+
+@keyframes liquidShrink {
+    0% {
+        transform: scaleX(1);
+    }
+
+    50% {
+        transform: scaleX(0.05);
+    }
+
+    60% {
+        transform: scaleX(0.05);
+    }
+
+    100% {
+        transform: scaleX(1);
+    }
+}
+
+.drip-anim {
+    animation: dripOut 2.2s ease-in-out infinite;
+}
+
+@keyframes dripOut {
+
+    0%,
+    40% {
+        opacity: 0;
+        transform: translateY(0);
+    }
+
+    55% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    80% {
+        opacity: 1;
+        transform: translateY(18px);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(22px);
+    }
+}
+
+.glow-dot {
+    animation: glowPulse 1.1s ease-in-out infinite alternate;
+}
+
+@keyframes glowPulse {
+    0% {
+        r: 3;
+        opacity: 0.5;
+    }
+
+    100% {
+        r: 5;
+        opacity: 1;
+    }
+}
+
+.tick {
+    animation: tickFade 2.2s ease-in-out infinite;
+    opacity: 0;
+}
+
+.tick:nth-child(1) {
+    animation-delay: 0.3s;
+}
+
+.tick:nth-child(2) {
+    animation-delay: 0.9s;
+}
+
+.tick:nth-child(3) {
+    animation-delay: 1.5s;
+}
+
+@keyframes tickFade {
+
+    0%,
+    100% {
+        opacity: 0;
+    }
+
+    40% {
+        opacity: 0.5;
+    }
+}
+
+#loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #faf7ff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.8rem;
+    z-index: 999999;
+    transition: opacity 0.9s ease;
+}
+
+#loader.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Плунжер */
+.plunger-push {
+    animation: plungerAnim 2.8s ease-in-out infinite;
+}
+
+@keyframes plungerAnim {
+    0% {
+        transform: translateX(0);
+    }
+
+    75% {
+        transform: translateX(52px);
+    }
+
+    88% {
+        transform: translateX(52px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* Жидкость */
+.liquid-shrink {
+    animation: liquidAnim 2.8s ease-in-out infinite;
+    transform-origin: right center;
+}
+
+@keyframes liquidAnim {
+    0% {
+        transform: scaleX(1);
+    }
+
+    75% {
+        transform: scaleX(0.02);
+    }
+
+    88% {
+        transform: scaleX(0.02);
+    }
+
+    100% {
+        transform: scaleX(1);
+    }
+}
+
+/* Капля 1 — большая */
+.drip1 {
+    animation: drip1Anim 2.8s ease-in-out infinite;
+}
+
+@keyframes drip1Anim {
+
+    0%,
+    62% {
+        opacity: 0;
+        transform: translateY(0) scaleY(1);
+    }
+
+    66% {
+        opacity: 1;
+        transform: translateY(0) scaleY(1);
+    }
+
+    78% {
+        opacity: 1;
+        transform: translateY(28px) scaleY(1.2);
+    }
+
+    84% {
+        opacity: 0;
+        transform: translateY(36px) scaleY(0.6);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(0) scaleY(1);
+    }
+}
+
+/* Капля 2 — средняя */
+.drip2 {
+    animation: drip2Anim 2.8s ease-in-out infinite;
+}
+
+@keyframes drip2Anim {
+
+    0%,
+    70% {
+        opacity: 0;
+        transform: translateY(0) scaleY(1);
+    }
+
+    74% {
+        opacity: 1;
+        transform: translateY(0) scaleY(1);
+    }
+
+    84% {
+        opacity: 1;
+        transform: translateY(22px) scaleY(1.1);
+    }
+
+    90% {
+        opacity: 0;
+        transform: translateY(30px) scaleY(0.5);
+    }
+
+    100% {
         opacity: 0;
     }
 }
 
-/* Класс для плавного скрытия через JS */
-#super-cool-loader.is-hidden {
+/* Капля 3 — маленькая */
+.drip3 {
+    animation: drip3Anim 2.8s ease-in-out infinite;
+}
+
+@keyframes drip3Anim {
+
+    0%,
+    76% {
+        opacity: 0;
+        transform: translateY(0);
+    }
+
+    79% {
+        opacity: 0.8;
+        transform: translateY(0);
+    }
+
+    88% {
+        opacity: 0.8;
+        transform: translateY(16px);
+    }
+
+    93% {
+        opacity: 0;
+        transform: translateY(22px);
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+/* Пульс на кончике иглы */
+.tip-glow {
+    animation: tipGlow 0.6s ease-in-out infinite alternate;
+}
+
+@keyframes tipGlow {
+    0% {
+        r: 2;
+        opacity: 0.3;
+    }
+
+    100% {
+        r: 5;
+        opacity: 0.9;
+    }
+}
+
+/* Деления на шприце */
+.scale-mark {
+    animation: markBlink 2.8s ease-in-out infinite;
+    opacity: 0.15;
+}
+
+.scale-mark:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.scale-mark:nth-child(2) {
+    animation-delay: 0.25s;
+}
+
+.scale-mark:nth-child(3) {
+    animation-delay: 0.5s;
+}
+
+.scale-mark:nth-child(4) {
+    animation-delay: 0.75s;
+}
+
+@keyframes markBlink {
+
+    0%,
+    100% {
+        opacity: 0.15;
+    }
+
+    40% {
+        opacity: 0.8;
+    }
+}
+
+/* Пузырьки */
+.bubble {
+    animation: bubbleUp 2.8s ease-in infinite;
     opacity: 0;
-    pointer-events: none;
+}
+
+.bubble:nth-child(1) {
+    animation-delay: 0.3s;
+}
+
+.bubble:nth-child(2) {
+    animation-delay: 1s;
+}
+
+.bubble:nth-child(3) {
+    animation-delay: 1.7s;
+}
+
+@keyframes bubbleUp {
+    0% {
+        transform: translateY(0);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.6;
+    }
+
+    80% {
+        opacity: 0.3;
+    }
+
+    100% {
+        transform: translateY(-34px);
+        opacity: 0;
+    }
+}
+
+/* Искры */
+.spark {
+    animation: sparkTwinkle 2s ease-in-out infinite;
+    opacity: 0;
+    transform-origin: center;
+}
+
+.spark:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.spark:nth-child(2) {
+    animation-delay: 0.8s;
+}
+
+.spark:nth-child(3) {
+    animation-delay: 1.5s;
+}
+
+@keyframes sparkTwinkle {
+
+    0%,
+    100% {
+        opacity: 0;
+        transform: scale(0.2) rotate(0deg);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1) rotate(45deg);
+    }
+}
+
+/* Прогресс-бар */
+.progress-wrap {
+    width: 220px;
+    height: 4px;
+    background: #e8d5f5;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: #9b72b8;
+    border-radius: 2px;
+    transition: width 0.1s linear;
+}
+
+/* Надпись */
+.label-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.lbl {
+    font-family: 'Georgia', serif;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #9b72b8;
+    text-align: center;
+}
+
+.dots span {
+    display: inline-block;
+    font-size: 18px;
+    color: #c49ee0;
+    animation: dotBounce 1.2s ease-in-out infinite;
+}
+
+.dots span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.dots span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes dotBounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+        opacity: 0.3;
+    }
+
+    50% {
+        transform: translateY(-6px);
+        opacity: 1;
+    }
 }

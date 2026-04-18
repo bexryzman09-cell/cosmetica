@@ -530,10 +530,25 @@ setInterval(() => {
 
 
 
-
 window.addEventListener('load', function () {
-    const loader = document.getElementById('super-cool-loader');
-    setTimeout(() => {
-        loader.classList.add('is-hidden');
-    }, 1500); 
-});
+    const loader = document.getElementById('loader');
+    const bar = document.getElementById('progress-bar');
+    let progress = 0;
+
+    const interval = setInterval(function () {
+        progress += Math.random() * 18;
+        if (progress >= 100) {
+            progress = 100;
+            bar.style.width = '100%';
+            clearInterval(interval);
+            setTimeout(function () {
+                loader.classList.add('is-hidden');
+                setTimeout(function () {
+                    loader.style.display = 'none';
+                }, 900);
+            }, 300);
+        } else {
+            bar.style.width = progress + '%';
+        }
+    }, 200);
+}); 
