@@ -1,4 +1,4 @@
-/* Переменные */
+
 :root {
     --accent: #d4b895;
     --dark: #1a1a1a;
@@ -117,9 +117,7 @@ body {
     border-color: var(--accent);
 }
 
-.service-card:hover .card-img {
-    transform: scale(1.2) rotate(5deg);
-}
+
 
 .btn-order {
     width: 100%;
@@ -421,3 +419,45 @@ body {
     transform: scale(1.1);
 }
 
+
+
+
+.card-img {
+    font-size: 3rem;
+    /* оставь для обратной совместимости */
+    margin-bottom: 20px;
+    overflow: hidden;
+    border-radius: 4px;
+    height: 200px;
+    /* можешь подобрать нужную высоту */
+}
+
+.card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: var(--transition);
+}
+
+.service-card:hover .card-img img {
+    transform: scale(1.08);
+}
+
+.service-card {
+    --rx: 0deg;
+    --ry: 0deg;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.service-card.visible {
+    opacity: 1;
+    transform: perspective(1000px) rotateX(var(--rx)) rotateY(var(--ry)) translateY(0);
+    transition: opacity 0.6s ease-out,
+        transform 0.6s ease-out,
+        /* быстрый отклик на движение мыши: */
+        --rx 0.1s ease-out,
+        --ry 0.1s ease-out;
+}

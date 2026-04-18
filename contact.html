@@ -45,11 +45,21 @@
                 <div class="contact-info">
                     <div class="info-item">
                         <h3>Адрес</h3>
-                        <p>г. Санкт-Петербург, ул. Лиговский-проспект, 12</p>
+                        <a href="https://www.google.com/maps/place/%D0%90%D1%82%D0%BB%D0%B0%D0%BD%D1%82+(6,+8,+12+%D0%BA%D0%BE%D1%80%D0%BF%D1%83%D1%81)/@59.9251849,30.3605283,20.99z/data=!4m6!3m5!1s0x469631b08e482ff5:0xcca78b30d21605d2!8m2!3d59.925135!4d30.360806!16s%2Fg%2F1td0f4vw?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D"
+                            target="_blank" class="address-link">
+                            <span class="address-icon">📍</span>
+                            <p>г. Санкт-Петербург, Лиговский пр-т, 50, к. 6</p>
+                        </a>
                     </div>
                     <div class="info-item">
                         <h3>Телефон</h3>
-                        <p>+7 900 123 45 67</p>
+                        <a href="tel:+79319778700" class="phone-link">+7 931 977 87 00</a>
+                    </div>
+                    <div class="info-item">
+                        <h3>Режим работы</h3>
+                        <p>Пн — Сб: 10:00 — 21:00</p>
+                        <p class="work-status">Понедельник-Суббота</p>
+                        <small class="holiday-note">* В праздничные дни прием не ведется</small>
                     </div>
                     <div class="info-item">
                         <h3>Соцсети</h3>
@@ -72,49 +82,52 @@
 
 
 
-              <form id="tg-form" class="reveal contact-form">
-    <div class="input-group">
-        <input type="text" id="name" name="name" placeholder="Ваше имя" required>
-    </div>
+                <form id="tg-form" class="reveal contact-form">
+                    <div class="input-group">
+                        <input type="text" id="name" name="name" placeholder="Ваше имя" required>
+                    </div>
 
-    <div class="input-group">
-        <input type="tel" id="phone" name="phone" placeholder="Номер телефона (+7...)" inputmode="tel" required>
-    </div>
+                    <div class="input-group">
+                        <input type="tel" id="phone" name="phone" placeholder="Номер телефона (+7...)" inputmode="tel"
+                            required>
+                    </div>
 
-    <div class="input-group">
-        <select id="service" name="service" required>
-            <option value="" disabled selected>Выберите услугу</option>
-            <optgroup label="Взгляд">
-                <option value="Наращивание ресниц">Наращивание ресниц (2D/3D)</option>
-                <option value="Ламинирование ресниц">Ламинирование ресниц</option>
-                <option value="Архитектура бровей">Архитектура бровей</option>
-            </optgroup>
-            <optgroup label="Косметология">
-                <option value="Чистка лица">Чистка лица</option>
-                <option value="Пилинг">Пилинг</option>
-                <option value="Мезотерапия">Мезотерапия</option>
-            </optgroup>
-        </select>
-    </div>
+                    <div class="input-group">
+                        <select id="service" name="service" required>
+                            <option value="" disabled selected>Выберите услугу</option>
+                            <optgroup label="Взгляд">
+                                <option value="Наращивание ресниц">Наращивание ресниц (2D/3D)</option>
+                                <option value="Ламинирование ресниц">Ламинирование ресниц</option>
+                                <option value="Архитектура бровей">Архитектура бровей</option>
+                            </optgroup>
+                            <optgroup label="Косметология">
+                                <option value="Чистка лица">Чистка лица</option>
+                                <option value="Пилинг">Пилинг</option>
+                                <option value="Мезотерапия">Мезотерапия</option>
+                            </optgroup>
+                        </select>
+                    </div>
 
-    <div class="input-row">
-        <div class="input-group">
-            <input type="date" id="date" required>
-        </div>
-        <div class="input-group">
-            <select id="time" required>
-                <option value="" disabled selected>Время</option>
-            </select>
-        </div>
-    </div>
+                    <div class="input-row">
+                        <div class="input-group">
+                            <input type="date" id="date" required>
+                        </div>
+                        <div class="input-group">
+                            <select id="time" required>
+                                <option value="" disabled selected>Время</option>
+                            </select>
+                        </div>
+                    </div>
 
-    <div class="input-group">
-        <textarea id="message" name="message" placeholder="Дополнительные пожелания"></textarea>
-    </div>
+                    <div class="input-group">
+                        <textarea id="message" name="message" placeholder="Дополнительные пожелания"></textarea>
+                    </div>
 
-    <button type="submit" id="submit-btn" class="btn-send">Записаться к Шоире</button>
-    <div id="status-msg"></div>
-</form>
+                    <button type="submit" id="submit-btn" class="btn-send">
+
+                        Записаться к Шоире</button>
+                    <div id="status-msg"></div>
+                </form>
 
 
             </div>

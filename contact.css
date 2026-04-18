@@ -327,13 +327,16 @@ body {
         transform: scale(1);
     }
 }
+
 /* --- Premium Animated Button --- */
 .btn-send {
     position: relative;
     padding: 20px 42px;
     background: #111;
-    color: #d4b895; /* Золотистый текст изначально */
-    border: 1px solid rgba(212, 184, 149, 0.3); /* Тонкая рамка */
+    color: #d4b895;
+    /* Золотистый текст изначально */
+    border: 1px solid rgba(212, 184, 149, 0.3);
+    /* Тонкая рамка */
     cursor: pointer;
     font-weight: 700;
     text-transform: uppercase;
@@ -352,12 +355,10 @@ body {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(
-        90deg, 
-        #d4b895, 
-        #f3e5d0, 
-        #d4b895
-    );
+    background: linear-gradient(90deg,
+            #d4b895,
+            #f3e5d0,
+            #d4b895);
     transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
     z-index: -1;
 }
@@ -391,7 +392,8 @@ body {
 .btn-send:hover::after {
     left: 120%;
     opacity: 1;
-    transition: all 0.6s column-fill; /* Быстрый блик поверх градиента */
+    transition: all 0.6s column-fill;
+    /* Быстрый блик поверх градиента */
 }
 
 /* Эффект при нажатии */
@@ -399,6 +401,7 @@ body {
     transform: translateY(-1px);
     box-shadow: 0 5px 10px rgba(212, 184, 149, 0.2);
 }
+
 /* --- Возвращаем персональные цвета при наведении --- */
 
 /* Инстаграм: розовый градиент */
@@ -460,6 +463,8 @@ button:hover~.cursor-follower {
     /* Отступ между датой и временем */
 }
 
+
+
 .input-row .input-group {
     flex: 1;
 }
@@ -475,4 +480,126 @@ button:hover~.cursor-follower {
 /* Исправляем визуальное слипание, если у input-group были лишние стили */
 .input-group {
     width: 100%;
+}
+
+/* Основной текст времени */
+.info-item p {
+    margin: 5px 0;
+    color: #333;
+    font-size: 1rem;
+}
+
+/* Выделение выходного (воскресенья) */
+.work-status {
+    color: #e74c3c;
+    /* Мягкий красный цвет */
+    font-weight: 500;
+}
+
+/* Примечание про праздники */
+.holiday-note {
+    display: block;
+    margin-top: 5px;
+    color: #888;
+    font-style: italic;
+    font-size: 0.85rem;
+}
+
+/* Кнопка (если нужно поправить стиль) */
+.btn-send {
+    background-color: #1a1a1a;
+    color: white;
+    padding: 14px 28px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.btn-send:hover {
+    background-color: #444;
+}
+
+/* Стили для ссылки телефона */
+.phone-link {
+    display: inline-block;
+    color: #333;
+    /* Цвет как у остального текста */
+    text-decoration: none;
+    /* Убираем подчеркивание */
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+/* Эффект при наведении */
+.phone-link:hover {
+    color: #007bff;
+    /* Цвет меняется на синий (или ваш акцентный) */
+    transform: translateX(5px);
+    /* Легкий сдвиг вправо */
+}
+
+/* Стили для режима работы (с учетом выходных) */
+.info-item p {
+    margin: 5px 0;
+}
+
+.work-status {
+    color: #d9534f;
+    /* Красный оттенок для выходного */
+    font-weight: bold;
+}
+
+.holiday-note {
+    font-size: 0.8rem;
+    color: #888;
+    display: block;
+    margin-top: 4px;
+}
+
+
+
+/* Стили для контейнера-ссылки */
+.address-link {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    text-decoration: none; /* Убираем подчеркивание */
+    color: inherit;
+    transition: all 0.3s ease;
+    padding: 10px;
+    margin-left: -10px; /* Чтобы выровнять текст по сетке */
+    border-radius: 8px;
+}
+
+/* Иконка локации */
+.address-icon {
+    font-size: 1.2rem;
+    filter: grayscale(1); /* Сделаем её сначала ч/б */
+    transition: filter 0.3s ease;
+}
+
+/* Текст адреса внутри ссылки */
+.address-link p {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.4;
+    color: #444;
+    border-bottom: 1px dashed #ccc; /* Пунктир снизу вместо сплошной линии */
+}
+
+/* Эффект при наведении */
+.address-link:hover {
+    background-color: rgba(0, 0, 0, 0.03); /* Легкий фон */
+}
+
+.address-link:hover .address-icon {
+    filter: grayscale(0); /* Иконка становится цветной */
+}
+
+.address-link:hover p {
+    color: #000;
+    border-bottom-color: #000; /* Линия становится ярче */
 }
