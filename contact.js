@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // 1. Генерация времени
     if (timeSelect) {
-        for (let h = 9; h <= 20; h++) {
+        for (let h = 9; h <= 21; h++) {
             [0, 30].forEach(m => {
                 if (h === 20 && m > 0) return;
                 let opt = document.createElement('option');
