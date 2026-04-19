@@ -109,22 +109,44 @@ document.addEventListener('DOMContentLoaded', function () {
         checkForm();
     });
 
-    form.addEventListener('input', checkForm);
+    form.addEventListener('input', updateAllSelects);
+
+    // Получить все выбранные услуги кроме текущего select
+    function getSelectedServices(exceptSelect = null) {
+        const selects = servicesContainer.querySelectorAll('.service-select');
+        return [...selects]
+            .filter(s => s !== exceptSelect && s.value !== '')
+            .map(s => s.value);
+    }
+
+    // Обновить опции во всех select — скрыть уже выбранные
+    function updateAllSelects() {
+        const selects = servicesContainer.querySelectorAll('.service-select');
+        selects.forEach(sel => {
+            const taken = getSelectedServices(sel);
+            [...sel.options].forEach(opt => {
+                if (opt.value === '') return;
+                opt.disabled = taken.includes(opt.value);
+                opt.style.color = taken.includes(opt.value) ? '#ccc' : '';
+            });
+        });
+        checkForm();
+    }
 
     // Добавить ещё услугу
     addServiceBtn.addEventListener('click', () => {
         const row = document.createElement('div');
         row.className = 'input-group service-row';
         row.innerHTML = `
-                <select class="service-select" required>${serviceOptions}</select>
-                <button type="button" class="remove-service" title="Удалить">×</button>`;
+        <select class="service-select" required>${serviceOptions}</select>
+        <button type="button" class="remove-service" title="Удалить">×</button>`;
         row.querySelector('.remove-service').addEventListener('click', () => {
             row.remove();
-            checkForm();
+            updateAllSelects();
         });
-        row.querySelector('.service-select').addEventListener('change', checkForm);
+        row.querySelector('.service-select').addEventListener('change', updateAllSelects);
         servicesContainer.appendChild(row);
-        checkForm();
+        updateAllSelects();
     });
 
     // Отправка
