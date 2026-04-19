@@ -1,4 +1,3 @@
-
 :root {
     --accent: #d4b895;
     --dark: #1a1a1a;
@@ -8,9 +7,27 @@
     --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+:root {
+    --rose: #c97d8c;
+    --rose-lt: #fdf7f8;
+    --ink: #1a1520;
+    --mist: #f8f6f4;
+    --border: rgba(0, 0, 0, 0.08);
+    --font-d: 'Cormorant Garamond', serif;
+    --font-s: 'DM Sans', sans-serif;
+   
+}
+
+body {
+    font-family: var(--font-s);
+    background: var(--white);
+    color: var(--ink);
+    line-height: 1.6;
+}
+
+
 body {
     margin: 0;
-    font-family: "Iosevka Charon", monospace;
     background-color: var(--white);
     color: var(--dark);
 }
@@ -234,7 +251,7 @@ body {
 
 .service-card {
     background: var(--white);
- 
+
     border: 1px solid #efefef;
     transition: var(--transition);
     text-align: center;

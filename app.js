@@ -599,3 +599,17 @@ document.querySelectorAll('.mobile-nav__link').forEach(link => {
         link.classList.add('active');
     });
 });
+
+
+document.querySelectorAll('.faq__q').forEach(button => {
+    button.addEventListener('click', () => {
+        const item = button.parentElement;
+
+        // Закрыть другие открытые вопросы (опционально)
+        document.querySelectorAll('.faq__item').forEach(other => {
+            if (other !== item) other.classList.remove('open');
+        });
+
+        item.classList.toggle('open');
+    });
+});

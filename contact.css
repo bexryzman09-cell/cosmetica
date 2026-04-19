@@ -1,6 +1,23 @@
-body {
-    font-family: "Iosevka Charon", monospace;
+:root {
+    --rose: #c97d8c;
+    --rose-lt: #fdf7f8;
+    --ink: #1a1520;
+    --mist: #f8f6f4;
+    --white: #ffffff;
+    --gray: #7a7875;
+    --border: rgba(0, 0, 0, 0.08);
+    --font-d: 'Cormorant Garamond', serif;
+    --font-s: 'DM Sans', sans-serif;
+    --transition: .35s cubic-bezier(.4, 0, .2, 1);
 }
+
+body {
+    font-family: var(--font-s);
+    background: var(--white);
+    color: var(--ink);
+    line-height: 1.6;
+}
+
 
 .contact-page {
     background: #fff;
