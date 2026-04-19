@@ -528,11 +528,19 @@ setInterval(() => {
 
 
 
-
-
 window.addEventListener('load', function () {
     const loader = document.getElementById('loader');
     const bar = document.getElementById('progress-bar');
+
+    // Если уже заходил в этой сессии — скрываем загрузку сразу
+    if (sessionStorage.getItem('loaderShown')) {
+        loader.style.display = 'none';
+        return;
+    }
+
+    // Помечаем что загрузка уже была показана
+    sessionStorage.setItem('loaderShown', 'true');
+
     let progress = 0;
 
     const interval = setInterval(function () {

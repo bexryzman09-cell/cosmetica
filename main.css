@@ -554,7 +554,7 @@ a:active {
 
 .footer__top {
     display: flex;
-   
+
 }
 
 
@@ -583,7 +583,7 @@ a:active {
 }
 
 .footer__link {
-  
+
     font-size: 15px;
     color: rgba(232, 213, 245, 0.55);
     text-decoration: none;
@@ -610,6 +610,7 @@ a:active {
 .footer__link:hover {
     color: #e8d5f5;
 }
+
 
 
 .footer__logo {

@@ -92,47 +92,48 @@
                             required>
                     </div>
 
-                    <div class="input-group">
-                        <select id="service" name="service" required>
-                            <option value="" disabled selected>Выберите услугу</option>
-                            <optgroup label="Косметология">
-                                <option value="Чистка лица">Комбинированная чистка лица</option>
-                                <option value="Пилинг">Пилинг PRX-T33</option>
-                                <option value="Мезотерапия">Ботулинотерапия</option>
-
-
-
-                                <option value="Мезотерапия">Карбокситерапия</option>
-                                <option value="Мезотерапия">Мезотерапия</option>
-                                <option value="Мезотерапия">Биоревитализация</option>
-                                <option value="Мезотерапия">Криомассаж</option>
-                                <option value="Мезотерапия">RF-лифтинг</option>
-                                <option value="Мезотерапия">Фракционная мезотерапия</option>
-                                <option value="Мезотерапия">Биоревитализация BioGel RED</option>
-                                <option value="Мезотерапия">BioGel MONACO терапия</option>
-                                <option value="Мезотерапия">Контурная пластика губ</option>
-                            </optgroup>
-                        </select>
-                    </div>
-
-                    <div class="input-row">
-                        <div class="input-group">
-                            <input type="date" id="date" required>
-                        </div>
-                        <div class="input-group">
-                            <select id="time" required>
-                                <option value="" disabled selected>Время</option>
+                    <div id="services-container">
+                        <div class="input-group service-row">
+                            <select class="service-select" required>
+                                <option value="" disabled selected>Выберите услугу</option>
+                                <optgroup label="Косметология">
+                                    <option value="Комбинированная чистка лица">Комбинированная чистка лица</option>
+                                    <option value="Пилинг PRX-T33">Пилинг PRX-T33</option>
+                                    <option value="Ботулинотерапия">Ботулинотерапия</option>
+                                    <option value="Карбокситерапия">Карбокситерапия</option>
+                                    <option value="Мезотерапия">Мезотерапия</option>
+                                    <option value="Биоревитализация">Биоревитализация</option>
+                                    <option value="Криомассаж">Криомассаж</option>
+                                    <option value="RF-лифтинг">RF-лифтинг</option>
+                                    <option value="Фракционная мезотерапия">Фракционная мезотерапия</option>
+                                    <option value="Биоревитализация BioGel RED">Биоревитализация BioGel RED</option>
+                                    <option value="BioGel MONACO терапия">BioGel MONACO терапия</option>
+                                    <option value="Контурная пластика губ">Контурная пластика губ</option>
+                                </optgroup>
                             </select>
                         </div>
                     </div>
+
+                    <button type="button" id="add-service-btn" class="btn-add-service" style="display:none">
+                        + Выбрать ещё услугу
+                    </button>
 
                     <div class="input-group">
                         <textarea id="message" name="message" placeholder="Дополнительные пожелания"></textarea>
                     </div>
 
-                    <button type="submit" id="submit-btn" class="btn-send">
-
-                        Записаться к Шоире</button>
+                    <button type="submit" id="submit-btn" class="btn-inject" style="display:none">
+                        <div class="fill"></div>
+                        <span class="label">
+                            <svg class="needle-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.8">
+                                <line x1="18" y1="2" x2="22" y2="6" />
+                                <path d="M4 20L2 22M14 4l-10 10 4 4 10-10-4-4z" />
+                                <path d="M16 8l-8 8" />
+                            </svg>
+                            Записаться к Шоире
+                        </span>
+                    </button>
                     <div id="status-msg"></div>
                 </form>
 
