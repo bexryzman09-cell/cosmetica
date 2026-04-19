@@ -737,15 +737,14 @@ button:hover~.cursor-follower {
     transform: rotate(-30deg) scale(1.2);
 }
 
-/* Тост */
 .toast {
     position: fixed;
-    top: 24px;
+    top: 20px;
     left: 50%;
-    transform: translateX(-50%) translateY(-80px);
+    transform: translateX(-50%) translateY(-120px);
     background: #1a1a1a;
     color: #fff;
-    padding: 14px 28px;
+    padding: 13px 24px;
     border-radius: 50px;
     font-size: 14px;
     font-weight: 500;
@@ -757,11 +756,33 @@ button:hover~.cursor-follower {
     display: flex;
     align-items: center;
     gap: 10px;
+    max-width: calc(100vw - 32px);
+    white-space: normal;
+    text-align: center;
+    line-height: 1.4;
 }
 
 .toast.show {
     transform: translateX(-50%) translateY(0);
     opacity: 1;
+}
+
+/* Мобильные */
+@media (max-width: 480px) {
+    .toast {
+        top: auto;
+        bottom: 24px;
+        transform: translateX(-50%) translateY(120px);
+        font-size: 13px;
+        padding: 12px 20px;
+        border-radius: 16px;
+        width: calc(100vw - 48px);
+        justify-content: center;
+    }
+
+    .toast.show {
+        transform: translateX(-50%) translateY(0);
+    }
 }
 
 /* Капли и кольцо */
