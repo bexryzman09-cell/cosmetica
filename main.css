@@ -1882,3 +1882,180 @@ a:active {
 .ba-slider__btn.next:hover {
     transform: translateY(-50%) scale(1.12) translateX(2px);
 }
+
+
+
+
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --rose: #c97d8c;
+    --rose-lt: #fdf7f8;
+    --ink: #1a1520;
+    --mist: #f8f6f4;
+    --white: #ffffff;
+    --gray: #7a7875;
+    --border: rgba(0, 0, 0, 0.08);
+    --font-d: 'Cormorant Garamond', serif;
+    --font-s: 'DM Sans', sans-serif;
+    --transition: .35s cubic-bezier(.4, 0, .2, 1);
+}
+
+body {
+    font-family: var(--font-s);
+    background: var(--white);
+    color: var(--ink);
+    line-height: 1.6;
+}
+
+.section {
+    padding: 100px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-tag {
+    display: block;
+    text-align: center;
+    font-size: .7rem;
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: 10px;
+}
+
+.section-title {
+    text-align: center;
+    font-family: var(--font-d);
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 300;
+    margin-bottom: 50px;
+}
+
+/* ──────────── 4 ШАГА (PROCESS) ──────────── */
+.process__steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.process__step {
+    background: var(--white);
+    padding: 50px 35px;
+    transition: var(--transition);
+}
+
+.process__step:hover {
+    background: var(--rose-lt);
+}
+
+.process__step-num {
+    font-family: var(--font-d);
+    font-size: 3.5rem;
+    font-weight: 300;
+    color: var(--rose);
+    opacity: 0.3;
+    line-height: 1;
+    margin-bottom: 20px;
+}
+
+.process__step-title {
+    font-family: var(--font-d);
+    font-size: 1.4rem;
+    font-weight: 400;
+    margin-bottom: 12px;
+}
+
+.process__step-text {
+    font-size: .9rem;
+    color: var(--gray);
+}
+
+/* ──────────── FAQ ──────────── */
+.faq__list {
+    max-width: 800px;
+    margin: 0 auto;
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.faq__item {
+    border-bottom: 1px solid var(--border);
+}
+
+.faq__item:last-child {
+    border-bottom: none;
+}
+
+.faq__q {
+    width: 100%;
+    background: var(--white);
+    border: none;
+    padding: 25px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    font-family: var(--font-s);
+    font-size: 1rem;
+    color: var(--ink);
+    text-align: left;
+    transition: var(--transition);
+}
+
+.faq__q:hover {
+    background: var(--rose-lt);
+}
+
+.faq__q-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 1px solid var(--rose);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--rose);
+    transition: var(--transition);
+    flex-shrink: 0;
+}
+
+.faq__item.open .faq__q-icon {
+    background: var(--rose);
+    color: var(--white);
+    transform: rotate(45deg);
+}
+
+.faq__a {
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.4s ease-out;
+    background: var(--white);
+}
+
+.faq__item.open .faq__a {
+    max-height: 500px;
+}
+
+.faq__a-inner {
+    padding: 0 30px 25px;
+    font-size: .95rem;
+    color: var(--gray);
+    line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+    .process__steps {
+        grid-template-columns: 1fr;
+    }
+}
