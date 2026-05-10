@@ -627,33 +627,4 @@ window.addEventListener('load', function () {
     }
 });
 
-// Отслеживание изменения ориентации
-window.addEventListener('orientationchange', function () {
-    const overlay = document.getElementById('rotateOverlay');
-    if (overlay) {
-        // Если устройство перевернули в альбомную ориентацию
-        if (window.matchMedia("(orientation: landscape)").matches) {
-            overlay.classList.add('active'); // Показываем оверлей
-        } else {
-            overlay.classList.remove('active'); // Скрываем в портретной
-        }
-    }
-});
-function checkOrientation() {
-    const overlay = document.getElementById('rotateOverlay');
-    if (!overlay) return;
 
-    const isLandscape = window.matchMedia("(orientation: landscape)").matches;
-
-    if (isLandscape) {
-        overlay.classList.add('active');
-    } else {
-        overlay.classList.remove('active');
-    }
-}
-
-// Слушаем изменения
-window.addEventListener('resize', checkOrientation);
-
-// Проверяем при загрузке
-checkOrientation();
