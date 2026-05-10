@@ -613,3 +613,29 @@ document.querySelectorAll('.faq__q').forEach(button => {
         item.classList.toggle('open');
     });
 });
+
+
+
+
+        // Плавное появление overlay при загрузке страницы
+        window.addEventListener('load', function() {
+            const overlay = document.getElementById('rotateOverlay');
+            if (overlay && window.matchMedia("(max-width: 768px) and (orientation: portrait)").matches) {
+                setTimeout(() => {
+                    overlay.classList.add('active');
+                }, 100);
+            }
+        });
+
+        // Отслеживание изменения ориентации
+        window.addEventListener('orientationchange', function() {
+            const overlay = document.getElementById('rotateOverlay');
+            if (overlay) {
+                if (window.matchMedia("(orientation: landscape)").matches) {
+                    overlay.classList.remove('active');
+                } else {
+                    overlay.classList.add('active');
+                }
+            }
+        });
+    
