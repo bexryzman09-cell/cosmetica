@@ -617,25 +617,43 @@ document.querySelectorAll('.faq__q').forEach(button => {
 
 
 
-        // Плавное появление overlay при загрузке страницы
-        window.addEventListener('load', function() {
-            const overlay = document.getElementById('rotateOverlay');
-            if (overlay && window.matchMedia("(max-width: 768px) and (orientation: portrait)").matches) {
-                setTimeout(() => {
-                    overlay.classList.add('active');
-                }, 100);
-            }
-        });
+// Плавное появление overlay при загрузке страницы
+window.addEventListener('load', function () {
+    const overlay = document.getElementById('rotateOverlay');
+    if (overlay && window.matchMedia("(max-width: 768px) and (orientation: portrait)").matches) {
+        setTimeout(() => {
+            overlay.classList.add('active');
+        }, 100);
+    }
+});
 
-        // Отслеживание изменения ориентации
-        window.addEventListener('orientationchange', function() {
-            const overlay = document.getElementById('rotateOverlay');
-            if (overlay) {
-                if (window.matchMedia("(orientation: landscape)").matches) {
-                    overlay.classList.remove('active');
-                } else {
-                    overlay.classList.add('active');
-                }
-            }
-        });
-    
+// Отслеживание изменения ориентации
+window.addEventListener('orientationchange', function () {
+    const overlay = document.getElementById('rotateOverlay');
+    if (overlay) {
+        // Если устройство перевернули в альбомную ориентацию
+        if (window.matchMedia("(orientation: landscape)").matches) {
+            overlay.classList.add('active'); // Показываем оверлей
+        } else {
+            overlay.classList.remove('active'); // Скрываем в портретной
+        }
+    }
+});
+function checkOrientation() {
+    const overlay = document.getElementById('rotateOverlay');
+    if (!overlay) return;
+
+    const isLandscape = window.matchMedia("(orientation: landscape)").matches;
+
+    if (isLandscape) {
+        overlay.classList.add('active');
+    } else {
+        overlay.classList.remove('active');
+    }
+}
+
+// Слушаем изменения
+window.addEventListener('resize', checkOrientation);
+
+// Проверяем при загрузке
+checkOrientation();
