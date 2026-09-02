@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shoira Cosmenika</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="shortcut icon" href="imgs/logo.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Coming+Soon&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Gravitas+One&family=Iosevka+Charon:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Oswald:wght@200..700&family=Raleway:ital,wght@0,10０..9００;1,1００..9００&family=Roboto+Condensed:ital,wght@₀,1００..9００;1,1００..9００&family=Roboto:ital,wght@₀,1００..9００;1,1００..9００&family=SN+Pro:ital,wght@₀,2００..9００;1,2００..9００&family=Saira:ital,wght@₀,1００..9１５;1,1１５..9１５&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header class="header">
+        <div class="header__container">
+            <div class="header__wrapper">
+                <a class="header__logo" data-link="index.html" href="#"></a>
+                <div class="header__right">
+                    <nav class="header__nav">
+
+                        <a class="header__link" data-link="about.html" href="#">О нас</a>
+                        <a class="header__link" data-link="servis.html" href="#">Услуги</a>
+                        <a class="header__link" data-link="social.html" href="#">Контакты</a>
+                    </nav>
+                    <button class="btn header__btn" data-link="contact.html">Записаться</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div id="loader">
+        <svg width="320" height="130" viewBox="0 0 320 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <clipPath id="barrel-clip">
+                    <rect x="72" y="36" width="150" height="34" rx="5" />
+                </clipPath>
+            </defs>
+
+            <g class="spark" style="transform-origin:260px 18px">
+                <rect x="257" y="15" width="6" height="6" fill="#c49ee0" transform="rotate(45,260,18)" />
+            </g>
+            <g class="spark" style="transform-origin:280px 10px">
+                <rect x="277" y="7" width="5" height="5" fill="#dfc0f0" transform="rotate(45,280,10)" />
+            </g>
+            <g class="spark" style="transform-origin:248px 26px">
+                <rect x="245" y="23" width="4" height="4" fill="#b07fd4" transform="rotate(45,248,26)" />
+            </g>
+
+            <rect x="220" y="48" width="72" height="8" rx="3" fill="#c8cfe0" />
+            <path d="M292 48 L312 52 L292 56 Z" fill="#a8b0c4" />
+            <rect x="228" y="49" width="44" height="2" rx="1" fill="white" opacity="0.55" />
+
+            <rect x="70" y="34" width="154" height="38" rx="8" stroke="#b07fd4" stroke-width="1.5" fill="white"
+                fill-opacity="0.65" />
+
+            <g clip-path="url(#barrel-clip)">
+                <g class="liquid-shrink" style="transform-origin:220px 53px">
+                    <rect x="72" y="36" width="150" height="34" rx="5" fill="#d4b8e0" />
+                    <rect x="84" y="41" width="14" height="24" rx="4" fill="white" opacity="0.28" />
+                    <rect x="108" y="43" width="7" height="20" rx="3" fill="white" opacity="0.18" />
+                    <circle cx="140" cy="60" r="4" fill="white" opacity="0.35" class="bubble" />
+                    <circle cx="165" cy="56" r="3" fill="white" opacity="0.3" class="bubble" />
+                    <circle cx="120" cy="62" r="3" fill="white" opacity="0.25" class="bubble" />
+                </g>
+            </g>
+
+            <g class="scale-mark">
+                <line x1="112" y1="34" x2="112" y2="25" stroke="#9b72b8" stroke-width="1.5" stroke-linecap="round" />
+            </g>
+            <g class="scale-mark">
+                <line x1="142" y1="34" x2="142" y2="25" stroke="#9b72b8" stroke-width="1.5" stroke-linecap="round" />
+            </g>
+            <g class="scale-mark">
+                <line x1="172" y1="34" x2="172" y2="25" stroke="#9b72b8" stroke-width="1.5" stroke-linecap="round" />
+            </g>
+            <g class="scale-mark">
+                <line x1="202" y1="34" x2="202" y2="25" stroke="#9b72b8" stroke-width="1.5" stroke-linecap="round" />
+            </g>
+
+            <rect x="218" y="40" width="10" height="26" rx="4" fill="#c8cfe0" stroke="#a8b0c4" stroke-width="1" />
+
+            <g class="plunger-push">
+                <rect x="14" y="49" width="106" height="8" rx="3" fill="#dfc0f0" />
+                <rect x="8" y="38" width="12" height="30" rx="4" fill="#c49ee0" stroke="#9b72b8" stroke-width="1" />
+                <rect x="0" y="44" width="12" height="18" rx="3" fill="#9b72b8" />
+                <line x1="3" y1="49" x2="9" y2="49" stroke="white" stroke-width="1.2" opacity="0.55" />
+                <line x1="3" y1="53" x2="9" y2="53" stroke="white" stroke-width="1.2" opacity="0.55" />
+                <line x1="3" y1="57" x2="9" y2="57" stroke="white" stroke-width="1.2" opacity="0.55" />
+            </g>
+
+            <g class="drip1" style="transform-origin:311px 58px">
+                <ellipse cx="311" cy="64" rx="6" ry="8" fill="#9b72b8" />
+                <ellipse cx="309" cy="61" rx="2.5" ry="2" fill="#dfc0f0" opacity="0.7" />
+            </g>
+            <g class="drip2" style="transform-origin:308px 58px">
+                <ellipse cx="308" cy="62" rx="4.5" ry="6" fill="#b07fd4" opacity="0.85" />
+                <ellipse cx="307" cy="60" rx="1.8" ry="1.5" fill="white" opacity="0.5" />
+            </g>
+            <g class="drip3" style="transform-origin:313px 57px">
+                <ellipse cx="313" cy="61" rx="3" ry="4" fill="#c49ee0" opacity="0.8" />
+            </g>
+
+            <circle cx="312" cy="52" class="tip-glow" fill="#b07fd4" opacity="0.5" />
+        </svg>
+
+        <div class="progress-wrap">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+
+
+        <div class="label-wrap">
+            <p class="lbl">Загрузка</p>
+            <div class="dots">
+                <span>·</span><span>·</span><span>·</span>
+            </div>
+        </div>
+    </div>
+    <div id="content">
+    </div>
+    <main class="main">
+
+        <section class=" reveal hero__index">
+            <div class="hero__container">
+                <div class="hero__content">
+                    <h1 class="hero__subtitle m-subtitle">Омолаживающие процедуры</h1>
+                    <h2 class="hero__title m-title">Подчеркните свою <br> красоту с нами</h2>
+                    <p class="hero__text m-text">
+                        Добро пожаловать в нашу косметологическую клинику, где мы объединяем новейшие <br>
+                        технологии ухода за кожей с атмосферой уюта и комфорта
+                    </p>
+                    <button class="btn hero__btn">Узнать больше</button>
+                </div>
+            </div>
+        </section>
+
+        </div>
+
+
+
+        <section class="services reveal">
+            <div class="container ">
+                <div class="services__header">
+                    <h1 class="services__title m-title">Сияющая кожа</h1>
+                    <p class="services__text m-text">
+                        В нашей косметологической клинике мы верим в силу красоты. Наша команда <br>
+                        профессионалов предлагает лучшие процедуры и уход
+                    </p>
+                </div>
+                <div class="services__grid">
+                    <a class="services__item services__item--one" target="_blank"
+                        href="https://www.instagram.com/p/DN_N5DtiV7G/"></a>
+                    <a class="services__item services__item--two" target="_blank"
+                        href="https://www.instagram.com/p/DV-reWYDLj3/"></a>
+                    <a class="services__item services__item--three" target="_blank"
+                        href="https://www.instagram.com/p/DQh6bI8jCPR/"></a>
+                    <a class="services__item services__item--four" target="_blank"
+                        href="https://www.instagram.com/p/DMUz-ZDums_/"></a>
+                    <a class="services__item services__item--five" target="_blank"
+                        href="https://www.instagram.com/p/DKmCKm2syTW/"></a>
+                    <a class="services__item services__item--six" target="_blank"
+                        href="https://www.instagram.com/p/DMw8AeJuthM/"></a>
+                </div>
+            </div>
+        </section>
+
+
+
+
+        <section class="cta reveal">
+            <div class="container cta__container">
+                <div class="cta__content">
+                    <h1 class="cta__title m-title">Откройте наш профессионализм</h1>
+                    <p class="cta__text m-text">
+                        Откройте секреты идеальной кожи вместе с нашей командой опытных <br>
+                        косметологов. От современных процедур до расслабляющих уходов
+                    </p>
+                    <button class="btn cta__btn">Записаться на приём</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="info reveal">
+            <div class="container">
+                <div class="info__content">
+                    <div class="info__wrapper">
+                        <h1 class="info__title m-title">Обновите свой уход</h1>
+                        <p class="info__text m-text">
+                            Откройте для себя идеальный уход с нашими роскошными <br>
+                            косметологическими услугами. Наша команда поможет вам <br>
+                            достичь здоровой и сияющей кожи благодаря современным <br>
+                            технологиям и индивидуальному подходу
+                        </p>
+                        <button class="btn info__btn">Подробнее</button>
+                    </div>
+                    <img src="imgs/image.png" alt="Косметология" class="info__image">
+                </div>
+            </div>
+        </section>
+
+        <section class="info reveal info--alt">
+            <div class="info__container">
+                <div class="info__content info__content--alt">
+                    <img src="imgs/man.jpg" alt="img" class="info__image">
+                    <div>
+                        <h1 class="info__title--alt m-title">Раскройте сияние <br> вашей кожи</h1>
+                        <p class="info__text--alt m-text">
+                            Наша команда профессионалов использует новейшие технологии <br>
+                            ухода за кожей и учитывает индивидуальные особенности каждого клиента <br><br>
+                            Обновите свою кожу и улучшите уход с нашими <br>
+                            комплексными услугами. Почувствуйте разницу благодаря персональному подходу
+                        </p>
+                        <button class="btn info__btn--alt">Наши услуги</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section process reveal">
+            <div class="section__inner">
+                <span class="section-tag">Как это работает</span>
+                <h2 class="section-title">Четыре шага к <em>идеальной коже</em></h2>
+                <div class="process__steps">
+                    <div class="process__step">
+                        <div class="process__step-num">01</div>
+                        <div class="process__step-title">Консультация</div>
+                        <div class="process__step-text">Разбираем состояние вашей кожи, цели и пожелания. Косметолог
+                            составляет персональный план.</div>
+                    </div>
+                    <div class="process__step">
+                        <div class="process__step-num">02</div>
+                        <div class="process__step-title">Диагностика</div>
+                        <div class="process__step-text">Профессиональный анализ кожи под увеличением помогает определить
+                            тип, проблемы и приоритеты.</div>
+                    </div>
+                    <div class="process__step">
+                        <div class="process__step-num">03</div>
+                        <div class="process__step-title">Процедура</div>
+                        <div class="process__step-text">Проводим выбранную процедуру с соблюдением всех стандартов
+                            безопасности и стерильности.</div>
+                    </div>
+                    <div class="process__step">
+                        <div class="process__step-num">04</div>
+                        <div class="process__step-title">Поддержка</div>
+                        <div class="process__step-text">Рекомендуем домашний уход, отвечаем на вопросы и назначаем
+                            следующий
+                            визит для поддержания результата.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="reviews-section">
+            <h2 class="section-title">Отзывы наших клиентов</h2>
+
+            <div class="carousel-container">
+                <div class="carousel-track">
+                    <div class="review-card">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Клиент" class="user-img">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Процедура чистки лица прошла великолепно! Кожа сияет, а мастер была
+                            очень внимательна. Обязательно вернусь снова."</p>
+                        <h4 class="user-name">Анна Смирнова</h4>
+                    </div>
+
+
+
+
+
+                    <div class="review-card">
+                        <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Клиент" class="user-img">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Делала контурную пластику губ. Форма получилась очень естественная,
+                            именно то, что я хотела. Спасибо!"</p>
+                        <h4 class="user-name">Кристина Белова</h4>
+                    </div>
+
+                    <div class="review-card">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Клиент" class="user-img">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Прошла курс пилингов. Лицо как будто обновилось, ушла пигментация.
+                            Атмосфера в клинике просто чудесная."</p>
+                        <h4 class="user-name">Наталья Петрова</h4>
+                    </div>
+
+                    <div class="review-card">
+                        <img src="https://randomuser.me/api/portraits/women/50.jpg" alt="Клиент" class="user-img">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Мезотерапия кожи головы спасла мои волосы! Стали намного гуще. Очень
+                            благодарна за индивидуальный подход."</p>
+                        <h4 class="user-name">Ольга Кузнецова</h4>
+                    </div>
+
+                    <div class="review-card">
+                        <img src="https://randomuser.me/api/portraits/women/22.jpg" alt="Клиент" class="user-img">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Удаляла сосудистые сеточки на лице. Результат с первой процедуры! Боли
+                            почти не чувствовала, всё очень быстро."</p>
+                        <h4 class="user-name">Дарья Морозова</h4>
+                    </div>
+
+                    <div class="review-card">
+                        <img src="https://randomuser.me/api/portraits/women/17.jpg" alt="Клиент" class="user-img">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Лучший массаж лица в моей жизни! Сразу ушли отеки, а контур стал более
+                            четким. Ощущения непередаваемые."</p>
+                        <h4 class="user-name">Ирина Волкова</h4>
+                    </div>
+
+
+
+                    <div class="review-card">
+                        <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Клиент" class="user-img">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Карбокситерапия — это любовь! Кожа мгновенно стала свежей и розовой.
+                            Отличная процедура перед важным событием."</p>
+                        <h4 class="user-name">Юлия Новикова</h4>
+                    </div>
+
+                    <div class="review-card">
+                        <img src="https://randomuser.me/api/portraits/women/60.jpg" alt="Клиент" class="user-img">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Пользуюсь услугами этого косметолога уже два года. Моя кожа никогда не
+                            выглядела так хорошо. Полное доверие!"</p>
+                        <h4 class="user-name">Татьяна Егорова</h4>
+                    </div>
+
+                    <div class="review-card">
+                        <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Клиент" class="user-img">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Лучший косметолог в городе. Индивидуальный подход и очень приятная
+                            атмосфера в кабинете."</p>
+                        <h4 class="user-name">Марина Петрова</h4>
+                    </div>
+                    <div class="review-card">
+                        <img src="https://randomuser.me/api/portraits/women/11.jpg" alt="Клиент" class="user-img">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Забыла о бритве после курса лазерной эпиляции. Процедура почти
+                            безболезненная, а результат — магия!"</p>
+                        <h4 class="user-name">Виктория С.</h4>
+                    </div>
+
+                    <div class="review-card">
+                        <img src="https://randomuser.me/api/portraits/women/12.jpg" alt="Клиент" class="user-img">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"RF-лифтинг сотворил чудо с моим овалом лица. Кожа подтянулась, морщинки
+                            разгладились. Очень довольна!"</p>
+                        <h4 class="user-name">Алина Кравцова</h4>
+                    </div>
+
+                    <div class="review-card">
+                        <img src="https://randomuser.me/api/portraits/women/13.jpg" alt="Клиент" class="user-img">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Приходила на коррекцию носослезной борозды. Лицо сразу стало выглядеть
+                            отдохнувшим. Мастер — ювелир!"</p>
+                        <h4 class="user-name">Марина Денисова</h4>
+                    </div>
+
+                    <div class="review-card">
+                        <img src="https://randomuser.me/api/portraits/women/14.jpg" alt="Клиент" class="user-img">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Чистка лица Holy Land — это просто спасение для моей проблемной кожи.
+                            Всё очень чисто и аккуратно."</p>
+                        <h4 class="user-name">Екатерина Рей</h4>
+                    </div>
+
+                    <div class="review-card">
+                        <img src="https://randomuser.me/api/portraits/women/15.jpg" alt="Клиент" class="user-img">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Делала плазмолифтинг. Цвет лица выровнялся, кожа как будто светится
+                            изнутри. Потрясающий эффект!"</p>
+                        <h4 class="user-name">Софья Маркова</h4>
+                    </div>
+
+                    <div class="review-card">
+                        <img src="https://randomuser.me/api/portraits/women/16.jpg" alt="Клиент" class="user-img">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Первый раз решилась на диспорт. Никакого эффекта маски, брови двигаются,
+                            но заломов нет. Идеально!"</p>
+                        <h4 class="user-name">Анна Лисицина</h4>
+                    </div>
+
+                    <div class="review-card">
+                        <img src="https://randomuser.me/api/portraits/women/18.jpg" alt="Клиент" class="user-img">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Аппаратный массаж LPG помог быстро привести тело в форму к лету. Кожа
+                            подтянулась, ушли объемы."</p>
+                        <h4 class="user-name">Вероника Г.</h4>
+                    </div>
+
+                    <div class="review-card">
+                        <img src="https://randomuser.me/api/portraits/women/25.jpg" alt="Клиент" class="user-img">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Очень грамотная консультация по домашнему уходу. Наконец-то подобрали
+                            средства, которые работают!"</p>
+                        <h4 class="user-name">Лариса Борисова</h4>
+                    </div>
+
+                    <div class="review-card">
+                        <img src="https://randomuser.me/api/portraits/women/35.jpg" alt="Клиент" class="user-img">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Химический пилинг прошел без долгого шелушения, кожа обновилась и стала
+                            очень нежной."</p>
+                        <h4 class="user-name">Жанна Д.</h4>
+                    </div>
+
+                    <div class="review-card">
+                        <img src="https://randomuser.me/api/portraits/women/40.jpg" alt="Клиент" class="user-img">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Каждый визит сюда — это праздник для души и тела. Высочайший уровень
+                            сервиса и мастерства!"</p>
+                        <h4 class="user-name">Полина Уварова</h4>
+                    </div>
+                    <div class="review-card">
+                        <img src="https://randomuser.me/api/portraits/women/21.jpg" alt="Клиент" class="user-img">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"SMAS-лифтинг превзошел все ожидания! Лицо подтянулось без всяких
+                            операций. Результат на миллион!"</p>
+                        <h4 class="user-name">Ксения Соколова</h4>
+                    </div>
+
+                    <div class="review-card">
+                        <img src="https://randomuser.me/api/portraits/women/26.jpg" alt="Клиент" class="user-img">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Лечили гиперпигментацию лазером. Наконец-то я могу ходить без плотного
+                            тонального крема. Свобода!"</p>
+                        <h4 class="user-name">Марина О.</h4>
+                    </div>
+
+                    <div class="review-card">
+                        <img src="https://randomuser.me/api/portraits/women/31.jpg" alt="Клиент" class="user-img">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Ультразвуковая чистка прошла очень комфортно. Никаких покраснений, на
+                            следующий день уже пошла на свидание!"</p>
+                        <h4 class="user-name">Валерия Тихонова</h4>
+                    </div>
+
+                    <div class="review-card">
+                        <img src="https://randomuser.me/api/portraits/women/33.jpg" alt="Клиент" class="user-img">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Заполнили носогубные складки филлером. Сразу минус 5 лет с лица! Очень
+                            аккуратно и без синяков."</p>
+                        <h4 class="user-name">Инна Савельева</h4>
+                    </div>
+
+                    <div class="review-card">
+                        <img src="https://randomuser.me/api/portraits/women/41.jpg" alt="Клиент" class="user-img">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Курс микротоковой терапии сотворил чудо с моими отеками. Лицо стало
+                            скульптурным. Огромное спасибо!"</p>
+                        <h4 class="user-name">Любовь Михайлова</h4>
+                    </div>
+
+                    <div class="review-card">
+                        <img src="https://randomuser.me/api/portraits/women/42.jpg" alt="Клиент" class="user-img">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Делала ламинирование ресниц у косметолога. Взгляд стал открытым, а
+                            ресницы — черными и длинными."</p>
+                        <h4 class="user-name">Елизавета П.</h4>
+                    </div>
+
+                    <div class="review-card">
+                        <img src="https://randomuser.me/api/portraits/women/46.jpg" alt="Клиент" class="user-img">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Процедура 'Фарфоровая куколка' — это нечто! Кожа сияет, тон ровный.
+                            Идеально для подготовки к свадьбе."</p>
+                        <h4 class="user-name">Надежда Степанова</h4>
+                    </div>
+
+                    <div class="review-card">
+                        <img src="https://randomuser.me/api/portraits/women/47.jpg" alt="Клиент" class="user-img">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Коррекция подбородка изменила мой профиль в лучшую сторону. Теперь я
+                            обожаю фотографироваться!"</p>
+                        <h4 class="user-name">Милана Громова</h4>
+                    </div>
+
+                    <div class="review-card">
+                        <img src="https://randomuser.me/api/portraits/women/48.jpg" alt="Клиент" class="user-img">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Попробовала альгинатную маску после чистки. Такого увлажнения у меня не
+                            было никогда. Кожа как шелк."</p>
+                        <h4 class="user-name">Кристина Ю.</h4>
+                    </div>
+
+                    <div class="review-card">
+                        <img src="https://randomuser.me/api/portraits/women/52.jpg" alt="Клиент" class="user-img">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Профессионализм высшего уровня. Здесь не навязывают лишнего, а решают
+                            конкретные проблемы кожи."</p>
+                        <h4 class="user-name">Александра К.</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="carousel-buttons">
+                <button class="btn-prev">←</button>
+                <button class="btn-next">→</button>
+            </div>
+        </section>
+
+        <section class="features reveal">
+            <div class="container">
+                <div class="features__top">
+                    <h1 class="features__title m-title">Побалуйте себя</h1>
+                    <p class="features__text m-text">
+                        Позвольте себе роскошный уход в нашей клинике
+                    </p>
+                </div>
+
+                <div class="features__grid reveal">
+                    <div class="features__card">
+                        <h1 class="features__card-title m-card-title">Откройте силу <br> косметологии</h1>
+                        <p class="features__card-text m-text">
+                            Добейтесь идеальной кожи с помощью наших <br>
+                            профессиональных услуг. От современных процедур <br>
+                            до омолаживающих уходов<br><br>
+                            Почувствуйте результат наших персонализированных процедур
+                        </p>
+                        <button class="btn features__btn">Записаться</button>
+                    </div>
+
+                    <div class="features__card features__card--alt">
+                        <h1 class="features__card-title m-card-title">Улучшите свой <br> уход за собой</h1>
+                        <p class="features__card-text m-text">
+                            Мы считаем, что забота о себе — основа красоты. <br>
+                            Наша команда предлагает лучшие процедуры<br><br>
+                            Попробуйте наши услуги и ощутите разницу
+                        </p>
+                        <button class="btn features__btn">Смотреть услуги</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section">
+            <span class="section-tag">Вопросы</span>
+            <h2 class="section-title">Часто задаваемые вопросы</h2>
+
+            <div class="faq__list">
+                <div class="faq__item">
+                    <button class="faq__q">
+                        <span>Безопасны ли используемые препараты и оборудование?</span>
+                        <span class="faq__q-icon">+</span>
+                    </button>
+                    <div class="faq__a">
+                        <div class="faq__a-inner">
+                            Да, мы используем только сертифицированное оборудование и препараты, прошедшие клинические
+                            испытания. Все расходные материалы стерильны или одноразовы.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq__item">
+                    <button class="faq__q">
+                        <span>Как подготовиться к первому визиту?</span>
+                        <span class="faq__q-icon">+</span>
+                    </button>
+                    <div class="faq__a">
+                        <div class="faq__a-inner">
+                            Специальной подготовки обычно не требуется. Рекомендуется не посещать солярий за 2-3 дня до
+                            визита и взять с собой список средств, которыми вы пользуетесь дома.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq__item">
+                    <button class="faq__q">
+                        <span>Как быстро я увижу результат?</span>
+                        <span class="faq__q-icon">+</span>
+                    </button>
+                    <div class="faq__a">
+                        <div class="faq__a-inner">
+                            Эффект зависит от процедуры: после чистки или ухода результат виден сразу, а для
+                            инъекционных
+                            или лазерных методик может потребоваться от 3 до 14 дней.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq__item">
+                    <button class="faq__q">
+                        <span>Есть ли противопоказания к процедурам?</span>
+                        <span class="faq__q-icon">+</span>
+                    </button>
+                    <div class="faq__a">
+                        <div class="faq__a-inner">
+                            Основные противопоказания: беременность, период лактации, острые инфекционные заболевания и
+                            повреждения кожи в зоне обработки. Подробности обсуждаются на консультации.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq__item">
+                    <button class="faq__q">
+                        <span>Нужен ли реабилитационный период?</span>
+                        <span class="faq__q-icon">+</span>
+                    </button>
+                    <div class="faq__a">
+                        <div class="faq__a-inner">
+                            Большинство наших методик «обеденного перерыва» не оставляют следов. В редких случаях
+                            возможны
+                            небольшие покраснения, которые проходят в течение нескольких часов.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+
+    <footer class="footer">
+
+        <div class="footer__container">
+
+            <div class="footer__top">
+
+
+
+                <div class="footer__logo-wrap">
+
+                    <img class="footer__logo" width="60" height="60" src="imgs/logo-two.jpg" alt="logo">
+
+
+                    <p class="footer__copy">© 2026 Radiance. <br> Все права защищены.</p>
+
+                </div>
+
+
+
+                <ul class="footer__links">
+
+                    <li class="footer__column">
+
+                        <h1 class="footer__title">Быстрые ссылки</h1>
+
+                        <a class="footer__link" data-link="index.html" href="#">Главная</a>
+
+                        <a class="footer__link" data-link="about.html" href="#">О нас</a>
+
+                        <a class="footer__link" data-link="servis.html" href="#">Услуги</a>
+
+                        <a class="footer__link" target="_blank" data-link="social.html" href="#">Контакты</a>
+
+                    </li>
+
+
+
+
+
+                    <li class="footer__column">
+
+                        <h1 class="footer__title">Мы в соцсетях</h1>
+
+                        <a target="_blank" class="footer__link"
+                            href="https://www.instagram.com/shoiraotokhonova/">Инстаграм</a>
+
+                        <a class="footer__link" href="https://t.me/permsh" target="_blank">Телеграм</a>
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+        <div class="footer__bottom">
+
+        </div>
+        <div class="mobile-nav">
+
+            <a class="mobile-nav__link" data-link="index.html">
+
+                <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+
+                        <title>Bxs-home SVG Icon</title>
+
+                        <path
+                            d="M21.743 12.331l-9-10c-.379-.422-1.107-.422-1.486 0l-9 10a.998.998 0 0 0-.17 1.076c.16.361.518.593.913.593h2v7a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-4h4v4a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-7h2a.998.998 0 0 0 .743-1.669z"
+                            fill="currentColor" />
+
+                    </svg></span>
+
+                <p>Главная</p>
+
+            </a>
+
+            <a class="mobile-nav__link" data-link="about.html">
+
+                <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512">
+
+                        <title>Circle-info SVG Icon</title>
+
+                        <path fill="currentColor"
+                            d="M256 512a256 256 0 1 0 0-512a256 256 0 1 0 0 512m-40-176h24v-64h-24c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24h-80c-13.3 0-24-10.7-24-24s10.7-24 24-24m40-208a32 32 0 1 1 0 64a32 32 0 1 1 0-64" />
+
+                    </svg></span>
+
+                <p>О нас</p>
+
+            </a>
+
+            <a class="mobile-nav__link" data-link="servis.html">
+
+                <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 48 48">
+
+                        <title>Services SVG Icon</title>
+
+                        <circle cx="9.379" cy="9.379" r="3.879" stroke="currentColor" stroke-linecap="round"
+                            stroke-linejoin="round" />
+
+                        <circle cx="9.379" cy="38.621" r="3.879" stroke="currentColor" stroke-linecap="round"
+                            stroke-linejoin="round" />
+
+                        <circle cx="9.379" cy="24" r="3.879" stroke="currentColor" stroke-linecap="round"
+                            stroke-linejoin="round" />
+
+                        <rect width="25.064" height="7.758" x="17.436" y="5.5" stroke="currentColor"
+                            stroke-linecap="round" stroke-linejoin="round" rx="1.79" ry="1.79" />
+
+                        <rect width="25.064" height="7.758" x="17.436" y="34.742" stroke="currentColor"
+                            stroke-linecap="round" stroke-linejoin="round" rx="1.79" ry="1.79" />
+
+                        <rect width="25.064" height="7.758" x="17.436" y="20.121" stroke="currentColor"
+                            stroke-linecap="round" stroke-linejoin="round" rx="1.79" ry="1.79" />
+
+                    </svg></span>
+
+                <p>Услуги</p>
+
+            </a>
+
+            <a class="mobile-nav__link" target="_blank" data-link="social.html">
+
+                <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+
+                        <title>Contact-info SVG Icon</title>
+
+                        <path fill="none" stroke="currentColor" stroke-width="2"
+                            d="M5 12a3 3 0 1 1 0-6a3 3 0 0 1 0 6Zm4 6v-2c0-2.25-1.787-4-4.036-4h.054C2.768 12 1 13.75 1 16v2M12 7h12M12 17h10m-10-5h7" />
+
+                    </svg></span>
+
+                <p>Соцсети</p>
+
+            </a>
+
+        </div>
+
+    </footer>
+    <div id="beforeAfterFull" class="ba-overlay">
+        <div class="ba-modal-full">
+            <button id="closeFull" class="ba-modal-full__close">&times;</button>
+            <h2 class="services__title m-title ba-modal-full__title">Результаты процедур</h2>
+
+            <div class="ba-slider">
+                <button class="ba-slider__btn prev" aria-label="Назад">&#10094;</button>
+
+                <div class="ba-slider__viewport">
+                    <div class="ba-slider__track" id="baTrack">
+
+                        <!-- Слайд 1 -->
+                        <div class="ba-slide">
+                            <div class="ba-modal-full__grid">
+                                <div class="ba-modal-full__item">
+                                    <img src="imgs/img-imdex-one.png" alt="До">
+                                    <span class="m-text">До</span>
+                                </div>
+                                <div class="ba-modal-full__item">
+                                    <img src="imgs/img-index-two.png" alt="После">
+                                    <span class="m-text">После</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Слайд 2 -->
+                        <div class="ba-slide">
+                            <div class="ba-modal-full__grid">
+                                <div class="ba-modal-full__item">
+                                    <img src="imgs/img-index-three.png" alt="До">
+                                    <span class="m-text">До</span>
+                                </div>
+                                <div class="ba-modal-full__item">
+                                    <img src="imgs/img-index-four.png" alt="После">
+                                    <span class="m-text">После</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Слайд 3 -->
+                        <div class="ba-slide">
+                            <div class="ba-modal-full__grid">
+                                <div class="ba-modal-full__item">
+                                    <img src="imgs/photo.jpg" alt="До">
+                                    <span class="m-text">До</span>
+                                </div>
+                                <div class="ba-modal-full__item">
+                                    <img src="imgs/phot.jpg" alt="После">
+                                    <span class="m-text">После</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Слайд 4 -->
+                        <div class="ba-slide">
+                            <div class="ba-modal-full__grid">
+                                <div class="ba-modal-full__item">
+                                    <img src="imgs/img-index-seven.jpg" alt="До">
+                                    <span class="m-text">До</span>
+                                </div>
+                                <div class="ba-modal-full__item">
+                                    <img src="imgs/img-index-eight.jpg" alt="После">
+                                    <span class="m-text">После</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <button class="ba-slider__btn next" aria-label="Вперёд">&#10095;</button>
+            </div>
+
+            <div class="ba-dots" id="baDots"></div>
+        </div>
+    </div>
+    <div class="cursor-glow"></div>
+
+    <script src="app.js"></script>
+
+</body>
+
+</html>

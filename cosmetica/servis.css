@@ -1,0 +1,479 @@
+:root {
+    --accent: #d4b895;
+    --dark: #1a1a1a;
+    --gray: #888;
+    --light: #f9f9f9;
+    --white: #ffffff;
+    --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+:root {
+    --rose: #c97d8c;
+    --rose-lt: #fdf7f8;
+    --ink: #1a1520;
+    --mist: #f8f6f4;
+    --border: rgba(0, 0, 0, 0.08);
+    --font-d: 'Cormorant Garamond', serif;
+    --font-s: 'DM Sans', sans-serif;
+   
+}
+
+body {
+    font-family: var(--font-s);
+    background: var(--white);
+    color: var(--ink);
+    line-height: 1.6;
+}
+
+
+body {
+    margin: 0;
+    background-color: var(--white);
+    color: var(--dark);
+}
+
+/* Навигация */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 5%;
+    border-bottom: 1px solid #eee;
+}
+
+.logo span {
+    color: var(--accent);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--dark);
+    font-weight: 500;
+}
+
+.nav-links a.active {
+    color: var(--accent);
+    border-bottom: 1px solid var(--accent);
+}
+
+/* Заголовок страницы */
+.services-intro {
+    text-align: center;
+    padding: 80px 20px;
+    animation: fadeIn 1s ease;
+    background-image: url(imgs/bagrond.jpg) !important;
+    background-size: cover;
+    background-position: center;
+    color: #ffffffa6;
+}
+
+
+
+.services-intro h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 24px;
+    color: #fff;
+    text-transform: uppercase;
+
+}
+
+/* Сетка и Карточки */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 20px;
+
+}
+
+.category-title {
+    font-family: 'Oswald', sans-serif;
+    margin: 60px 0 30px;
+    font-size: 1.8rem;
+    border-left: 4px solid var(--accent);
+    padding-left: 15px;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.service-card {
+    background: var(--white);
+    border: 1px solid #efefef;
+    transition: var(--transition);
+    text-align: center;
+    border-radius: 4px;
+}
+
+.card-img {
+    font-size: 3rem;
+    transition: var(--transition);
+}
+
+
+.price {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin: 20px 0;
+    color: var(--accent);
+}
+
+/* Анимации Hover и Active */
+.service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+    border-color: var(--accent);
+}
+
+
+
+.btn-order {
+    width: 100%;
+    padding: 12px;
+    background: var(--dark);
+    color: white;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: var(--transition);
+}
+
+.btn-order:hover {
+    background: var(--accent);
+}
+
+.btn-order:active {
+    transform: scale(0.98);
+}
+
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== ADAPTIVE SERVICES PAGE ===== */
+
+/* ===== МОБИЛЬНАЯ ТИПОГРАФИКА ДЛЯ ВСЕХ ЭКРАНОВ ===== */
+
+@media (max-width: 768px) {
+
+    /* Главные заголовки секций */
+    .m-title {
+        font-size: 26px !important;
+        line-height: 1.2 !important;
+        margin-bottom: 15px !important;
+    }
+
+    /* Заголовки внутри карточек */
+    .m-card-title {
+        font-size: 22px !important;
+        line-height: 1.2 !important;
+    }
+
+    /* Подзаголовки */
+    .m-subtitle {
+        font-size: 16px !important;
+        margin-bottom: 8px !important;
+    }
+
+    /* Весь основной текст */
+    .m-text {
+        font-size: 14px !important;
+        line-height: 1.5 !important;
+        padding-top: 5px !important;
+        padding-bottom: 10px !important;
+    }
+
+    /* Убираем переносы <br>, которые ломают верстку на мобильном */
+    .m-title br,
+    .m-card-title br,
+    .m-text br {
+        display: none !important;
+    }
+}
+
+/* Для самых маленьких устройств */
+@media (max-width: 380px) {
+    .m-title {
+        font-size: 22px !important;
+    }
+
+    .m-card-title {
+        font-size: 20px !important;
+    }
+}
+
+/* Переменные и база остаются как у тебя */
+:root {
+    --accent: #d4b895;
+    --dark: #1a1a1a;
+    --light: #f9f9f9;
+    --white: #ffffff;
+    --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.services-intro {
+    text-align: center;
+    padding: 60px 20px;
+    background: var(--light);
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.services-grid {
+    display: grid;
+    /* На больших экранах - авто-колонки, но не меньше 300px */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.service-card {
+    background: var(--white);
+
+    border: 1px solid #efefef;
+    transition: var(--transition);
+    text-align: center;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+/* ===== ADAPTIVE (Планшеты и Телефоны) ===== */
+
+@media (max-width: 768px) {
+    .services-grid {
+        /* На мобильных строго 1 колонка */
+        grid-template-columns: 1fr !important;
+        gap: 15px;
+    }
+
+    .services-intro {
+        padding: 40px 15px;
+    }
+
+    .category-title {
+        font-size: 22px;
+        margin: 30px 0 15px;
+    }
+
+    /* Мобильная типографика (те классы, что ты добавил в HTML) */
+    .m-title {
+        font-size: 26px !important;
+        line-height: 1.2 !important;
+    }
+
+    .m-card-title {
+        font-size: 20px !important;
+    }
+
+    .m-text {
+        font-size: 14px !important;
+        line-height: 1.4 !important;
+    }
+
+    /* Прячем лишние переносы */
+    br {
+        display: none !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .service-card {
+        padding: 20px;
+    }
+}
+
+/* Мягкий блик за курсором */
+.cursor-glow {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(212, 184, 149, 0.08) 0%, rgba(255, 255, 255, 0) 70%);
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    /* Чтобы не мешал кликам */
+    z-index: 0;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease-out;
+}
+
+/* Эффект "стеклянной" карточки при наведении */
+.details-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.details-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(212, 184, 149, 0.05), transparent);
+    transform: rotate(45deg);
+    transition: 0.6s;
+    opacity: 0;
+}
+
+.details-card:hover::before {
+    left: 100%;
+    opacity: 1;
+}
+
+/* Декоративная вертикальная линия, которая "растет" при скролле */
+.stat-item {
+    position: relative;
+}
+
+.stat-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: -50%;
+    top: 20%;
+    height: 60%;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, var(--accent), transparent);
+}
+
+@media (max-width: 968px) {
+    .stat-item:not(:last-child)::after {
+        display: none;
+    }
+}
+
+/* Плавающие сферы на фоне */
+.bg-blobs {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+    filter: blur(80px);
+}
+
+.blob {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: var(--accent);
+    opacity: 0.2;
+    border-radius: 50%;
+    animation: move 20s infinite alternate;
+}
+
+.blob:nth-child(2) {
+    background: #e9dcc9;
+    right: 10%;
+    top: 20%;
+    animation-delay: -5s;
+}
+
+@keyframes move {
+    from {
+        transform: translate(0, 0);
+    }
+
+    to {
+        transform: translate(100px, 100px);
+    }
+}
+
+/* Эффект "Магнитной" карточки */
+.service-card {
+    position: relative;
+    perspective: 1000px;
+    /* Для 3D эффекта */
+    overflow: hidden;
+}
+
+/* Прикольный эффект для цены */
+.price {
+    display: inline-block;
+    position: relative;
+    padding: 5px 15px;
+    background: #fdf8f2;
+    border-radius: 50px;
+    transition: var(--transition);
+}
+
+.service-card:hover .price {
+    background: var(--dark);
+    color: var(--white);
+    transform: scale(1.1);
+}
+
+
+
+
+.card-img {
+    font-size: 3rem;
+    /* оставь для обратной совместимости */
+    margin-bottom: 20px;
+    overflow: hidden;
+    border-radius: 4px;
+    height: 200px;
+    /* можешь подобрать нужную высоту */
+}
+
+.card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: var(--transition);
+}
+
+.service-card:hover .card-img img {
+    transform: scale(1.08);
+}
+
+.service-card {
+    --rx: 0deg;
+    --ry: 0deg;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.service-card.visible {
+    opacity: 1;
+    transform: perspective(1000px) rotateX(var(--rx)) rotateY(var(--ry)) translateY(0);
+    transition: opacity 0.6s ease-out,
+        transform 0.6s ease-out,
+        /* быстрый отклик на движение мыши: */
+        --rx 0.1s ease-out,
+        --ry 0.1s ease-out;
+}

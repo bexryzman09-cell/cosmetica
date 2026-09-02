@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Контакты</title>
+    <link rel="shortcut icon" href="imgs/logo.png" type="image/x-icon">
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #f5f7fa;
+            /* Светлый серо-голубой фон */
+            color: #333;
+            background-image: url(https://i.pinimg.com/736x/ef/e4/39/efe439f32bc24f0d9c4e7bf64c74f0c7.jpg) !important;
+
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .card {
+            background: #ffffff;
+            padding: 40px 30px;
+            border-radius: 24px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            width: 320px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 1.4rem;
+            margin: 0 0 10px 0;
+            color: #1a1a1a;
+        }
+
+        p {
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 30px;
+        }
+
+        .links-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .btn {
+            text-decoration: none;
+            color: #444444;
+            background: #fdfdfd;
+            padding: 14px;
+            border-radius: 12px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            border: 1px solid #eee;
+            transition: all 0.2s ease-in-out;
+        }
+
+        /* Эффект при наведении */
+        .btn:hover {
+            background: #ffffff;
+            border-color: #d0d0d0;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            color: #000;
+        }
+
+        /* Индивидуальные цвета при наведении (по желанию) */
+        .btn-ins:hover {
+            border-color: #f700ff;
+            color: #e035e6;
+            ;
+        }
+
+        .btn-vk:hover {
+            border-color: #0026ff;
+            color: #0026ff;
+        }
+
+        .btn-mail:hover {
+            border-color: #ff4b4b;
+            color: #ff4b4b;
+        }
+
+        .btn-tg:hover {
+            border-color: #0099ff;
+            color: #0099ff;
+        }
+
+        .card {
+            /* ... твои стили ... */
+            background: rgba(255, 255, 255, 0.85);
+            /* Полупрозрачность */
+            backdrop-filter: blur(15px);
+            /* Размытие фона за картой */
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            animation: float 6s ease-in-out infinite;
+            /* Плавное покачивание */
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        /* Прячем иконку внутри кнопки по умолчанию */
+        .btn::before {
+            content: '→';
+            position: absolute;
+            left: 20px;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover::before {
+            opacity: 1;
+            left: 25px;
+        }
+
+        .btn:hover {
+            padding-left: 45px;
+            /* Отодвигаем текст для стрелочки */
+            letter-spacing: 1px;
+        }
+
+        /* При наведении на кнопки — меняем тень карточки на цвет бренда */
+        .card:has(.btn-ins:hover) {
+            box-shadow: 0 20px 40px rgba(247, 0, 255, 0.15);
+        }
+
+        .card:has(.btn-tg:hover) {
+            box-shadow: 0 20px 40px rgba(0, 153, 255, 0.15);
+        }
+
+        .card:has(.btn-vk:hover) {
+            box-shadow: 0 20px 40px rgba(0, 38, 255, 0.15);
+        }
+
+        .btn {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: var(--y);
+            left: var(--x);
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 70%);
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class=" reveal card">
+        <h1>Давайте общаться</h1>
+        <p>Напишите мне в любой из соцсетей</p>
+
+        <div class="links-stack">
+            <a href="https://www.instagram.com/shoiraotokhonova/" class="btn btn-ins" target="_blank">Instagram</a>
+            <a href="https://vk.ru/shoirakos0205" class="btn btn-vk" target="_blank">ВКонтакте</a>
+            <a href="https://t.me/permsh" class="btn btn-tg" target="_blank">Telegram</a>
+            <a href="mailto:your.email@example.com" class="btn btn-mail">Email</a>
+        </div>
+    </div>
+    <div class="cursor-glow"></div>
+    <script src="app.js"></script>
+    <script>
+        document.querySelectorAll('.btn').forEach(button => {
+            button.onmousemove = (e) => {
+                const x = e.pageX - button.offsetLeft;
+                const y = e.pageY - button.offsetTop;
+
+                button.style.setProperty('--x', x + 'px');
+                button.style.setProperty('--y', y + 'px');
+            };
+        });
+    </script>
+</body>
+
+</html>

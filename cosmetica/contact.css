@@ -1,0 +1,1065 @@
+:root {
+    --rose: #c97d8c;
+    --rose-lt: #fdf7f8;
+    --ink: #1a1520;
+    --mist: #f8f6f4;
+    --white: #ffffff;
+    --gray: #7a7875;
+    --gold: #d4b895;
+    --border: rgba(0, 0, 0, 0.08);
+    --font-d: 'Cormorant Garamond', serif;
+    --font-s: 'DM Sans', sans-serif;
+    --transition: .35s cubic-bezier(.4, 0, .2, 1);
+}
+
+body {
+    font-family: var(--font-s);
+    background: var(--white);
+    color: var(--ink);
+    line-height: 1.6;
+}
+
+
+.contact-page {
+    background: #fff;
+    padding-bottom: 100px;
+}
+
+.contact-hero {
+    text-align: center;
+    padding: 60px 20px;
+    background: #fdfdfd;
+    background-image: url(imgs/bg-contact.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.contact-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 60px;
+    margin-top: 50px;
+}
+
+.info-item {
+    margin-bottom: 30px;
+    gap: 30px;
+}
+
+.info-item h3 {
+    font-family: 'Oswald', sans-serif;
+    color: var(--accent);
+    margin-bottom: 10px;
+}
+
+/* Поля формы */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-group input,
+.input-group select,
+.input-group textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #eee;
+    border-radius: 0;
+    /* Квадратный стиль для элегантности */
+    font-family: 'DM Sans', sans-serif;
+    transition: var(--transition);
+    outline: none;
+}
+
+.input-group input:focus,
+.input-group textarea:focus {
+    border-color: var(--accent);
+    box-shadow: 0 5px 15px rgba(212, 184, 149, 0.1);
+}
+
+.btn-send {
+    padding: 18px;
+    background: #1a1a1a;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: var(--transition);
+    transition: 0.7s;
+}
+
+.social-icons {
+    display: flex;
+    gap: 25px;
+}
+
+.links {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    transition: 0.7s !important;
+}
+
+
+.links-instagram:hover {
+    color: #e440ad;
+
+}
+
+.links-telegram:hover {
+    color: #0088cc;
+}
+
+.btn-send:hover {
+    box-shadow: 0 5px 15px rgba(212, 184, 149, 0.1);
+    transform: translateY(-2px);
+}
+
+.btn-send:active {
+    transform: scale(0.98);
+}
+
+#status-msg {
+    margin-top: 15px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.input-group select {
+    appearance: none;
+    /* Убираем стандартную стрелку браузера */
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 15px;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .contact-wrapper {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Мягкий блик за курсором */
+.cursor-glow {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(212, 184, 149, 0.08) 0%, rgba(255, 255, 255, 0) 70%);
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    /* Чтобы не мешал кликам */
+    z-index: 0;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease-out;
+}
+
+/* Эффект "стеклянной" карточки при наведении */
+.details-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.details-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(212, 184, 149, 0.05), transparent);
+    transform: rotate(45deg);
+    transition: 0.6s;
+    opacity: 0;
+}
+
+.details-card:hover::before {
+    left: 100%;
+    opacity: 1;
+}
+
+/* Декоративная вертикальная линия, которая "растет" при скролле */
+.stat-item {
+    position: relative;
+}
+
+.stat-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: -50%;
+    top: 20%;
+    height: 60%;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, var(--accent), transparent);
+}
+
+@media (max-width: 968px) {
+    .stat-item:not(:last-child)::after {
+        display: none;
+    }
+}
+
+/* --- Анимация полей ввода (Floating Label эффект) --- */
+.input-group input:focus,
+.input-group select:focus,
+.input-group textarea:focus {
+    border-color: var(--accent) !important;
+    padding-left: 25px;
+    /* Текст мягко отъезжает вправо */
+    background: #fffcf8;
+}
+
+/* Иконки соцсетей - эффект "подпрыгивания" */
+.social-icons a:hover {
+    animation: bungee 0.5s dashed;
+}
+
+@keyframes bungee {
+    0% {
+        transform: scale(1);
+    }
+
+    30% {
+        transform: scale(1.3, 0.8);
+    }
+
+    50% {
+        transform: scale(0.8, 1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Эффект каскадного появления (Staggered Fade In) */
+.info-item:nth-child(1) {
+    animation: fadeInUp 0.5s ease forwards 0.1s;
+    opacity: 0;
+}
+
+.info-item:nth-child(2) {
+    animation: fadeInUp 0.5s ease forwards 0.3s;
+    opacity: 0;
+}
+
+.info-item:nth-child(3) {
+    animation: fadeInUp 0.5s ease forwards 0.5s;
+    opacity: 0;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- Живые поля (Инпуты) --- */
+.input-group input,
+.input-group select,
+.input-group textarea {
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    border: 1px solid #eee !important;
+    background: #fff;
+}
+
+/* Эффект при клике: текст уезжает вправо, а фон становится нежно-золотым */
+.input-group input:focus,
+.input-group textarea:focus {
+    padding-left: 35px !important;
+    /* Текст плавно сдвигается */
+    background: #fffcf8 !important;
+    border-color: var(--accent) !important;
+    box-shadow: 10px 10px 20px rgba(212, 184, 149, 0.05);
+}
+
+.btn-add-service {
+    background: transparent;
+    border: 1px dashed #aaa;
+    color: #555;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 4px;
+    transition: 0.3s;
+    width: 100%;
+}
+
+.btn-add-service:hover {
+    border-color: #1a1a1a;
+    color: #1a1a1a;
+}
+
+.service-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.service-row select {
+    flex: 1;
+}
+
+/* Поля — компактные как у тебя */
+.input-group input,
+.input-group select,
+.input-group textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 16px;
+    border: 1px solid #e8e8e8;
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: 'DM Sans', sans-serif;
+    background: #fff;
+    color: #1a1a1a;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.input-group input:focus,
+.input-group select:focus,
+.input-group textarea:focus {
+    border-color: var(--accent, #d4b895);
+    box-shadow: 0 0 0 3px rgba(212, 184, 149, 0.12);
+    background: #fffcf8;
+}
+
+.input-group textarea {
+    min-height: 90px;
+    resize: vertical;
+}
+
+/* Кнопка — всегда видна, неактивна пока не заполнено */
+.btn-inject {
+    display: flex !important;
+    width: 100%;
+    padding: 14px 36px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border: 2px solid #1a1a1a;
+    border-radius: 4px;
+    background: #fff;
+    color: #1a1a1a;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: color 0.3s, opacity 0.3s, transform 0.2s;
+    opacity: 0.35;
+    pointer-events: none;
+}
+
+.btn-inject.active {
+    opacity: 1;
+    pointer-events: all;
+    animation: fadeInBtn 0.3s ease;
+}
+
+@keyframes fadeInBtn {
+    from {
+        opacity: 0.35;
+        transform: translateY(4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.btn-inject .fill {
+    position: absolute;
+    inset: 0;
+    background: #1a1a1a;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s cubic-bezier(0.77, 0, 0.18, 1);
+    z-index: 0;
+}
+
+.btn-inject.active:hover .fill {
+    transform: scaleX(1);
+}
+
+.btn-inject.active:hover {
+    color: #fff;
+}
+
+.btn-inject .label {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.needle-svg {
+    width: 18px;
+    height: 18px;
+    transition: transform 0.4s;
+}
+
+.btn-inject.active:hover .needle-svg {
+    transform: rotate(-30deg) scale(1.2);
+}
+
+/* Кнопка отмены */
+.btn-cancel {
+    display: none;
+    width: 100%;
+    padding: 11px;
+    background: transparent;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    color: #999;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: 'DM Sans', sans-serif;
+    margin-top: -8px;
+}
+
+.btn-cancel:hover {
+    border-color: #e74c3c;
+    color: #e74c3c;
+    background: #fff5f5;
+}
+
+.btn-cancel.visible {
+    display: block;
+}
+
+.remove-service {
+    background: none;
+    border: none;
+    color: #aaa;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 0 6px;
+    line-height: 1;
+    transition: color 0.2s;
+    flex-shrink: 0;
+}
+
+.remove-service:hover {
+    color: #e74c3c;
+}
+
+/* --- Прыгающие иконки (Bungee) --- */
+.social-icons a {
+    display: inline-block;
+    transition: 0.3s;
+}
+
+.social-icons a:hover {
+    animation: bungee 0.6s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    color: var(--accent);
+}
+
+@keyframes bungee {
+    0% {
+        transform: scale(1);
+    }
+
+    30% {
+        transform: scale(1.25, 0.75);
+    }
+
+    40% {
+        transform: scale(0.75, 1.25);
+    }
+
+    50% {
+        transform: scale(1.15, 0.85);
+    }
+
+    65% {
+        transform: scale(0.95, 1.05);
+    }
+
+    75% {
+        transform: scale(1.05, 0.95);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* --- Premium Animated Button --- */
+.btn-send {
+    position: relative;
+    padding: 20px 42px;
+    background: #111;
+    color: #d4b895;
+    /* Золотистый текст изначально */
+    border: 1px solid rgba(212, 184, 149, 0.3);
+    /* Тонкая рамка */
+    cursor: pointer;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-size: 14px;
+    overflow: hidden;
+    z-index: 1;
+    transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* Заполнение премиальным градиентом */
+.btn-send::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+            #d4b895,
+            #f3e5d0,
+            #d4b895);
+    transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+    z-index: -1;
+}
+
+/* Эффект мерцания (Glow) */
+.btn-send:hover {
+    color: #111;
+    border: 1px solid #d4b895;
+    transform: translateY(-4px);
+    box-shadow: 0 15px 30px rgba(212, 184, 149, 0.25);
+}
+
+.btn-send:hover::before {
+    left: 0;
+}
+
+/* Дополнительный блик, который пробегает при наведении */
+.btn-send::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -60%;
+    width: 20%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.4);
+    transform: rotate(30deg);
+    transition: all 0s;
+    opacity: 0;
+}
+
+.btn-send:hover::after {
+    left: 120%;
+    opacity: 1;
+    transition: all 0.6s;
+    /* Быстрый блик поверх градиента */
+}
+
+/* Эффект при нажатии */
+.btn-send:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(212, 184, 149, 0.2);
+}
+
+/* --- Возвращаем персональные цвета при наведении --- */
+
+/* Инстаграм: розовый градиент */
+.links-instagram:hover {
+    color: #e440ad !important;
+    filter: drop-shadow(0 0 8px rgba(228, 64, 173, 0.4));
+}
+
+/* Телеграм: классический голубой */
+.links-telegram:hover {
+    color: #0088cc !important;
+    filter: drop-shadow(0 0 8px rgba(0, 136, 204, 0.4));
+}
+.links-whatsapp:hover {
+    color: #25D366 !important;
+    filter: drop-shadow(0 0 8px rgba(37, 211, 102, 0.45));
+}
+
+
+/* Чтобы иконки прыгали и меняли цвет одновременно */
+.social-icons a:hover svg {
+    fill: currentColor;
+    /* Заставляет SVG брать цвет из настроек выше */
+}
+
+/* Кастомный кружок, который следует за мышью (нужен div с классом cursor-follower в HTML) */
+.cursor-follower {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    background: var(--accent);
+    border-radius: 50%;
+    opacity: 0.5;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.1s ease, width 0.3s, height 0.3s;
+    mix-blend-mode: difference;
+    /* Очень крутой эффект инверсии цветов */
+}
+
+/* Когда наводим на ссылку, курсор увеличивается */
+a:hover~.cursor-follower,
+button:hover~.cursor-follower {
+    transform: scale(3);
+    opacity: 0.2;
+}
+
+/* Настройка строки Дата + Время */
+.input-row {
+    display: flex;
+    gap: 15px;
+    /* Отступ между датой и временем */
+}
+
+.input-row .input-group {
+    flex: 1;
+}
+
+/* Для мобильных устройств делаем дату и время друг под другом */
+@media (max-width: 480px) {
+    .input-row {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+
+/* Исправляем визуальное слипание, если у input-group были лишние стили */
+.input-group {
+    width: 100%;
+}
+
+/* Основной текст времени */
+.info-item p {
+    margin: 5px 0;
+    color: #333;
+    font-size: 1rem;
+}
+
+/* Выделение выходного (воскресенья) */
+.work-status {
+    color: #d9534f;
+    /* Красный оттенок для выходного */
+    font-weight: bold;
+}
+
+/* Примечание про праздники */
+.holiday-note {
+    display: block;
+    margin-top: 5px;
+    color: #888;
+    font-style: italic;
+    font-size: 0.85rem;
+}
+
+.btn-inject {
+    position: relative;
+    overflow: hidden;
+    padding: 15px 36px;
+    border: 2px solid #1a1a1a;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    background: #fff;
+    color: #1a1a1a;
+    transition: color 0.3s, opacity 0.4s, transform 0.2s;
+}
+
+.toast {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-120px);
+    background: #1a1a1a;
+    color: #fff;
+    padding: 13px 24px;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 500;
+    z-index: 10000;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s;
+    opacity: 0;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    max-width: calc(100vw - 32px);
+    white-space: normal;
+    text-align: center;
+    line-height: 1.4;
+}
+
+.toast.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+
+/* Мобильные */
+@media (max-width: 480px) {
+    .toast {
+        top: auto;
+        bottom: 24px;
+        transform: translateX(-50%) translateY(120px);
+        font-size: 13px;
+        padding: 12px 20px;
+        border-radius: 16px;
+        width: calc(100vw - 48px);
+        justify-content: center;
+    }
+
+    .toast.show {
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+/* Капли и кольцо */
+.needle-drop {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+.drop {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #4fc3f7;
+    animation: drip 0.6s ease-in forwards;
+}
+
+@keyframes drip {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(0, 40px) scale(0.3);
+        opacity: 0;
+    }
+}
+
+.ripple-ring {
+    position: fixed;
+    border: 2px solid #1a1a1a;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    pointer-events: none;
+    z-index: 9999;
+    animation: ring-out 0.6s ease-out forwards;
+}
+
+@keyframes ring-out {
+    0% {
+        width: 10px;
+        height: 10px;
+        opacity: 0.8;
+        margin: -5px;
+    }
+
+    100% {
+        width: 80px;
+        height: 80px;
+        opacity: 0;
+        margin: -40px;
+    }
+}
+
+/* Стили для ссылки телефона */
+.phone-link {
+    display: inline-block;
+    color: #333;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.phone-link:hover {
+    color: #007bff;
+    transform: translateX(5px);
+}
+
+/* Стили для контейнера-ссылки */
+.address-link {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+    padding: 10px;
+    margin-left: -10px;
+    border-radius: 8px;
+}
+
+/* Иконка локации */
+.address-icon {
+    font-size: 1.2rem;
+    filter: grayscale(1);
+    transition: filter 0.3s ease;
+}
+
+/* Текст адреса внутри ссылки */
+.address-link p {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.4;
+    color: #444;
+    border-bottom: 1px dashed #ccc;
+}
+
+.address-link:hover {
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
+.address-link:hover .address-icon {
+    filter: grayscale(0);
+}
+
+.address-link:hover p {
+    color: #000;
+    border-bottom-color: #000;
+}
+
+/* ============================================= */
+/* ===============  БЛОК ОТЗЫВА  ================ */
+/* ============================================= */
+
+.review-block {
+    display: none;
+    position: relative;
+    margin-top: 24px;
+    padding: 32px 28px;
+    background: linear-gradient(155deg, #fffefc 0%, var(--rose-lt) 100%);
+    border: 1px solid rgba(212, 184, 149, 0.35);
+    border-radius: 14px;
+    text-align: center;
+    overflow: hidden;
+    box-shadow: 0 12px 40px rgba(26, 21, 32, 0.06), 0 2px 8px rgba(201, 125, 140, 0.08);
+}
+
+.review-block.visible {
+    display: block;
+    animation: reviewIn 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+@keyframes reviewIn {
+    from {
+        opacity: 0;
+        transform: translateY(16px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* тонкая декоративная линия сверху карточки */
+.review-block::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--gold), var(--rose), var(--gold), transparent);
+    background-size: 200% 100%;
+    animation: shimmer 3.5s linear infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 0% 0%;
+    }
+
+    100% {
+        background-position: 200% 0%;
+    }
+}
+
+.review-title {
+    font-family: var(--font-d, serif);
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin: 4px 0 6px;
+    color: var(--ink, #1a1520);
+    letter-spacing: 0.01em;
+}
+
+.review-sub {
+    font-size: 0.88rem;
+    color: var(--gray, #7a7875);
+    margin: 0 0 22px;
+}
+
+.review-stars {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    font-size: 34px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.review-stars span {
+    color: #e3ddd8;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.25s;
+    display: inline-block;
+}
+
+.review-stars span.hover,
+.review-stars span.active {
+    color: var(--gold);
+    transform: scale(1.22) rotate(-4deg);
+    filter: drop-shadow(0 2px 6px rgba(212, 184, 149, 0.5));
+}
+
+#review-text {
+    width: 100%;
+    box-sizing: border-box;
+    min-height: 76px;
+    padding: 14px 18px;
+    border: 1px solid #ecdfd9;
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: var(--ink);
+    background: #fff;
+    resize: vertical;
+    margin-bottom: 18px;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s, background 0.3s;
+}
+
+#review-text::placeholder {
+    color: #b8b2ae;
+}
+
+#review-text:focus {
+    border-color: var(--gold);
+    background: #fffcf8;
+    box-shadow: 0 0 0 3px rgba(212, 184, 149, 0.15);
+}
+
+.btn-review {
+    position: relative;
+    padding: 13px 34px;
+    border: 2px solid #1a1a1a;
+    border-radius: 6px;
+    background: #1a1a1a;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    overflow: hidden;
+    z-index: 1;
+    transition: color 0.35s, border-color 0.35s, transform 0.2s, box-shadow 0.35s;
+}
+
+.btn-review::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, var(--gold), #f3e5d0, var(--gold));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s cubic-bezier(0.77, 0, 0.18, 1);
+    z-index: -1;
+}
+
+.btn-review:hover {
+    color: #1a1a1a;
+    border-color: var(--gold);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(212, 184, 149, 0.3);
+}
+
+.btn-review:hover::before {
+    transform: scaleX(1);
+}
+
+.btn-review:active {
+    transform: translateY(0);
+}
+
+.btn-review:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.btn-review:disabled::before {
+    transform: scaleX(0);
+}
+
+.review-thanks {
+    font-family: var(--font-d, serif);
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--rose);
+    padding: 10px 0 2px;
+    animation: fadeInUp 0.45s ease;
+}
+
+/* Адаптивность блока отзыва */
+@media (max-width: 480px) {
+    .review-block {
+        padding: 26px 18px;
+        border-radius: 12px;
+        margin-top: 18px;
+    }
+
+    .review-title {
+        font-size: 1.35rem;
+    }
+
+    .review-sub {
+        font-size: 0.82rem; 
+        margin-bottom: 18px;
+    }
+
+    .review-stars {
+        font-size: 30px;
+        gap: 6px;
+        margin-bottom: 16px;
+    }
+
+    #review-text {
+        min-height: 66px;
+        padding: 12px 14px;
+        font-size: 13px;
+    }
+
+    .btn-review {
+        width: 100%;
+        padding: 13px 20px;
+    }
+}

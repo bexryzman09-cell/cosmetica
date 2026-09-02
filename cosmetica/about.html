@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shoira Cosmenika</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="about.css ">
+    <link rel="shortcut icon" href="imgs/logo.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Coming+Soon&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Gravitas+One&family=Iosevka+Charon:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Oswald:wght@200..700&family=Raleway:ital,wght@0,1<Paste>..900;1,10０..9００&family=Roboto+Condensed:ital,wght@０,1００..9００;１,1００..9００&family=Roboto:ital,wght@０,1００..9００;１,1００..9００&family=SN+Pro:ital,wght@０,2００..9００;１,2００..9００&family=Saira:ital,wght@０,1００..9００;１,1１５８７９２３４５６７８９₀₀.."
+        rel="stylesheet">
+</head>
+
+<body>
+    <style>
+        /* Этот блок сработает ПОВЕРХ всех ваших файлов css */
+        @media screen and (max-width: 768px) {
+
+            /* 1. Уменьшаем абсолютно все главные заголовки */
+            h1,
+            h2,
+            .hero__title,
+            .m-title,
+            .services__title,
+            .cta__title {
+                font-size: 24px !important;
+                line-height: 1.2 !important;
+                margin-bottom: 10px !important;
+            }
+
+            /* 2. Уменьшаем весь основной текст */
+            p,
+            .hero__text,
+            .m-text,
+            .services__text,
+            .cta__text {
+                font-size: 14px !important;
+                line-height: 1.4 !important;
+            }
+
+            /* 3. Убираем переносы строк, которые всё портят */
+            br {
+                display: none !important;
+            }
+
+            /* 4. Исправляем отступы секций, чтобы текст не улетал вниз */
+            .hero,
+            .services,
+            .cta,
+            .info {
+                padding: 40px 15px !important;
+            }
+
+            /* 5. Картинки делаем адаптивными */
+            .info__image {
+                width: 100% !important;
+                height: auto !important;
+                margin-top: 20px !important;
+            }
+        }
+    </style>
+    <header class="header">
+        <div class="header__container">
+            <div class="header__wrapper">
+                <a class="header__logo" data-link="index.html" href="#"></a>
+                <div class="header__right">
+                    <nav class="header__nav">
+                        <a class="header__link" data-link="index.html" href="#">Главная</a>
+                        <a class="header__link" data-link="servis.html" href="#">Услуги</a>
+                        <a class="header__link" data-link="social.html" href="#">Контакты</a>
+                    </nav>
+                    <button class="btn header__btn" data-link="contact.html">Записаться</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="reveal hero" id="home">
+            <div class="hero-container">
+                <div class="hero-text">
+                    <span class="badge">Эстетическая косметология</span>
+                    <h1 class="h">Искусство вашей <br> естественной красоты</h1>
+                    <p>Приветствую! Я Шоира — косметолог с медицинское образование. Моя миссия — не менять вас,
+                        а подчеркивать то, что дано природой.</p>
+                    <button class="btn-main">Узнать больше</button>
+                    <a href="servis.html" style="text-decoration: none;">
+                        <button class="btn-outline">Смотреть услуги</button>
+                    </a>
+
+                </div>
+                <div class="hero-image">
+                    <div class="img-frame">
+                        <img src="imgs/about-img.jpg" alt="Kosmetolog Shoira">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class=" reveal stats">
+            <div class="stat-item">
+                <h2 class="counter">1.5k</h2>
+                <p>Довольных клиентов</p>
+            </div>
+            <div class="stat-item">
+                <h2 class="counter">8</h2>
+                <p>Международных дипломов</p>
+            </div>
+            <div class="stat-item">
+                <h2 class="counter">10</h2>
+                <p>Лет практики</p>
+            </div>
+        </section>
+
+        <section class=" reveal about-details" id="about">
+            <div class="details-grid">
+                <div class="details-card">
+                    <h3>Образование</h3>
+                    <p>Постоянное повышение квалификации в ведущих центрах эстетической медицины.</p>
+                </div>
+                <div class="details-card active-card">
+                    <h3>Подход</h3>
+                    <p>Использую только сертифицированные препараты и индивидуальные протоколы лечения.</p>
+                </div>
+                <div class="details-card">
+                    <h3>Технологии</h3>
+                    <p>Сочетание классических мануальных техник и последних аппаратных новинок.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="interactive-reveal">
+            <div class="reveal-content">
+                <h2 class="reveal-title">Секрет сияния</h2>
+                <p class="reveal-description">Ваша кожа заслуживает профессионального ухода. Мы используем только
+                    премиальные препараты для достижения идеального результата.</p>
+            </div>
+            <div class="reveal-overlay"></div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer__container">
+            <div class="footer__top">
+                <div class="footer__brand">
+                    <img class="footer__logo" width="60" height="60" src="imgs/logo-two.jpg" alt="logo">
+                    <p class="footer__copy">© 2026 Radiance. <br> Все права защищены.</p>
+                </div>
+
+                <ul class="footer__links">
+                    <li class="footer__column">
+                        <h1 class="footer__title">Быстрые ссылки</h1>
+                        <a class="footer__link" data-link="index.html" href="#">Главная</a>
+                        <a class="footer__link" data-link="about.html" href="#">О нас</a>
+                        <a class="footer__link" data-link="servis.html" href="#">Услуги</a>
+                        <a class="footer__link" target="_blank" data-link="social.html" href="#">Контакты</a>
+                    </li>
+
+
+                    <li class="footer__column">
+                        <h1 class="footer__title">Мы в соцсетях</h1>
+                        <a target="_blank" class="footer__link"
+                            href="https://www.instagram.com/shoiraotokhonova/">Инстаграм</a>
+                        <a class="footer__link" href="https://t.me/permsh" target="_blank">Телеграм</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="mobile-nav">
+            <a class="mobile-nav__link" data-link="index.html">
+                <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <title>Bxs-home SVG Icon</title>
+                        <path
+                            d="M21.743 12.331l-9-10c-.379-.422-1.107-.422-1.486 0l-9 10a.998.998 0 0 0-.17 1.076c.16.361.518.593.913.593h2v7a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-4h4v4a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-7h2a.998.998 0 0 0 .743-1.669z"
+                            fill="currentColor" />
+                    </svg></span>
+                <p>Главная</p>
+            </a>
+            <a class="mobile-nav__link" data-link="about.html">
+                <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512">
+                        <title>Circle-info SVG Icon</title>
+                        <path fill="currentColor"
+                            d="M256 512a256 256 0 1 0 0-512a256 256 0 1 0 0 512m-40-176h24v-64h-24c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24h-80c-13.3 0-24-10.7-24-24s10.7-24 24-24m40-208a32 32 0 1 1 0 64a32 32 0 1 1 0-64" />
+                    </svg></span>
+                <p>О нас</p>
+            </a>
+            <a class="mobile-nav__link" data-link="servis.html">
+                <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 48 48">
+                        <title>Services SVG Icon</title>
+                        <circle cx="9.379" cy="9.379" r="3.879" stroke="currentColor" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <circle cx="9.379" cy="38.621" r="3.879" stroke="currentColor" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <circle cx="9.379" cy="24" r="3.879" stroke="currentColor" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <rect width="25.064" height="7.758" x="17.436" y="5.5" stroke="currentColor"
+                            stroke-linecap="round" stroke-linejoin="round" rx="1.79" ry="1.79" />
+                        <rect width="25.064" height="7.758" x="17.436" y="34.742" stroke="currentColor"
+                            stroke-linecap="round" stroke-linejoin="round" rx="1.79" ry="1.79" />
+                        <rect width="25.064" height="7.758" x="17.436" y="20.121" stroke="currentColor"
+                            stroke-linecap="round" stroke-linejoin="round" rx="1.79" ry="1.79" />
+                    </svg></span>
+                <p>Услуги</p>
+            </a>
+            <a class="mobile-nav__link" target="_blank" data-link="social.html">
+                <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <title>Contact-info SVG Icon</title>
+                        <path fill="none" stroke="currentColor" stroke-width="2"
+                            d="M5 12a3 3 0 1 1 0-6a3 3 0 0 1 0 6Zm4 6v-2c0-2.25-1.787-4-4.036-4h.054C2.768 12 1 13.75 1 16v2M12 7h12M12 17h10m-10-5h7" />
+                    </svg></span>
+                <p>Соцсети</p>
+            </a>
+        </div>
+    </footer>
+    <div class="cursor-glow"></div>
+    <script src="app.js"></script>
+
+    <script>
+        const revealArea = document.querySelector('.interactive-reveal');
+        const description = document.querySelector('.reveal-description');
+
+        revealArea.addEventListener('mousemove', (e) => {
+            const rect = revealArea.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            // Передаем координаты в CSS
+            revealArea.style.setProperty('--x', `${x}px`);
+            revealArea.style.setProperty('--y', `${y}px`);
+
+            // Проявляем описание при движении
+            description.style.opacity = '1';
+        });
+
+        revealArea.addEventListener('mouseleave', () => {
+            description.style.opacity = '0';
+        });
+    </script>
+</body>
+
+</html>
