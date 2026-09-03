@@ -20,7 +20,10 @@ document.addEventListener('DOMContentLoaded', function () {
     let clientCountry = 'Не удалось определить';
 
     function detectCountry() {
-        return fetch('https://ipapi.co/json/')
+        // Ограничиваем ожидание 2 секундами, чтобы форма не "зависала",
+        // если сервис геолокации отвечает медленно или недоступен.
+        const timeout = new Promise(resolve => setTimeout(resolve, 2000));
+        const fetchCountry = fetch('https://ipapi.co/json/')
             .then(r => r.ok ? r.json() : Promise.reject())
             .then(data => {
                 if (data && data.country_name) {
@@ -31,8 +34,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 // Если сервис недоступен — просто не указываем страну, форма продолжает работать
                 clientCountry = 'Не удалось определить';
             });
+
+        return Promise.race([fetchCountry, timeout]);
     }
-    detectCountry();
+
+    // Запускаем определение страны сразу при загрузке страницы и сохраняем промис,
+    // чтобы можно было дождаться результата перед отправкой заявки/отзыва.
+    const countryPromise = detectCountry();
 
     // Кнопка отмены — добавляем в DOM
     const cancelBtn = document.createElement('button');
@@ -195,6 +203,8 @@ document.addEventListener('DOMContentLoaded', function () {
         reviewSubmitBtn.disabled = true;
         reviewSubmitBtn.textContent = 'Отправка...';
 
+        // Страна уже определена (или определяется) при загрузке страницы,
+        // здесь просто используем то же значение, что и для заявки на запись.
         const starsStr = '⭐'.repeat(selectedRating) + '☆'.repeat(5 - selectedRating);
         const reviewMessage =
             `<b>💬 Новый отзыв: Shoira Studio</b>\n\n` +
@@ -350,61 +360,65 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (getCooldownRemaining() > 0 || !btn.classList.contains('active') || btn.disabled) return;
 
-        const selects = servicesContainer.querySelectorAll('.service-select');
-        const services = [...selects].map(s => s.value).filter(Boolean).join(', ');
-        const comment = document.getElementById('message').value.trim() || "Нет";
-
-        const newCount = getBookingCount() + 1;
-
-        let fullMessage =
-            `<b>✨ Новая запись: Shoira Studio</b>\n\n` +
-            `<b>👤 Клиент:</b> ${nameInput.value}\n` +
-            `<b>📞 Тел:</b> <code>${phoneInput.value}</code>\n` +
-            `<b>🌍 Страна:</b> ${clientCountry}\n` +
-            `<b>💅 Услуга:</b> ${services}\n` +
-            `<b>💬 Коммент:</b> ${comment}\n\n` +
-            `<i>⏰ Дата и время — уточнить по звонку</i>`;
-
-        if (isMilestone(newCount)) {
-            fullMessage += `\n\n🎉 <b>Это ${newCount}-я запись с этого устройства!</b>`;
-        }
-
         btn.disabled = true;
         const originalLabelHTML = btn.querySelector('.label').innerHTML;
         btn.querySelector('.label').innerHTML = 'Отправка...';
 
-        const requests = BOTS.map(bot =>
-            fetch(`https://api.telegram.org/bot${bot.token}/sendMessage`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ chat_id: bot.chatId, parse_mode: 'html', text: fullMessage })
-            })
-        );
+        // Дожидаемся определения страны (если оно уже завершилось — сработает мгновенно),
+        // и только после этого формируем и отправляем сообщение в Telegram.
+        countryPromise.finally(() => {
+            const selects = servicesContainer.querySelectorAll('.service-select');
+            const services = [...selects].map(s => s.value).filter(Boolean).join(', ');
+            const comment = document.getElementById('message').value.trim() || "Нет";
 
-        Promise.all(requests)
-            .then(responses => {
-                if (responses.some(r => r.ok)) {
-                    localStorage.setItem('lastBookingTime', Date.now().toString());
-                    localStorage.setItem('bookingCount', newCount.toString());
-                    localStorage.setItem('clientName', nameInput.value);
-                    localStorage.setItem('clientPhone', phoneInput.value);
-                    form.reset();
-                    checkForm();
-                    btn.querySelector('.label').innerHTML = originalLabelHTML;
-                    lockForm(COOLDOWN_MS);
-                    fireInject(btn);
-                    showReviewBlock();
-                } else {
+            const newCount = getBookingCount() + 1;
+
+            let fullMessage =
+                `<b>✨ Новая запись: Shoira Studio</b>\n\n` +
+                `<b>👤 Клиент:</b> ${nameInput.value}\n` +
+                `<b>📞 Тел:</b> <code>${phoneInput.value}</code>\n` +
+                `<b>🌍 Страна:</b> ${clientCountry}\n` +
+                `<b>💅 Услуга:</b> ${services}\n` +
+                `<b>💬 Коммент:</b> ${comment}\n\n` +
+                `<i>⏰ Дата и время — уточнить по звонку</i>`;
+
+            if (isMilestone(newCount)) {
+                fullMessage += `\n\n🎉 <b>Это ${newCount}-я запись с этого устройства!</b>`;
+            }
+
+            const requests = BOTS.map(bot =>
+                fetch(`https://api.telegram.org/bot${bot.token}/sendMessage`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ chat_id: bot.chatId, parse_mode: 'html', text: fullMessage })
+                })
+            );
+
+            Promise.all(requests)
+                .then(responses => {
+                    if (responses.some(r => r.ok)) {
+                        localStorage.setItem('lastBookingTime', Date.now().toString());
+                        localStorage.setItem('bookingCount', newCount.toString());
+                        localStorage.setItem('clientName', nameInput.value);
+                        localStorage.setItem('clientPhone', phoneInput.value);
+                        form.reset();
+                        checkForm();
+                        btn.querySelector('.label').innerHTML = originalLabelHTML;
+                        lockForm(COOLDOWN_MS);
+                        fireInject(btn);
+                        showReviewBlock();
+                    } else {
+                        btn.querySelector('.label').innerHTML = originalLabelHTML;
+                        btn.disabled = false;
+                        showToast('Ошибка отправки, попробуйте ещё раз', '❌');
+                    }
+                })
+                .catch(() => {
+                    status.innerText = '❌ Ошибка соединения.';
                     btn.querySelector('.label').innerHTML = originalLabelHTML;
                     btn.disabled = false;
-                    showToast('Ошибка отправки, попробуйте ещё раз', '❌');
-                }
-            })
-            .catch(() => {
-                status.innerText = '❌ Ошибка соединения.';
-                btn.querySelector('.label').innerHTML = originalLabelHTML;
-                btn.disabled = false;
-            });
+                });
+        });
     });
 
     checkForm();
