@@ -9,10 +9,30 @@ document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementById('tg-form');
     const nameInput = document.getElementById('name');
     const phoneInput = document.getElementById('phone');
+    const honeypot = document.getElementById('website'); // скрытое поле-ловушка для ботов
     const status = document.getElementById('status-msg');
     const btn = document.getElementById('submit-btn');
     const addServiceBtn = document.getElementById('add-service-btn');
     const servicesContainer = document.getElementById('services-container');
+
+    // ===== Определение страны клиента (по IP, без доступа к личным данным вроде email) =====
+    // Используется публичный сервис геолокации по IP. Уведомление об этом добавлено в форму (см. contact.html).
+    let clientCountry = 'Не удалось определить';
+
+    function detectCountry() {
+        return fetch('https://ipapi.co/json/')
+            .then(r => r.ok ? r.json() : Promise.reject())
+            .then(data => {
+                if (data && data.country_name) {
+                    clientCountry = data.country_name;
+                }
+            })
+            .catch(() => {
+                // Если сервис недоступен — просто не указываем страну, форма продолжает работать
+                clientCountry = 'Не удалось определить';
+            });
+    }
+    detectCountry();
 
     // Кнопка отмены — добавляем в DOM
     const cancelBtn = document.createElement('button');
@@ -108,7 +128,19 @@ document.addEventListener('DOMContentLoaded', function () {
     const reviewText = document.getElementById('review-text');
     const reviewSubmitBtn = document.getElementById('review-submit-btn');
     const reviewThanks = document.getElementById('review-thanks');
+    const reviewCounter = document.getElementById('review-counter');
     let selectedRating = 0;
+
+    const REVIEW_MAX_LEN = 300;
+
+    if (reviewText && reviewCounter) {
+        reviewText.setAttribute('maxlength', String(REVIEW_MAX_LEN));
+        const updateCounter = () => {
+            reviewCounter.textContent = `${reviewText.value.length}/${REVIEW_MAX_LEN}`;
+        };
+        reviewText.addEventListener('input', updateCounter);
+        updateCounter();
+    }
 
     reviewStars.forEach(star => {
         star.addEventListener('mouseenter', () => {
@@ -134,6 +166,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
             reviewText.style.display = 'none';
             reviewSubmitBtn.style.display = 'none';
+            if (reviewCounter) reviewCounter.style.display = 'none';
             reviewThanks.style.display = 'block';
         }
     }
@@ -145,6 +178,8 @@ document.addEventListener('DOMContentLoaded', function () {
         reviewText.style.display = '';
         reviewSubmitBtn.style.display = '';
         reviewSubmitBtn.disabled = false;
+        reviewSubmitBtn.textContent = 'Отправить отзыв';
+        if (reviewCounter) { reviewCounter.style.display = ''; reviewCounter.textContent = `0/${REVIEW_MAX_LEN}`; }
         reviewThanks.style.display = 'none';
         reviewBlock.classList.remove('visible');
         localStorage.removeItem('reviewSent');
@@ -156,15 +191,18 @@ document.addEventListener('DOMContentLoaded', function () {
             showToast('Поставьте оценку ⭐', '⚠️');
             return;
         }
+        if (reviewSubmitBtn.disabled) return; // защита от повторного клика
         reviewSubmitBtn.disabled = true;
+        reviewSubmitBtn.textContent = 'Отправка...';
 
         const starsStr = '⭐'.repeat(selectedRating) + '☆'.repeat(5 - selectedRating);
         const reviewMessage =
             `<b>💬 Новый отзыв: Shoira Studio</b>\n\n` +
             `<b>👤 Клиент:</b> ${localStorage.getItem('clientName') || 'Не указан'}\n` +
             `<b>📞 Тел:</b> <code>${localStorage.getItem('clientPhone') || 'Не указан'}</code>\n` +
+            `<b>🌍 Страна:</b> ${clientCountry}\n` +
             `<b>⭐ Оценка:</b> ${starsStr} (${selectedRating}/5)\n` +
-            `<b>📝 Текст:</b> ${reviewText.value.trim() || 'Без комментария'}`;
+            `<b>📝 Текст:</b> ${(reviewText.value.trim() || 'Без комментария').slice(0, REVIEW_MAX_LEN)}`;
 
         const requests = BOTS.map(bot =>
             fetch(`https://api.telegram.org/bot${bot.token}/sendMessage`, {
@@ -182,15 +220,18 @@ document.addEventListener('DOMContentLoaded', function () {
                     reviewText.style.display = 'none';
                     reviewStars.forEach(s => s.style.pointerEvents = 'none');
                     reviewSubmitBtn.style.display = 'none';
+                    if (reviewCounter) reviewCounter.style.display = 'none';
                     reviewThanks.style.display = 'block';
                     showToast('Спасибо за отзыв! 💛', '⭐');
                 } else {
                     reviewSubmitBtn.disabled = false;
-                    showToast('Ошибка отправки отзыва', '❌');
+                    reviewSubmitBtn.textContent = 'Отправить отзыв';
+                    showToast('Ошибка отправки отзыва, попробуйте ещё раз', '❌');
                 }
             })
             .catch(() => {
                 reviewSubmitBtn.disabled = false;
+                reviewSubmitBtn.textContent = 'Отправить отзыв';
                 showToast('Ошибка соединения', '❌');
             });
     });
@@ -198,9 +239,10 @@ document.addEventListener('DOMContentLoaded', function () {
     function checkForm() {
         const name = nameInput.value.trim();
         const phone = phoneInput.value.trim();
+        const digitsOnly = phone.replace(/\D/g, '');
         const selects = servicesContainer.querySelectorAll('.service-select');
         const allServicesChosen = [...selects].every(s => s.value !== '');
-        const valid = name.length > 1 && phone.length >= 6 && allServicesChosen;
+        const valid = name.length > 1 && digitsOnly.length === 11 && allServicesChosen;
 
         if (valid) {
             btn.classList.add('active');
@@ -300,7 +342,13 @@ document.addEventListener('DOMContentLoaded', function () {
     // Отправка
     form.addEventListener('submit', function (e) {
         e.preventDefault();
-        if (getCooldownRemaining() > 0 || !btn.classList.contains('active')) return;
+
+        // Honeypot: если скрытое поле заполнено — это бот, тихо игнорируем отправку
+        if (honeypot && honeypot.value.trim() !== '') {
+            return;
+        }
+
+        if (getCooldownRemaining() > 0 || !btn.classList.contains('active') || btn.disabled) return;
 
         const selects = servicesContainer.querySelectorAll('.service-select');
         const services = [...selects].map(s => s.value).filter(Boolean).join(', ');
@@ -312,6 +360,7 @@ document.addEventListener('DOMContentLoaded', function () {
             `<b>✨ Новая запись: Shoira Studio</b>\n\n` +
             `<b>👤 Клиент:</b> ${nameInput.value}\n` +
             `<b>📞 Тел:</b> <code>${phoneInput.value}</code>\n` +
+            `<b>🌍 Страна:</b> ${clientCountry}\n` +
             `<b>💅 Услуга:</b> ${services}\n` +
             `<b>💬 Коммент:</b> ${comment}\n\n` +
             `<i>⏰ Дата и время — уточнить по звонку</i>`;
@@ -321,6 +370,8 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         btn.disabled = true;
+        const originalLabelHTML = btn.querySelector('.label').innerHTML;
+        btn.querySelector('.label').innerHTML = 'Отправка...';
 
         const requests = BOTS.map(bot =>
             fetch(`https://api.telegram.org/bot${bot.token}/sendMessage`, {
@@ -339,13 +390,19 @@ document.addEventListener('DOMContentLoaded', function () {
                     localStorage.setItem('clientPhone', phoneInput.value);
                     form.reset();
                     checkForm();
+                    btn.querySelector('.label').innerHTML = originalLabelHTML;
                     lockForm(COOLDOWN_MS);
                     fireInject(btn);
                     showReviewBlock();
+                } else {
+                    btn.querySelector('.label').innerHTML = originalLabelHTML;
+                    btn.disabled = false;
+                    showToast('Ошибка отправки, попробуйте ещё раз', '❌');
                 }
             })
             .catch(() => {
                 status.innerText = '❌ Ошибка соединения.';
+                btn.querySelector('.label').innerHTML = originalLabelHTML;
                 btn.disabled = false;
             });
     });
@@ -362,7 +419,7 @@ function showToast(msg, icon) {
     clearTimeout(t._timer);
     t._timer = setTimeout(() => { t.classList.remove('show'); }, 5000);
 }
- 
+
 function fireInject(btn) {
     const rect = btn.getBoundingClientRect();
     const cx = rect.left + rect.width / 2;

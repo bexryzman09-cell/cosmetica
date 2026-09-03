@@ -16,7 +16,7 @@ class TechCarousel {
 
     init() {
         // 1. Клонируем элементы для создания эффекта бесконечности
-        this.cloneCards();
+        this.cloneCards(); 
 
         // 2. Слушатели событий для паузы
         this.container.addEventListener('mouseenter', () => this.isPaused = true);
