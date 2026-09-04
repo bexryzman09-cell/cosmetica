@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     console.log('✅ DOMContentLoaded triggered');
-
+    
     // 1. ГЛОБАЛЬНЫЙ ОБРАБОТЧИК КЛИКОВ
     document.addEventListener('click', (e) => {
         const targetEl = e.target.closest('[data-link], .btn, .btn-main, .btn-outline, .header__btn, .hero__btn, .cta__btn, .info__btn, .features__btn');
@@ -224,11 +224,14 @@ window.addEventListener('load', function () {
     }, 200);
 });
 
+// ========== FOOTER ANIMATION ==========
+const footer = document.querySelector('footer');
+if (footer) {
+    const footerObs = new IntersectionObserver((entries) => {
         entries.forEach(e => { if (e.isIntersecting) footer.classList.add('in-view'); });
     }, { threshold: 0.1 });
     footerObs.observe(footer);
 }
-
 // ========== MOBILE NAV ==========
 document.querySelectorAll('.mobile-nav__link').forEach(link => {
     link.addEventListener('click', () => {
@@ -257,3 +260,34 @@ window.addEventListener('load', function () {
         }, 100);
     }
 });
+
+// ========== HEADER SCROLL ANIMATION ==========
+const header = document.querySelector('.header');
+if (header) {
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                const currentScrollY = window.scrollY;
+                
+                if (currentScrollY > 100) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+
+                if (currentScrollY > lastScrollY && currentScrollY > 100) {
+                    header.classList.add('scrolling');
+                } else {
+                    header.classList.remove('scrolling');
+                }
+
+                lastScrollY = currentScrollY;
+                ticking = false;
+            });
+            ticking = true;
+        }
+    }, { passive: true });
+}
