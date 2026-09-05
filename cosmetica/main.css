@@ -2183,6 +2183,12 @@ body {
     flex-shrink: 0;
 }
 
+
+
+
+
+   
+
 .faq__item.open .faq__q-icon {
     background: var(--rose);
     color: var(--white);
