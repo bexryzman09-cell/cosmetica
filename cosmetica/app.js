@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     console.log('✅ DOMContentLoaded triggered');
-    
+
     // 1. ГЛОБАЛЬНЫЙ ОБРАБОТЧИК КЛИКОВ
     document.addEventListener('click', (e) => {
         const targetEl = e.target.closest('[data-link], .btn, .btn-main, .btn-outline, .header__btn, .hero__btn, .cta__btn, .info__btn, .features__btn');
@@ -224,14 +224,34 @@ window.addEventListener('load', function () {
     }, 200);
 });
 
-// ========== FOOTER ANIMATION ==========
-const footer = document.querySelector('footer');
+// ========== FOOTER - ЛЕПЕСТКИ ==========
+const footerBg = document.getElementById('footerBg');
+if (footerBg) {
+    const colors = ['#c49ee0', '#b07fd4', '#e8d5f5', '#9b72b8', '#d4b8e0'];
+    for (let i = 0; i < 14; i++) {
+        const p = document.createElement('div');
+        p.className = 'petal';
+        const size = 8 + Math.random() * 18;
+        p.style.cssText = `
+            width:${size}px;height:${size}px;
+            left:${Math.random() * 100}%;
+            bottom:-10%;
+            background:${colors[Math.floor(Math.random() * colors.length)]};
+            animation-duration:${6 + Math.random() * 8}s;
+            animation-delay:-${Math.random() * 10}s;
+        `;
+        footerBg.appendChild(p);
+    }
+}
+
+const footer = document.querySelector('.footer');
 if (footer) {
-    const footerObs = new IntersectionObserver((entries) => {
+    const footerObs = new IntersectionObserver(entries => {
         entries.forEach(e => { if (e.isIntersecting) footer.classList.add('in-view'); });
     }, { threshold: 0.1 });
     footerObs.observe(footer);
 }
+
 // ========== MOBILE NAV ==========
 document.querySelectorAll('.mobile-nav__link').forEach(link => {
     link.addEventListener('click', () => {
@@ -260,41 +280,3 @@ window.addEventListener('load', function () {
         }, 100);
     }
 });
-
-// ========== HEADER SCROLL ANIMATION ==========
-const header = document.querySelector('.header');
-if (header) {
-    let lastScrollY = window.scrollY;
-    let ticking = false;
-
-    window.addEventListener('scroll', () => {
-        if (!ticking) {
-            window.requestAnimationFrame(() => {
-                const currentScrollY = window.scrollY;
-
-                if (currentScrollY > 100) {
-                    header.classList.add('scrolled');
-                } else {
-                    header.classList.remove('scrolled');
-                    header.classList.remove('scrolling-down', 'scrolling-up');
-                }
-
-                if (currentScrollY > lastScrollY && currentScrollY > 100) {
-                    header.classList.remove('scrolling-up');
-                    header.classList.add('scrolling-down');
-                } else if (currentScrollY < lastScrollY && currentScrollY > 100) {
-                    header.classList.remove('scrolling-down');
-                    header.classList.add('scrolling-up');
-                }
-
-                setTimeout(() => {
-                    header.classList.remove('scrolling-down', 'scrolling-up');
-                }, 600);
-
-                lastScrollY = currentScrollY;
-                ticking = false;
-            });
-            ticking = true;
-        }
-    }, { passive: true });
-}
