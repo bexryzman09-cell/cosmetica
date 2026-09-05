@@ -271,18 +271,25 @@ if (header) {
         if (!ticking) {
             window.requestAnimationFrame(() => {
                 const currentScrollY = window.scrollY;
-                
+
                 if (currentScrollY > 100) {
                     header.classList.add('scrolled');
                 } else {
                     header.classList.remove('scrolled');
+                    header.classList.remove('scrolling-down', 'scrolling-up');
                 }
 
                 if (currentScrollY > lastScrollY && currentScrollY > 100) {
-                    header.classList.add('scrolling');
-                } else {
-                    header.classList.remove('scrolling');
+                    header.classList.remove('scrolling-up');
+                    header.classList.add('scrolling-down');
+                } else if (currentScrollY < lastScrollY && currentScrollY > 100) {
+                    header.classList.remove('scrolling-down');
+                    header.classList.add('scrolling-up');
                 }
+
+                setTimeout(() => {
+                    header.classList.remove('scrolling-down', 'scrolling-up');
+                }, 600);
 
                 lastScrollY = currentScrollY;
                 ticking = false;
