@@ -1061,6 +1061,7 @@ button:hover~.cursor-follower {
     .btn-review {
         width: 100%;
         padding: 13px 20px;
+        font-size: 12px;
     }
 }
 
