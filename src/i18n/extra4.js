@@ -8,6 +8,9 @@ export const extra4 = {
         hp_still: 'Остались вопросы?',
         hp_still_sub: 'Свяжитесь с мастером напрямую',
         hp_call: 'Позвонить',
+        ct_cm_title: 'Отмена записи',
+        ct_cm_keep: 'Оставить запись',
+        ct_cm_yes: 'Да, отменить',
     },
     uz: {
         help: 'Yordam',
@@ -18,6 +21,9 @@ export const extra4 = {
         hp_still: 'Savollar qoldimi?',
         hp_still_sub: "Usta bilan to'g'ridan-to'g'ri bog'laning",
         hp_call: "Qo'ng'iroq qilish",
+        ct_cm_title: 'Yozilishni bekor qilish',
+        ct_cm_keep: 'Yozilishni saqlab qolish',
+        ct_cm_yes: 'Ha, bekor qilish',
     },
     en: {
         help: 'Help',
@@ -28,5 +34,8 @@ export const extra4 = {
         hp_still: 'Still have questions?',
         hp_still_sub: 'Contact the specialist directly',
         hp_call: 'Call us',
+        ct_cm_title: 'Cancel booking',
+        ct_cm_keep: 'Keep booking',
+        ct_cm_yes: 'Yes, cancel',
     },
 };
