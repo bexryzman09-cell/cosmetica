@@ -1,0 +1,32 @@
+export const extra4 = {
+    ru: {
+        help: 'Помощь',
+        hp_page_title: 'Помощь | Kosmetolog Shoira',
+        hp_tag: 'Поддержка',
+        hp_h1: 'Мы всегда на связи',
+        hp_sub: 'Найдите ответ в частых вопросах или спросите Элен, нашу AI-помощницу. Она знает об услугах, ценах и записи.',
+        hp_still: 'Остались вопросы?',
+        hp_still_sub: 'Свяжитесь с мастером напрямую',
+        hp_call: 'Позвонить',
+    },
+    uz: {
+        help: 'Yordam',
+        hp_page_title: 'Yordam | Kosmetolog Shoira',
+        hp_tag: "Qo'llab-quvvatlash",
+        hp_h1: "Biz doim aloqadamiz",
+        hp_sub: "Javobni ko'p beriladigan savollardan toping yoki AI-yordamchimiz Elendan so'rang. U xizmatlar, narxlar va yozilish haqida biladi.",
+        hp_still: 'Savollar qoldimi?',
+        hp_still_sub: "Usta bilan to'g'ridan-to'g'ri bog'laning",
+        hp_call: "Qo'ng'iroq qilish",
+    },
+    en: {
+        help: 'Help',
+        hp_page_title: 'Help | Kosmetolog Shoira',
+        hp_tag: 'Support',
+        hp_h1: 'We’re always in touch',
+        hp_sub: 'Find an answer in the common questions or ask Elen, our AI assistant. She knows about services, prices and booking.',
+        hp_still: 'Still have questions?',
+        hp_still_sub: 'Contact the specialist directly',
+        hp_call: 'Call us',
+    },
+};

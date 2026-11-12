@@ -419,15 +419,18 @@ export default function Contact() {
 
                 {!reviewSent && (
                   <>
-                    <textarea
-                      placeholder={t('ct_rev_ph')}
-                      maxLength={REVIEW_MAX_LEN}
-                      value={reviewText}
-                      onChange={(e) => setReviewText(e.target.value)}
-                    ></textarea>
-                    <div style={{ textAlign: 'right', fontSize: 12, color: '#999', margin: '-12px 0 12px' }}>
-                      {reviewText.length}/{REVIEW_MAX_LEN}
+                    <div className="review-field">
+                      <textarea
+                        className="review-textarea"
+                        placeholder={t('ct_rev_ph')}
+                        maxLength={REVIEW_MAX_LEN}
+                        value={reviewText}
+                        onChange={(e) => setReviewText(e.target.value)}
+                        rows={5}
+                      ></textarea>
+                      <span className="review-counter">{reviewText.length} / {REVIEW_MAX_LEN}</span>
                     </div>
+                 
                     <button type="button" className="btn-review" disabled={reviewSending} onClick={onReviewSubmit}>
                       {reviewSending ? t('ct_sending') : t('ct_rev_send')}
                     </button>

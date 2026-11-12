@@ -41,6 +41,7 @@ export default function Footer() {
               <Link className="footer__link" to="/about">{t('about')}</Link>
               <Link className="footer__link" to="/servis">{t('services')}</Link>
               <Link className="footer__link" to="/social" target="_blank">{t('contacts')}</Link>
+              <Link className="footer__link" to="/help">{t('help')}</Link>
             </li>
 
             <li className="footer__column">

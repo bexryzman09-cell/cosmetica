@@ -1,8 +1,9 @@
 
 import { NavLink } from 'react-router-dom';
 const cls = ({ isActive }) => 'mobile-nav__link' + (isActive ? ' active' : '');
-
+import { useLang } from '../i18n/LangContext';
 export default function MobileNav() {
+  const { t } = useLang();
   return (
     <div className="mobile-nav">
       <NavLink className={cls} to="/" end>
@@ -14,8 +15,8 @@ export default function MobileNav() {
               fill="currentColor"
             />
           </svg>
-        </span> 
-        <p>Главная</p>
+        </span>
+        <p>{t('home')}</p>
       </NavLink>
 
       <NavLink className={cls} to="/about">
@@ -28,7 +29,7 @@ export default function MobileNav() {
             />
           </svg>
         </span>
-        <p>О нас</p>
+        <p>{t('about')}</p>
       </NavLink>
 
       <NavLink className={cls} to="/servis">
@@ -43,7 +44,19 @@ export default function MobileNav() {
             <rect width="25.064" height="7.758" x="17.436" y="20.121" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" rx="1.79" ry="1.79" />
           </svg>
         </span>
-        <p>Услуги</p>
+        <p>{t('services')}</p>
+      </NavLink>
+      <NavLink className={cls} to="/help">
+        <span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <title>Help</title>
+            <path
+              fill="currentColor"
+              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"
+            />
+          </svg>
+        </span>
+        <p>{t('help')}</p>
       </NavLink>
 
       <NavLink className={cls} to="/social" target="_blank">
@@ -58,7 +71,7 @@ export default function MobileNav() {
             />
           </svg>
         </span>
-        <p>Соцсети</p>
+        <p>{t('contacts')}</p>
       </NavLink>
     </div>
   );

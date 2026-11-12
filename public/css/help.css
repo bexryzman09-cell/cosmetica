@@ -1,0 +1,743 @@
+/* =====================================================
+   HELP PAGE — улучшенная версия (вставить в конец CSS)
+   ===================================================== */
+
+/* ---------- Фон: плавающие размытые «аурa»-пятна ---------- */
+.help-page {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(180deg, #f6eefb 0%, #fdfbff 460px, #fff 100%);
+    padding-bottom: 80px;
+}
+
+.help-page::before,
+.help-page::after {
+    content: '';
+    position: absolute;
+    z-index: 0;
+    border-radius: 50%;
+    filter: blur(70px);
+    pointer-events: none;
+}
+
+.help-page::before {
+    width: 420px;
+    height: 420px;
+    top: -120px;
+    left: -100px;
+    background: radial-gradient(circle, rgba(163, 92, 201, .38), transparent 70%);
+    animation: helpFloatA 14s ease-in-out infinite alternate;
+}
+
+.help-page::after {
+    width: 380px;
+    height: 380px;
+    top: 80px;
+    right: -120px;
+    background: radial-gradient(circle, rgba(212, 184, 149, .45), transparent 70%);
+    animation: helpFloatB 17s ease-in-out infinite alternate;
+}
+
+@keyframes helpFloatA {
+    to {
+        transform: translate(120px, 90px) scale(1.2);
+    }
+}
+
+@keyframes helpFloatB {
+    to {
+        transform: translate(-130px, 70px) scale(1.15);
+    }
+}
+
+.help-hero,
+.help-page .container {
+    position: relative;
+    z-index: 1;
+}
+
+/* ---------- Hero ---------- */
+.help-hero {
+    text-align: center;
+    padding: 80px 20px 46px;
+    animation: helpIn .9s cubic-bezier(.22, 1, .36, 1) both;
+}
+
+/* Плавающие искорки по бокам заголовка */
+.help-hero::before,
+.help-hero::after {
+    content: '✦';
+    position: absolute;
+    color: #c49ee0;
+    pointer-events: none;
+    animation: helpSpark 4.5s ease-in-out infinite;
+}
+
+.help-hero::before {
+    left: 16%;
+    top: 90px;
+    font-size: 26px;
+}
+
+.help-hero::after {
+    right: 15%;
+    top: 150px;
+    font-size: 18px;
+    color: #d4b895;
+    animation-delay: 1.6s;
+}
+
+@keyframes helpSpark {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0) scale(.8);
+        opacity: .35;
+    }
+
+    50% {
+        transform: translateY(-16px) rotate(90deg) scale(1.2);
+        opacity: 1;
+    }
+}
+
+/* Тег-«пилюля» с бегущим бликом */
+.help-hero .section-tag {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    padding: 7px 18px;
+    margin-bottom: 18px;
+    border: 1px solid rgba(118, 51, 153, .25);
+    border-radius: 50px;
+    background: rgba(255, 255, 255, .7);
+    backdrop-filter: blur(8px);
+    color: #763399;
+    letter-spacing: .28em;
+}
+
+.help-hero .section-tag::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -80%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(196, 158, 224, .55), transparent);
+    transform: skewX(-20deg);
+    animation: helpTagShine 3.8s ease-in-out infinite;
+}
+
+@keyframes helpTagShine {
+
+    0%,
+    55% {
+        left: -80%;
+    }
+
+    100% {
+        left: 160%;
+    }
+}
+
+/* Заголовок с переливающимся градиентом */
+.help-hero .section-title {
+    margin-bottom: 16px;
+    background: linear-gradient(90deg, #3d1a52, #763399, #c49ee0, #d4b895, #c49ee0, #763399, #3d1a52);
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    animation: helpTitleShine 8s linear infinite;
+}
+
+@keyframes helpTitleShine {
+    to {
+        background-position: 300% 0;
+    }
+}
+
+.help-hero p {
+    max-width: 560px;
+    margin: 0 auto;
+    color: #7a7875;
+    font-size: 15px;
+    line-height: 1.75;
+    animation: helpIn 1s cubic-bezier(.22, 1, .36, 1) .25s both;
+}
+
+@keyframes helpIn {
+    from {
+        opacity: 0;
+        transform: translateY(28px);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* ---------- Сетка ---------- */
+.help-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 34px;
+    align-items: start;
+}
+
+.help-faq {
+    animation: helpSlideL .9s cubic-bezier(.22, 1, .36, 1) .2s both;
+}
+
+.help-chat {
+    animation: helpSlideR .9s cubic-bezier(.22, 1, .36, 1) .3s both,
+        helpChatFloat 6s ease-in-out 1.2s infinite;
+}
+
+@keyframes helpSlideL {
+    from {
+        opacity: 0;
+        transform: translateX(-40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes helpSlideR {
+    from {
+        opacity: 0;
+        transform: translateX(40px) scale(.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes helpChatFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+/* ---------- FAQ ---------- */
+.help-faq .hc-section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    letter-spacing: 3px;
+}
+
+.help-faq .hc-section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, #d9c4e8, transparent);
+}
+
+.help-faq .hc-q {
+    position: relative;
+    background: rgba(255, 255, 255, .85);
+    backdrop-filter: blur(6px);
+    border: 1px solid #efe6f6;
+    border-radius: 18px;
+    opacity: 0;
+    animation: helpCardIn .7s cubic-bezier(.22, 1, .36, 1) forwards;
+    transition: transform .35s cubic-bezier(.34, 1.56, .64, 1),
+        border-color .3s, box-shadow .3s, background .3s;
+}
+
+/* каскадное появление */
+.help-faq .hc-q:nth-child(1) {
+    animation-delay: .45s;
+}
+
+.help-faq .hc-q:nth-child(2) {
+    animation-delay: .58s;
+}
+
+.help-faq .hc-q:nth-child(3) {
+    animation-delay: .71s;
+}
+
+.help-faq .hc-q:nth-child(4) {
+    animation-delay: .84s;
+}
+
+.help-faq .hc-q:nth-child(5) {
+    animation-delay: .97s;
+}
+
+@keyframes helpCardIn {
+    from {
+        opacity: 0;
+        transform: translateY(24px) scale(.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* акцентная полоска слева */
+.help-faq .hc-q::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 14%;
+    bottom: 14%;
+    width: 4px;
+    border-radius: 0 4px 4px 0;
+    background: linear-gradient(180deg, #763399, #d4b895);
+    transform: scaleY(0);
+    transition: transform .4s cubic-bezier(.34, 1.56, .64, 1);
+}
+
+.help-faq .hc-q:hover {
+    transform: translateX(6px);
+    border-color: #d9c4e8;
+    box-shadow: 0 10px 26px rgba(118, 51, 153, .12);
+}
+
+.help-faq .hc-q:hover::before,
+.help-faq .hc-q.open::before {
+    transform: scaleY(1);
+}
+
+.help-faq .hc-q.open {
+    transform: translateX(0);
+    background: #fff;
+    border-color: #c49ee0;
+    box-shadow: 0 14px 34px rgba(118, 51, 153, .18);
+}
+
+.help-faq .hc-q__btn {
+    font-size: 15px;
+    padding: 18px 20px;
+    transition: color .3s;
+}
+
+.help-faq .hc-q:hover .hc-q__btn,
+.help-faq .hc-q.open .hc-q__btn {
+    color: #5b2578;
+}
+
+.help-faq .hc-q__icon {
+    width: 26px;
+    height: 26px;
+}
+
+.help-faq .hc-q:hover .hc-q__icon {
+    background: #f3e9fa;
+}
+
+.help-faq .hc-q.open .hc-q__icon {
+    background: linear-gradient(135deg, #763399, #a35cc9);
+    box-shadow: 0 4px 12px rgba(118, 51, 153, .4);
+}
+
+.help-faq .hc-q__a p {
+    padding: 0 20px 20px;
+    font-size: 14px;
+    opacity: 0;
+    transform: translateY(-6px);
+    transition: opacity .4s ease .1s, transform .4s ease .1s;
+}
+
+.help-faq .hc-q.open .hc-q__a p {
+    opacity: 1;
+    transform: none;
+}
+
+/* ---------- Блок «Остались вопросы?» ---------- */
+.help-contact {
+    position: relative;
+    overflow: hidden;
+    margin-top: 24px;
+    padding: 28px 24px;
+    text-align: center;
+    background: linear-gradient(135deg, #fff, #faf5fd);
+    border: 1px solid #efe6f6;
+    border-radius: 22px;
+    opacity: 0;
+    animation: helpCardIn .8s cubic-bezier(.22, 1, .36, 1) 1.1s forwards;
+    transition: transform .35s, box-shadow .35s;
+}
+
+.help-contact::before {
+    content: '';
+    position: absolute;
+    inset: auto -40px -60px auto;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(163, 92, 201, .2), transparent 70%);
+    animation: helpFloatB 9s ease-in-out infinite alternate;
+    pointer-events: none;
+}
+
+.help-contact:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 40px rgba(118, 51, 153, .14);
+}
+
+.help-contact h3 {
+    position: relative;
+    font-size: 18px;
+    color: #2d2d2d;
+    margin-bottom: 6px;
+}
+
+.help-contact p {
+    position: relative;
+    font-size: 13px;
+    color: #7a7875;
+}
+
+.help-contact__row {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 18px;
+}
+
+/* ---------- Кнопки ---------- */
+.help-btn {
+    position: relative;
+    overflow: hidden;
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform .35s cubic-bezier(.34, 1.56, .64, 1),
+        box-shadow .3s, background .3s, color .3s;
+}
+
+.help-btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -80%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .45), transparent);
+    transform: skewX(-20deg);
+}
+
+.help-btn:hover::after {
+    left: 160%;
+    transition: left .7s ease;
+}
+
+.help-btn:hover {
+    transform: translateY(-4px) scale(1.04);
+}
+
+.help-btn:active {
+    transform: scale(.95);
+    transition-duration: .1s;
+}
+
+.help-btn--primary {
+    background: linear-gradient(135deg, #763399, #a35cc9);
+    color: #fff;
+    box-shadow: 0 8px 20px rgba(118, 51, 153, .32);
+    animation: helpBtnPulse 3s ease-out infinite;
+}
+
+@keyframes helpBtnPulse {
+    0% {
+        box-shadow: 0 8px 20px rgba(118, 51, 153, .32), 0 0 0 0 rgba(118, 51, 153, .35);
+    }
+
+    70% {
+        box-shadow: 0 8px 20px rgba(118, 51, 153, .32), 0 0 0 12px rgba(118, 51, 153, 0);
+    }
+
+    100% {
+        box-shadow: 0 8px 20px rgba(118, 51, 153, .32), 0 0 0 0 rgba(118, 51, 153, 0);
+    }
+}
+
+.help-btn--outline {
+    border: 1px solid #d9c4e8;
+    color: #763399;
+    background: #fff;
+}
+
+.help-btn--outline:hover {
+    background: #f3e9fa;
+    border-color: #a35cc9;
+}
+
+.help-btn--dark {
+    background: #111;
+    color: #d4b895;
+    border: 1px solid rgba(212, 184, 149, .35);
+}
+
+.help-btn--dark:hover {
+    background: #d4b895;
+    color: #111;
+}
+
+/* ---------- Карточка чата с бегущей градиентной рамкой ---------- */
+.help-chat {
+    position: sticky;
+    top: 90px;
+    height: 650px;
+    max-height: calc(100vh - 120px);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 2px solid transparent;
+    border-radius: 28px;
+    background:
+        linear-gradient(#fff, #fff) padding-box,
+        linear-gradient(120deg, #763399, #c49ee0, #d4b895, #c49ee0, #763399) border-box;
+    background-size: 100% 100%, 300% 300%;
+    box-shadow: 0 28px 70px rgba(74, 34, 98, .22);
+}
+
+/* шапка чата: блик + мягкая пульсация аватара */
+.help-chat .hc-head {
+    position: relative;
+    overflow: hidden;
+    padding: 18px 20px;
+}
+
+.help-chat .hc-head::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -60%;
+    width: 35%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .25), transparent);
+    transform: skewX(-20deg);
+    animation: helpHeadShine 5s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes helpHeadShine {
+
+    0%,
+    55% {
+        left: -60%;
+    }
+
+    100% {
+        left: 150%;
+    }
+}
+
+.help-chat .hc-avatar {
+    animation: helpAvatar 3s ease-in-out infinite;
+}
+
+@keyframes helpAvatar {
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, .45);
+        transform: scale(1);
+    }
+
+    50% {
+        box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+        transform: scale(1.06);
+    }
+}
+
+.help-chat .hc-online {
+    animation: helpOnline 1.8s ease-in-out infinite;
+}
+
+@keyframes helpOnline {
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(84, 216, 139, .7);
+    }
+
+    50% {
+        box-shadow: 0 0 0 6px rgba(84, 216, 139, 0);
+    }
+}
+
+/* область сообщений: точечный узор */
+.help-chat .hc-messages {
+    background:
+        radial-gradient(circle at 1px 1px, rgba(118, 51, 153, .07) 1px, transparent 0) 0 0 / 22px 22px,
+        #fcfaff;
+}
+
+.help-chat .hc-bubble {
+    transition: transform .3s cubic-bezier(.34, 1.56, .64, 1), box-shadow .3s;
+}
+
+.help-chat .hc-msg--ai .hc-bubble:hover {
+    transform: translateY(-2px) scale(1.01);
+    box-shadow: 0 8px 20px rgba(118, 51, 153, .12);
+}
+
+.help-chat .hc-msg--user .hc-bubble {
+    box-shadow: 0 8px 20px rgba(118, 51, 153, .28);
+}
+
+.help-chat .hc-msg--user .hc-bubble:hover {
+    transform: translateY(-2px) scale(1.01);
+}
+
+/* подсказки-чипсы: каскад + покачивание */
+.help-chat .hc-chip {
+    opacity: 0;
+    animation: helpChipIn .6s cubic-bezier(.34, 1.56, .64, 1) forwards;
+}
+
+.help-chat .hc-chip:nth-child(1) {
+    animation-delay: .9s;
+}
+
+.help-chat .hc-chip:nth-child(2) {
+    animation-delay: 1.05s;
+}
+
+.help-chat .hc-chip:nth-child(3) {
+    animation-delay: 1.2s;
+}
+
+@keyframes helpChipIn {
+    from {
+        opacity: 0;
+        transform: translateY(14px) scale(.85);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.help-chat .hc-chip:hover {
+    transform: translateY(-3px) rotate(-1.5deg);
+    box-shadow: 0 8px 18px rgba(118, 51, 153, .25);
+}
+
+/* поле ввода */
+.help-chat .hc-input {
+    padding: 14px 16px 10px;
+}
+
+.help-chat .hc-input input {
+    transition: border-color .25s, box-shadow .25s, transform .25s;
+}
+
+.help-chat .hc-input input:focus {
+    border-color: #a35cc9;
+    box-shadow: 0 0 0 4px rgba(163, 92, 201, .16);
+    transform: translateY(-1px);
+}
+
+.help-chat .hc-send:not(:disabled) {
+    animation: helpSendPulse 2.4s ease-out infinite;
+}
+
+@keyframes helpSendPulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(118, 51, 153, .4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(118, 51, 153, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(118, 51, 153, 0);
+    }
+}
+
+.help-chat .hc-send:hover:not(:disabled) {
+    transform: scale(1.12) rotate(-8deg);
+}
+
+/* ---------- Кнопка-FAB (виджет): лёгкое «дыхание» ---------- */
+.hc-fab:not(.is-open) {
+    animation: hcPulse 2.8s ease-out infinite, helpFabBreath 4s ease-in-out infinite;
+}
+
+@keyframes helpFabBreath {
+
+    0%,
+    100% {
+        translate: 0 0;
+    }
+
+    50% {
+        translate: 0 -5px;
+    }
+}
+
+/* ---------- Адаптив ---------- */
+@media (max-width: 900px) {
+    .help-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .help-chat {
+        position: static;
+        height: 580px;
+        max-height: none;
+        order: -1;
+        animation: helpSlideR .9s cubic-bezier(.22, 1, .36, 1) .3s both;
+    }
+
+    .help-hero::before,
+    .help-hero::after {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .help-hero {
+        padding: 48px 16px 28px;
+    }
+
+    .help-btn {
+        flex: 1 1 100%;
+        text-align: center;
+    }
+
+    .help-faq .hc-q:hover {
+        transform: none;
+    }
+}
+
+/* ---------- Уважаем настройку «уменьшить анимацию» ---------- */
+@media (prefers-reduced-motion: reduce) {
+
+    .help-page *,
+    .help-page *::before,
+    .help-page *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+    }
+}

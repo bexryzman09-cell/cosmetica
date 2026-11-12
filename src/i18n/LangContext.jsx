@@ -2,13 +2,21 @@ import { createContext, useContext, useEffect, useState } from 'react';
 import { translations } from './translations';
 import { extra } from './extra';
 import { extra2 } from './extra2';
+import { extra3 } from './extra3';
+import { extra4 } from './extra4';
 
 const LangContext = createContext(null);
 
 // один общий словарь на каждый язык
 const dict = {};
 ['ru', 'uz', 'en'].forEach((code) => {
-    dict[code] = { ...translations[code], ...extra[code], ...extra2[code] };
+    dict[code] = {
+        ...translations[code],
+        ...extra[code],
+        ...extra2[code],
+        ...extra3[code],
+        ...extra4[code],
+    };
 });
 
 const getSaved = () => {

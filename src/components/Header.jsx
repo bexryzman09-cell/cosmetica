@@ -16,6 +16,7 @@ export default function Header() {
               <Link className="header__link" to="/">{t('home')}</Link>
               <Link className="header__link" to="/about">{t('about')}</Link>
               <Link className="header__link" to="/servis">{t('services')}</Link>
+              <Link className="header__link" to="/help">{t('help')}</Link>
               <Link className="header__link" to="/social" target="_blank">{t('contacts')}</Link>
             </nav>
             <LangSwitcher />

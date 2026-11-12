@@ -7,7 +7,7 @@ import Contact from './pages/Contact';
 import Social from './pages/Social';
 import Learn from './pages/Learn';
 import NotFound from './pages/NotFound';
-
+import Help from './pages/Help';
 function ScrollToTop() {
   const { pathname } = useLocation();
   useEffect(() => {
@@ -23,6 +23,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
+        <Route path="/help" element={<Help />} />
         <Route path="/servis" element={<Servis />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/social" element={<Social />} />
