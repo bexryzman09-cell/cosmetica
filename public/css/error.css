@@ -1,0 +1,208 @@
+:root {
+    --rose: #c97d8c;
+    --rose-lt: #fdf7f8;
+    --ink: #1a1520;
+    --mist: #f8f6f4;
+    --white: #ffffff;
+    --gray: #7a7875;
+    --gold: #d4b895;
+}
+
+.notfound-page {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    background: linear-gradient(155deg, #fffefc 0%, var(--rose-lt) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.notfound-wrapper {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 560px;
+}
+
+/* Большая цифра 404 */
+.notfound-code {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(90px, 18vw, 180px);
+    line-height: 1;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 0;
+    position: relative;
+    display: inline-block;
+    letter-spacing: 0.02em;
+}
+
+.notfound-code span {
+    display: inline-block;
+    background: linear-gradient(180deg, var(--ink) 0%, var(--rose) 120%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: floatDigit 3.2s ease-in-out infinite;
+}
+
+.notfound-code span:nth-child(2) {
+    animation-delay: 0.15s;
+}
+
+.notfound-code span:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+@keyframes floatDigit {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Тонкая декоративная линия */
+.notfound-divider {
+    width: 70px;
+    height: 2px;
+    margin: 22px auto 26px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    position: relative;
+}
+
+.notfound-divider::before {
+    content: '✦';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--gold);
+    font-size: 14px;
+    background: #fffefc;
+    padding: 0 8px;
+}
+
+.notfound-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(24px, 4vw, 32px);
+    font-weight: 600;
+    color: var(--ink);
+    margin: 0 0 12px;
+}
+
+.notfound-text {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    color: var(--gray);
+    line-height: 1.7;
+    margin: 0 0 34px;
+}
+
+.notfound-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    justify-content: center;
+}
+
+.notfound-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 15px 32px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.notfound-btn--primary {
+    background: #111;
+    color: var(--gold);
+    border: 1px solid rgba(212, 184, 149, 0.3);
+}
+
+.notfound-btn--primary:hover {
+    color: #111;
+    background: var(--gold);
+    border-color: var(--gold);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 24px rgba(212, 184, 149, 0.3);
+}
+
+.notfound-btn--outline {
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid #e0d8d3;
+}
+
+.notfound-btn--outline:hover {
+    border-color: var(--ink);
+    transform: translateY(-3px);
+}
+
+/* Обратный отсчёт до автоматического редиректа */
+.notfound-redirect {
+    margin-top: 26px;
+    font-size: 13px;
+    color: var(--gray);
+    font-family: 'DM Sans', sans-serif;
+}
+
+.notfound-redirect b {
+    color: var(--rose);
+}
+
+/* Плавающие декоративные лепестки/точки на фоне */
+.notfound-petal {
+    position: absolute;
+    border-radius: 50%;
+    background: var(--gold);
+    opacity: 0.18;
+    pointer-events: none;
+    animation: petalFloat linear infinite;
+}
+
+@keyframes petalFloat {
+    0% {
+        transform: translateY(0) translateX(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.25;
+    }
+
+    90% {
+        opacity: 0.15;
+    }
+
+    100% {
+        transform: translateY(-420px) translateX(30px) rotate(180deg);
+        opacity: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .notfound-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .notfound-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
