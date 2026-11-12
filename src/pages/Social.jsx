@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import useStyles from '../hooks/useStyles';
 
 // Отдельная страница-"линктри": без шапки и футера (как social.html)
-export default function Social() {
+export default function   Social() {
   const ready = useStyles(['social']);
 
   useEffect(() => {

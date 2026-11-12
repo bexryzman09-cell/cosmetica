@@ -9,6 +9,7 @@ const COOLDOWN_MS = 2 * 60 * 60 * 1000; // 2 часа
 const REVIEW_MAX_LEN = 300;
 const MAX_SERVICES = 5;
 
+
 const ls = {
   get: (k) => { try { return localStorage.getItem(k); } catch { return null; } },
   set: (k, v) => { try { localStorage.setItem(k, v); } catch { /* ignore */ } },
@@ -42,7 +43,7 @@ const maskPhone = (raw) => {
 
 export default function Contact() {
   const { t } = useLang();
-
+  const [confirmOpen, setConfirmOpen] = useState(false);
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [honeypot, setHoneypot] = useState('');
@@ -83,6 +84,14 @@ export default function Contact() {
     countryPromiseRef.current = Promise.race([fetchCountry, timeout]);
     return () => clearTimeout(toastTimer.current);
   }, []);
+
+  
+  useEffect(() => {
+    if (!confirmOpen) return;
+    const onKey = (e) => e.key === 'Escape' && setConfirmOpen(false);
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, [confirmOpen]);
 
   // Обратный отсчёт кулдауна
   useEffect(() => {
@@ -158,9 +167,12 @@ export default function Contact() {
       setSending(false);
     }
   };
+  // кнопка «Отменить запись» только открывает окно
+  const onCancel = () => setConfirmOpen(true);
 
-  const onCancel = () => {
-    if (!window.confirm(t('ct_confirm'))) return;
+  // сама отмена — после подтверждения
+  const doCancel = () => {
+    setConfirmOpen(false);
     const text =
       `<b>❌ Отмена записи: Shoira Studio</b>\n\n` +
       `<b>👤 Клиент:</b> ${escapeHtml(ls.get('clientName') || 'Не указан')}\n` +
@@ -430,7 +442,7 @@ export default function Contact() {
                       ></textarea>
                       <span className="review-counter">{reviewText.length} / {REVIEW_MAX_LEN}</span>
                     </div>
-                 
+
                     <button type="button" className="btn-review" disabled={reviewSending} onClick={onReviewSubmit}>
                       {reviewSending ? t('ct_sending') : t('ct_rev_send')}
                     </button>
@@ -445,6 +457,28 @@ export default function Contact() {
           </div>
         </div>
       </main>
+      {confirmOpen && (
+        <div className="cm-overlay" onClick={() => setConfirmOpen(false)}>
+          <div
+            className="cm-card"
+            role="dialog"
+            aria-modal="true"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="cm-icon">✕</div>
+            <h3 className="cm-title">{t('ct_cm_title')}</h3>
+            <p className="cm-text">{t('ct_confirm')}</p>
+            <div className="cm-actions">
+              <button type="button" className="cm-btn cm-btn--keep" onClick={() => setConfirmOpen(false)}>
+                {t('ct_cm_keep')}
+              </button>
+              <button type="button" className="cm-btn cm-btn--danger" onClick={doCancel}>
+                {t('ct_cm_yes')}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       <div className={'toast' + (toast.show ? ' show' : '')}>
         <span style={{ fontSize: 18 }}>{toast.icon}</span>
